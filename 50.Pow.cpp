@@ -14,13 +14,10 @@ Implement pow(x, n).
 #endif
 
 using namespace std;
-/*
-50. pow(x, n)
-Implement pow(x, n).
-*/
-// x^n = (x^2)^(n/2)
+
 const double EPSILON = 0.00000001;
 
+// First Solution：  x^n = (x^2)^(n/2)
 double POW(double x, int n)
 {
 	if (n == 0)
@@ -38,7 +35,7 @@ double POW(double x, int n)
 
 	unsigned int N = abs(n);
 	double res = 1.0;
-	while (N)
+	while (N) // x^n = (x^(n/2)) * (x^(n/2))
 	{
 		if (N & 1) // for the case that N < 1
 			res *= x;
@@ -47,6 +44,8 @@ double POW(double x, int n)
 	}
 	return n > 0 ? res : 1 / res;
 }
+
+// Second Solution： 
 
 void testCase_pow()
 {

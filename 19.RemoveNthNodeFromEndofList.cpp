@@ -21,6 +21,7 @@ ListNode *removeNthFromEnd(ListNode *head, int n)
 	ListNode saveHead(0);
 	saveHead.next = head;
 
+	// point to the address of saveHead
 	ListNode *pre = &saveHead, *pCurr = &saveHead;
 
 	// make n-1 nodes included between *pre and *pCurr

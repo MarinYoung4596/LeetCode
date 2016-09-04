@@ -6,7 +6,6 @@ For this problem, a height-balanced binary tree is defined as a binary tree in w
 the two subtrees of every node never differ by more than 1.
 */
 /* @parameters:
- * @pld: previous level depth
  * @ld: left depth
  * @rd: right depth
  */

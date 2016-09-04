@@ -41,7 +41,7 @@ int mySqrt_2(int x)
 	2			8		4		4	36 / 4 = 9 > 4, left = mid + 1
 	3	5				5		5	36 / 5 = 7 > 5,	left = mid + 1
 	4	6				7		5	36 / 7 = 5 < 7, right = mid - 1
-	5	6		6					returnq
+	5	6		6					return q
 	*/
 	int left = 1, right = x / 2;
 	int last_mid;

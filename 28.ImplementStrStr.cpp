@@ -8,7 +8,7 @@ Returns the index of the first occurrence of needle in haystack, or -1 if needle
 
 typedef std::size_t size_type;
 
-// First Solution: violent solution
+// First Solution: bruce-force
 int strStr(const string haystack, const string needle)
 {
 	const size_type hlen = haystack.size();
@@ -24,7 +24,7 @@ int strStr(const string haystack, const string needle)
 		}
 		else
 		{
-			i -= (j - 1);
+			i -= (j - 1); // i = i - j + 1;
 			j = 0;
 		}
 	}
@@ -41,10 +41,10 @@ int kmp(const string haystack, const string needle)
 	const size_type hlen = haystack.size();
 	const size_type nlen = needle.size();
 
-	size_type i = 0, j = 0;
 	int *next = new int[nlen];
 	getNext(needle, next);
 
+	size_type i = 0, j = 0;
 	for (; i < hlen && j < nlen;)
 	{
 		if (haystack[i] == needle[j])

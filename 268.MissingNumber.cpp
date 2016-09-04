@@ -14,16 +14,29 @@ Special thanks to @jianchao.li.fighter for adding this problem and creating all 
 
 #include <vector>
 
-int missingNumber(vector<int>& nums) 
+/*First Solution*/
+int missingNumber(vector<int>& nums)
 {
-	vector<bool> tmp(nums.size() + 1, false);
-	
-	for (auto i = 0; i < nums.size(); ++i)
-		tmp[nums[i]] = true;
-	
-	for (auto i = 0; i < tmp.size(); ++i)
-	{
-		if (!tmp[i])
-			return i;
-	}
+    vector<bool> tmp(nums.size() + 1, false);
+
+    for (auto i = 0; i < nums.size(); ++i)
+        tmp[nums[i]] = true;
+
+    for (auto i = 0; i < tmp.size(); ++i)
+    {
+        if (!tmp[i])
+            return i;
+    }
+}
+
+/*Second Solution  bit manipulation*/
+int missingNumber(vector<int>& nums)
+{
+    const auto len = nums.size(); // N
+    int res = len;
+    for (auto i = 0; i < len; ++i)
+    {
+        res ^= i ^ nums[i];
+    }
+    return res;
 }

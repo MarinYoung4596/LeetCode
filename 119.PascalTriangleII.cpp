@@ -55,3 +55,31 @@ vector<int> getRow(int rowIndex)
     pascalTriangle = generate(rowIndex+1);
     return pascalTriangle[rowIndex];
 }
+
+
+// second solution
+class Solution {
+public:
+    vector<int> getRow(int k) {
+        vector<int> res(k+1, 0);
+        
+        res[k] = 1;
+        for (auto i = 0; i <= k; ++i)
+        {
+            for (auto j = k-1; j > 0; --j)
+                res[j] += res[j-1];
+            res[0] = 1;
+        }
+        return res;
+        
+        /*
+        k = 3;
+        i   |   0   1   2   3
+		---------------------
+        0   |   1   0   0   1
+        1   |   1   1   0   1
+        2   |   1   1   1   1
+        3   |   1   2   2   1
+        */
+    }
+};

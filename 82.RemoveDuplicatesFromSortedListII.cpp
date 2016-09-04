@@ -33,7 +33,7 @@ ListNode* deleteDuplicates(ListNode* head)
 			pre->next = curr->next;
 			curr = curr->next;
 			continue;
-		}	
+		}
 		pre = pre->next;
 		curr = curr->next;
 	}

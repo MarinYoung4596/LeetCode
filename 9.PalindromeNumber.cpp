@@ -56,7 +56,7 @@ bool isPalindrome(int x, int HIGH, int LOW)
 
 
 	int lowestBit = x % LOW;	// 154670892 % 100 = 92
-	lowestBit /= (LOW / 10);	// 92 / (100 / 10) = 9
+	lowestBit /= (LOW / 10);  	// 92 / (100 / 10) = 9
 
 
 	if (highestBit != lowestBit)

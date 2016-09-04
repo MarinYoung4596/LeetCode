@@ -19,26 +19,32 @@ using namespace std;
 // dp[n] = max{dp[n-1], dp[n-2] + num[n]}
 // Time Complexity: O(N), Space Complexity: O(N)
 
-int *dp;
+class Solution {
+public:
+    int rob(vector<int>& nums) {
+        // dp = max(dp[i-1], dp[i-2] + nums[i])
+    	if (nums.empty()) return 0;
+	    const int N = nums.size();
+	    dp = new int[N];
+	    memset(dp, 0, sizeof(dp));
 
-int rob(vector<int>& nums)
-{
-	if (nums.empty()) return 0;
-	const int N = nums.size();
-	dp = new int[N];
-	memset(dp, 0, sizeof(dp));
+	    for (int i = 0; i < N; i++)
+	    {
+		    if (i == 0)
+		    	dp[i] = nums[i];
+		    else if (i == 1)
+		    	dp[i] = max(nums[i], nums[i - 1]);
+		    else
+		    	dp[i] = max(dp[i - 1], dp[i - 2] + nums[i]);
+	    }
+	    int x = dp[N-1];
+	    delete []dp;
+	    return x;
+    }
 
-	for (int i = 0; i < N; i++)
-	{
-		if (i == 0)
-			dp[i] = nums[i];
-		else if (i == 1)
-			dp[i] = max(nums[i], nums[i - 1]);
-		else
-			dp[i] = max(dp[i - 1], dp[i - 2] + nums[i]);
-	}
-	return dp[N - 1];
-}
+private:
+    int *dp;
+};
 
 // Second Solution: iterative Method
 // Time Complexity: O(N), Space Complexity: O(1)

@@ -21,16 +21,17 @@ int isLeft(char ch)
 
 bool isValid(string s)
 {
-    int len = s.length();
+    const int len = s.length();
     if (len == 0)
         return true;
     if (len % 2)
         return false;
 
     stack<char> strStack;
-    for (int i = 0; i < s.size(); i++)
+    for (int i = 0; i < len; i++)
     {
-        // if curr is left and stack is left or empty (because it can't be right), push curr into stack
+        // if curr is left and stack is left or empty (because it can't be right), 
+		//  push curr into stack
         if (isLeft(s[i]) > 0)
         {
             if (strStack.empty())

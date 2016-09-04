@@ -13,7 +13,7 @@ return ["255.255.11.135", "255.255.111.35"]. (Order does not matter)
 
 using namespace std;
 
-void DFS(string s, size_t start, size_t step, string ip, vector<string> &res)
+void DFS(const string &s, size_t start, size_t step, string ip, vector<string> &res)
 {
 	if (start == s.size() && step == 4)
 	{
@@ -22,7 +22,7 @@ void DFS(string s, size_t start, size_t step, string ip, vector<string> &res)
 		return;
 	}
 
-	if ((s.size() - start) > 3 * (4 - step) ||	
+	if ((s.size() - start) > 3 * (4 - step) ||	// 剪枝，判明省下的不符合要求
 		(s.size() - start) < (4 - step))
 		return;
 

@@ -15,22 +15,27 @@ If you have figured out the O(n) solution, try coding another solution using the
 #include <vector>
 
 // First Solution:
-// f[j] = max{f[j-1] + s[j], s[j]}; 1 <= j <= N
-// TARGET = max{f[j]}; 1 <= j <= N
+// dp[j] = max{dp[j-1] + s[j], s[j]}; 1 <= j <= N
+// TARGET = max{dp[j]}; 1 <= j <= N
 // Time Complexity: O(N)
-int maxSubArray(vector<int>& nums)
-{
-	const int N = nums.size();
-	if (!N) return 0;
-	int res = INT_MIN, f = 0;
-	for (int i = 0; i < N; i++)
+int maxSubArray(vector<int>& nums) {
+	const auto n = nums.size();
+	int *dp = new int[n];
+	memset(dp, 0, n * sizeof(int));
+	
+	dp[0] = nums[0];
+	auto res = dp[0];
+	for (auto i = 1; i < n; ++i)
 	{
-		f = max(f + nums[i], nums[i]);
-		res = max(res, f);
+		dp[i] = max(dp[i-1]+nums[i], nums[i]);
+		res = max(res, dp[i]);
 	}
+
+	delete []dp;
+	dp = nullptr;
 	return res;
 }
 
 // Second Solution:
-// to be continued...
+// Divide and Conquer
 

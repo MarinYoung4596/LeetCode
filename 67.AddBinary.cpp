@@ -14,31 +14,31 @@ Return "100".
 
 string binaryAdder(char aa, char bb, int &c)
 {
-	int a = (int)(aa - '0'),
-		b = (int)(bb - '0'),
+	int a = static_cast<int>(aa - '0'),
+		b = static_cast<int>(bb - '0'),
 		res;
 
 	res = (~aa & ~b & c) | (~a & b & ~c) | (a & ~b & ~c) | (a & b & c);
 	c = (a & ~b & c) | (a & b & ~c) | (b & c);
 	
-	stringstream ss;
-	string s;
-	ss << res;
-	ss >> s;
-	return s;
+	// stringstream ss;
+	// string s;
+	// ss << res;
+	// ss >> s;
+	return to_string(res);
 }
 
 string addBinary(string a, string b)
 {
-	if (a == "") return b;
-	if (b == "") return a;
+	if (a.empty()) return b;
+	if (b.empty()) return a;
 
 	string res = "";
 	int indexA = a.length() - 1;
 	int indexB = b.length() - 1;
 	int carry = 0;
 	string bit;
-	for (; indexA >= 0 && indexB >= 0; indexA--, indexB--)
+	for (; indexA >= 0 && indexB >= 0; --indexA, --indexB)
 	{
 		bit = binaryAdder(a[indexA], b[indexB], carry);
 		res = bit + res;

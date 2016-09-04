@@ -13,7 +13,8 @@ Given an integer n, generate the nth sequence.
 
 void addIntAndChar(string &s, int n, char ch)
 {
-    //convert integer into string
+    //convert integer into string 
+	// or to_string(n);
     stringstream ss;
     string tmp;
     ss<<n;

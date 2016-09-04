@@ -28,7 +28,7 @@ int ATOI(string str)
         if ( res > INT_MAX / 10 ||
             (res == INT_MAX / 10 && (str[i] - '0') > INT_MAX % 10))
 			return sign == '-' ? INT_MIN : INT_MAX;
-        res = res * 10 + (int)(str[i] - '0');
+        res = res * 10 + static_cast<int>(str[i] - '0');
     }
     return (sign == '+' ? res : -res);
 }

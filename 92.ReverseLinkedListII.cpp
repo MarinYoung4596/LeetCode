@@ -41,7 +41,7 @@ ListNode *reverseBetween(ListNode *head, int m, int n)
 	REVERSE:	p->next = pre;
 	*/
 	ListNode *p = &savehead;
-	for (int i = 1; i < m; ++i)
+	for (int i = 0; i < m-1; ++i)
 		p = p->next;
 
 	ListNode *preM = p;	// preM	->	NODE(M-1)
