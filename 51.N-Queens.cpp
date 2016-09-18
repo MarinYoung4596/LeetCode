@@ -1,5 +1,5 @@
 /*
-The n-queens puzzle is the problem of placing n queens on an n�n chessboard such that no two queens attack each other.
+The n-queens puzzle is the problem of placing n queens on an n×n chessboard such that no two queens attack each other.
 
 
 Given an integer n, return all distinct solutions to the n-queens puzzle.
@@ -62,7 +62,7 @@ private:
         }
     }
     
-    bool isValid(const vector<int> &columns, const int &row, const int &column)
+    bool isValid(const vector<int> &columns, const int &row, const int &column)// 第row行第column列是否跟已经摆放的位置冲突
     {
         for (auto i = 0; i < row; ++i) // get the column of the queen in each row
         {

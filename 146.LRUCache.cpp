@@ -54,7 +54,7 @@ private:
     // maximum capacity
     int cap; 
     // the closer distance to the head, the more frequent the element uses
-    std::list<pair<int, int>> cache;
+    std::list<pair<int, int>> cache;// key : value
     // save the key's position in the list
     std::unordered_map<int, std::list<std::pair<int,int>>::iterator> address;
 };

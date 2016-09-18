@@ -24,8 +24,8 @@ public:
         for (int i = 0; i < s.size(); ++i)
         {
             char next = ((i + 1 == s.size()) ? 'I' : s[i+1]);
-            if (mapping[s[i]] >= mapping[next]) res += mapping[s[i]];
-            else res -= mapping[s[i]];
+            if (mapping[s[i]] >= mapping[next]) res += mapping[s[i]];//右边，VII, XII, LI
+            else res -= mapping[s[i]]; // 左边：IV, 
         }
         
         return res;

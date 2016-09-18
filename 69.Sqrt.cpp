@@ -30,8 +30,7 @@ int mySqrt(int x)
 // Second Solution: From: https://github.com/soulmachine/leetcode
 int mySqrt_2(int x)
 {
-	if (x < 0)
-		exit(0);
+	assert(x>0);
 	if (x < 2)
 		return x;
 	/*

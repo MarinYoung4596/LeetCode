@@ -47,3 +47,17 @@ private:
         return i + 1;
     }
 };
+
+// second solution
+int findKthLargest(vector<int> &v, int k)
+{
+    make_heap(v.begin(), v.end());
+    int result;
+    for (int i = 0; i < k; ++i)
+    {
+        result = v.front();
+        pop_heap(v.begin(), v.end());
+        v.pop_back();
+    }
+    return result;
+}

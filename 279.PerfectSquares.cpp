@@ -9,7 +9,7 @@ For example, given n = 12, return 3 because 12 = 4 + 4 + 4; given n = 13, return
 
 class Solution {
 public:
-    // dp[n] = min{dp[i]+dp[n-i}; 1 <= i <= n-1
+    // dp[n] = min{dp[i]+dp[n-i]}; 1 <= i <= n-1
    int numSquares(int n) 
    {
        int x = static_cast<int>(sqrt(n));
@@ -32,7 +32,7 @@ public:
 //// Second Solution £º Time Limit Exceeded
 class Solution {
 public:
-    // dp[n] = min{dp[i]+dp[n-i}; 1 <= i <= n-1
+    // dp[n] = min{dp[i]+dp[n-i]}; 1 <= i <= n-1
    int numSquares(int n) 
    {
        int x = static_cast<int>(sqrt(n));

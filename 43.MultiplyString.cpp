@@ -24,11 +24,13 @@ public:
 		const auto len = num1.size() + num2.size();
 		auto p = new int[len];
 		memset(p, 0, len * sizeof(int));	// must be len*sizeof(int)
+		// 不知道相乘后的长度，所以从前往后
 		for (auto i = 0; i < num1.size(); ++i)
 		{
 			for (auto j = 0; j < num2.size(); ++j)
 			{
-				// here +=
+				// here += 
+				// +1 预留空间。防止最高位>= 10 进位的情况
 				*(p+1 + i + j) += static_cast<int>(num1[i] - '0') * static_cast<int>(num2[j] - '0');
 			}
 		}

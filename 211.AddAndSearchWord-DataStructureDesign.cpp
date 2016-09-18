@@ -40,9 +40,9 @@ public:
 			childNode[i] = nullptr;
 	}
 
-	static const auto MaxBranchNums = 26;
-	TrieNode* childNode[MaxBranchNums];
-
+	static const auto MaxBranchNums = 26; // 纯lowercase，如果有大写或数字会更大。
+	TrieNode* childNode[MaxBranchNums];//用index来表示相应的字母。
+// 以下两项完全非必需，可以去掉
 	char ch;
 	// int freq;
 	bool exists;
@@ -106,8 +106,7 @@ bool WordDictionary::search(TrieNode *node, const string &word, int i)
 	for (auto j = 0; j < p->MaxBranchNums; ++j)
 	{
 		if (nullptr == p->childNode[j]) continue;
-		auto res = search(p->childNode[j], word, i + 1);
-		if (res) return true;
+		return search(p->childNode[j], word, i + 1);
 	}
 	return false;
 }

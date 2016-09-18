@@ -17,7 +17,7 @@ Return 4.
 class Solution {
 public:
     int maximalSquare(vector<vector<char>>& matrix) {
-        // dp[i][j]: the maximal ##size## of the square that can be achieved at point (i, j)
+        // dp[i][j]: the maximal ##size## of the square that can be achieved from point (0,0) to point (i, j)
         // dp[i][j] = matrix[i][j] if i == 0 || j == 0 // ±ß½çÌõ¼þ
         // dp[i][j] = 0            if i > 0 && j >0 && matrix[i][j] == 0
         // dp[i][j] = 1 + min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]) if i > 0 && j > 0 && matrix[i][j] == 1
