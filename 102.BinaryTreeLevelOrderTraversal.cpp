@@ -78,7 +78,7 @@ vector<vector<int>> levelOrder_2(TreeNode *root)
 			if (node->left) q.push(node->left);
 			if (node->right) q.push(node->right);
 		}
-		else if (!q.empty())// q is empty
+		else if (!q.empty())// q is not empty
 		{
 			q.push(nullptr);
 			res.push_back(level);
