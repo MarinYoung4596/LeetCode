@@ -13,9 +13,6 @@ Follow up: Could you improve it to O(n log n) time complexity?
 
 */
 
-#ifndef max
-#define max(x, y) (x)>(y)?(x):(y)
-#endif
 class Solution {
 public:
     // dynamic programming
@@ -28,20 +25,11 @@ public:
         
         for (auto i = 0; i < len; ++i)
         {
-#ifdef DEBUG
-            cout << i <<" :\t";
-#endif
             for (auto j = 0; j < i; ++j)
             {
                 if (nums[j] >= nums[i]) continue;
                 dp[i] = max(dp[i], dp[j]+1); // if dp[j] <= dp[i]
-#ifdef DEBUG
-                cout << dp[i] <<'\t';
-#endif
             }
-#ifdef DEBUG
-		    cout << '\n';
-#endif
             res = max(dp[i], res);
         }
         return res;
