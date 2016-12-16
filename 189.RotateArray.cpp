@@ -17,6 +17,8 @@ Related problem: Reverse Words in a String II
 
 using namespace std;
 
+
+// first solution:  O(N) space
 void rotate(int nums[], int n, int k)
 {
     if (k == n)
@@ -30,3 +32,23 @@ void rotate(int nums[], int n, int k)
     memcpy(nums, tmp, n * sizeof(int));
     delete[] tmp;
 }
+
+
+// second solution O(1) space
+class Solution{
+public:
+    void rotate(int nums[], int n, int k)
+    {
+        reverse(nums, 0, n-1-k);
+        reverse(nums, n-k, n-1);
+        reverse(nums, 0, n-1);
+    }
+private:
+    void reverse(int nums[], int begin, int end)
+    {
+        while (begin < end)
+        {
+            std::swap(nums[begin++], nums[end--]);
+        }
+    }
+};

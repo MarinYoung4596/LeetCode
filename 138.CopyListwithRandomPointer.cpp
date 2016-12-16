@@ -38,7 +38,7 @@ public:
             q->random = (p->random == nullptr ? nullptr : p->random->next);
             
             p = p->next->next;
-            if (p != nullptr) q = q->next->nex
+            if (p != nullptr) q = q->next->next;
         }
         // split from original list
         for (RandomListNode *p = head, *q = head->next; q != nullptr && p != nullptr; )

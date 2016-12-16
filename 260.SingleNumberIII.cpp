@@ -20,12 +20,12 @@ public:
     {
         if (nums.empty()) return nums;
         
-        //???????????
+        //计算这两个数的异或结果
         int temp;
         for (auto i = 0; i < nums.size(); ++i)
             temp ^= nums[i];
         
-        // ?????1?? 
+        // 找到第一个为1的位
         size_t k = 0;
         for (; k < sizeof(int)*8; ++k)
         {
@@ -33,7 +33,7 @@ public:
             temp >>= 1;
         }
         
-        // ?j??1,?????????j???????  ??????
+        // 第j位为1,说明这两个数字在第j位上是不相同的  由此分组即可
         int res1(0), res2(0);
         for (auto i = 0; i < nums.size(); ++i)
         {

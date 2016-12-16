@@ -23,3 +23,28 @@ int maxDepth(TreeNode *root)
 		right = maxDepth(root->right) + 1;
 	return left > right ? left : right;
 }
+
+// 
+int GetBTreeDepth( TreeNode *pRoot){
+    if( pRoot == NULL )
+        return 0;
+
+    queue< TreeNode *> que;
+    que.push( pRoot );
+    int depth = 0;
+    while( !que.empty() ){
+        ++depth;
+        int curLevelNodesTotal = que.size();
+        int cnt = 0;
+        while( cnt < curLevelNodesTotal ){
+            ++cnt;
+            pRoot = que.front();
+            que.pop();
+            if( pRoot->m_pLeft )
+                que.push( pRoot->m_pLeft);
+            if( pRoot->m_pRight)
+                que.push( pRoot->m_pRight);
+        }
+    }
+    return depth;
+}

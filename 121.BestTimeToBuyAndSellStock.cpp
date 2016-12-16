@@ -11,7 +11,7 @@ class Solution {
 public:
     /*
     1st Solution: Bruce-Force:
-    Time Limit Exceeded in super long test cases
+    TLE in super long test cases
     find the largest and smallest pairs in the array without changing their order
      */
     int maxProfit_1(vector<int>& prices) {
