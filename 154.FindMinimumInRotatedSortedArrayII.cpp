@@ -16,26 +16,30 @@ The array may contain duplicates.
 
 class Solution {
 public:
-    int findMin(vector<int>& nums) 
-    {
-        if (nums.empty()) return -1;
+    int findMin(vector<int>& nums) {
+        if (nums.empty()) {
+            return -1;
+        }
         auto begin = 0;
         auto end = nums.size() - 1;
 
-        while (begin < end)
-        {
-            if (nums[begin] < nums[end]) return nums[begin];
+        while (begin < end) {
+            if (nums[begin] < nums[end]) {
+                return nums[begin];
+            }
             
-            if (begin + 1 == end) return nums[end];// not in order
+            if (begin + 1 == end) {
+                return nums[end];// not in order
+            }
             
-            auto mid = begin + (end-begin)/2;
-            if (nums[begin] > nums[mid]) end = mid; // not in order
-            else if (nums[mid] > nums[end]) begin = mid;  // not in order
-            else
-            {
+            auto mid = begin + (end - begin) / 2;
+            if (nums[begin] > nums[mid]) {
+                end = mid; // not in order
+            } else if (nums[mid] > nums[end]) {
+                begin = mid;  // not in order
+            } else {
                 int res = nums[begin];
-                for (auto i = begin+1; i < end; ++i)
-                {
+                for (auto i = begin+1; i < end; ++i) {
                     res = min(res, nums[i]);
                 }
                 return res;

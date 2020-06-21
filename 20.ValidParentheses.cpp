@@ -10,65 +10,57 @@ ASCII (  )    [   ]   {   }
 #include <cstring>
 #include <stack>
 
-int isLeft(char ch)
-{
-    if (ch == '(' || ch == '[' || ch == '{')
+int isLeft(char ch) {
+    if (ch == '(' || ch == '[' || ch == '{') {
         return 1;
-    else if (ch == ')' || ch == ']' || ch == '}')
+    } else if (ch == ')' || ch == ']' || ch == '}') {
         return -1;
-    return 0;
+    } else {
+        return 0;
+    }
 }
 
-bool isValid(string s)
-{
+bool isValid(string s) {
     const int len = s.length();
-    if (len == 0)
+    if (len == 0) {
         return true;
-    if (len % 2)
+    } else if (len % 2) {
         return false;
+    }
 
     stack<char> strStack;
-    for (int i = 0; i < len; i++)
-    {
+    for (int i = 0; i < len; i++) {
         // if curr is left and stack is left or empty (because it can't be right), 
 		//  push curr into stack
-        if (isLeft(s[i]) > 0)
-        {
-            if (strStack.empty())
-            {
+        if (isLeft(s[i]) > 0) {
+            if (strStack.empty()) {
                 strStack.push(s[i]);
                 continue;
-            }
-            else if (isLeft(strStack.top()) > 0)
-            {
+            } else if (isLeft(strStack.top()) > 0) {
                 strStack.push(s[i]);
                 continue;
             }
         }
         // if curr is right
-        if (isLeft(s[i]) < 0)
-        {
-            if (strStack.empty())
+        if (isLeft(s[i]) < 0) {
+            if (strStack.empty()) {
                 return false;
+            }
             // if curr is right and top is left
             if ((s[i] == ')' && strStack.top() == '(') ||
                 (s[i] == ']' && strStack.top() == '[') ||
-                (s[i] == '}' && strStack.top() == '{') )
-            {
+                (s[i] == '}' && strStack.top() == '{') ) {
                 strStack.pop();
                 continue;
-            }
-            else
+            } else { 
                 return false;
+            }
         }
     }
-    if (!strStack.empty())
-        return false;
-    return true;
+    return strStack.empty();
 }
 
-void testCase_isValid()
-{
+void testCase_isValid() {
     string s1 = "()";
     string s2 = "()[]{}";
     string s3 = "(]";
@@ -77,11 +69,11 @@ void testCase_isValid()
     string s6 = "((((((";
     string s7 = "[[[";
 
-    cout<<isValid(s1)<<endl;
-    cout<<isValid(s2)<<endl;
-    cout<<isValid(s3)<<endl;
-    cout<<isValid(s4)<<endl;
-    cout<<isValid(s5)<<endl;
-    cout<<isValid(s6)<<endl;
-    cout<<isValid(s7)<<endl;
+    cout << isValid(s1) << endl;
+    cout << isValid(s2) << endl;
+    cout << isValid(s3) << endl;
+    cout << isValid(s4) << endl;
+    cout << isValid(s5) << endl;
+    cout << isValid(s6) << endl;
+    cout << isValid(s7) << endl;
 }

@@ -14,17 +14,14 @@ Given m, n satisfy the following condition:
 
 #include "ListNode"
 
-void printListNode(ListNode *head)
-{
-	for (; head != NULL; head = head->next)
-		std::cout << head->val << '\t';
-	std::cout << std::endl;
-}
 
-ListNode *reverseBetween(ListNode *head, int m, int n)
-{
-	if (head == NULL) return NULL;
-	if (m == n) return head;
+ListNode *reverseBetween(ListNode *head, int m, int n) {
+	if (head == nullptr) {
+        return nullptr;
+    }
+	if (m == n) {
+        return head;
+    }
 	ListNode savehead(0);
 	savehead.next = head;
 	/*
@@ -41,15 +38,15 @@ ListNode *reverseBetween(ListNode *head, int m, int n)
 	REVERSE:	p->next = pre;
 	*/
 	ListNode *p = &savehead;
-	for (int i = 0; i < m-1; ++i)
+	for (int i = 0; i < m-1; ++i) {
 		p = p->next;
+    }
 
 	ListNode *preM = p;	// preM	->	NODE(M-1)
 	p = preM->next;		// p	->	NODE(M)
 	ListNode *M = p;	// M	->	NODE(M) save the position of M
 	ListNode *r = p->next;//r	->	NODE(M+1)
-	for (int i = m; i < n && r != NULL; ++i)
-	{
+	for (int i = m; i < n && r != NULL; ++i) {
 		ListNode *pre = p;
 		p = r;
 		r = r->next;	// SCAN
@@ -63,19 +60,17 @@ ListNode *reverseBetween(ListNode *head, int m, int n)
 }
 
 
-int main(int argv, char **argc)
-{
+int main(int argv, char **argc) {
 	int A[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
-	ListNode *p = new ListNode(A[0]),
-		*head = p;
-	for (int i = 1; i < 10; i++)
-	{
+	ListNode* p = new ListNode(A[0]);
+	ListNode* head = p;
+	for (int i = 1; i < 10; i++) {
 		p->next = new ListNode(A[i]);
 		p = p->next;
 	}
-	printListNode(head);
+	print_list(head);
 	p = reverseBetween(head, 4, 8);
-	printListNode(p);
+	print_list(p);
 
 	return 0;
 }

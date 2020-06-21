@@ -9,50 +9,52 @@ For example,
 Given {1,2,3,4}, reorder it to {1,4,2,3}.
 */
 
-#include <vector>
-#include <iostream>
-#include <algorithm>
 
 #include "ListNode.h"
-
-using namespace std;
 // Ordinary List: 1->2->3->4->5->6->7
 // Reordered List:1->(7)->2->(6)->3->(5)->4
-void reorderList(ListNode* head)
-{
-	vector<int> v;
-	for (ListNode *p = head; p != nullptr; p = p->next)
-		v.push_back(p->val);
 
-	const int len = v.size();
-	if (len < 3) return;
-	int sigma = len % 2 == 1 ? ((len + 1) / 2 - 1) : (len / 2 - 1);
-	ListNode *p = head;
-	for (int i = 0; i < sigma; i++)
-	{
-		ListNode *tmp = new ListNode(v[len - 1 - i]);
-		tmp->next = p->next;
-		p->next = tmp;
-		p = p->next->next;
-	}
-	if (len % 2 == 1)
-		p->next = nullptr;
-	else
-		p->next->next = nullptr;
-}
 
-int main()
-{
-	vector<int> v = { 1, 2, 3, 4, 5, 6, 7 };
-	ListNode *head = new ListNode(v[0]);
-	ListNode *p = head;
-	for (auto i = next(v.begin()); i != v.end(); i++, p = p->next)
-		p->next = new ListNode(*i);
+// First Solution: Time Complexity: O(N), Space Complexity: O(N)
+class Solution {
+public:
+    void reorderList(ListNode* head) {
+        std::vector<int> vec;
+        for (auto node = head; node != nullptr; node = node->next) {
+            vec.push_back(node->val);
+        }
+        auto idx = 0;
+        for (auto node = head; node != nullptr node = node->next) {
+            if (idx % 2 == 1) {
+                node->val = vec[vec.size() - 1 - idx / 2];
+            } else {
+                node->val = vec[idx / 2];
+            }
+            ++idx;
+        }
+        return head;
+    }
+};
 
-	printListNode(head);
-	reorderList(head);
-	printListNode(head);
 
-	system("pause");
-	return 0;
-}
+// Second Solution: Time complexity: O(N), space complexity O(1)
+class Solution2 {
+public:
+    void reorderList(ListNode* head) {
+        if (head == nullptr || head->next == nullptr) {
+            return;
+        }
+        ListNode* start = head;
+        while (start->next != nullptr && start->next->next != nullptr) {
+            ListNode* last = start;
+            // loop to traverse to last node
+            while (last->next != nullptr && last->next->next != nullptr) {
+                last = last->next;
+            }
+            last->next->next = start->next;
+            start->next = last->next;
+            last->next = nullptr;
+            start = start->next->next;
+        }
+    }
+};

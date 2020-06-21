@@ -38,80 +38,84 @@ using namespace std;
 class Solution {
 public:
 	ListNode* reverseKGroup(ListNode* head, int k) {
-		if (head == nullptr || head->next == nullptr || k < 2) return head;
+		if (head == nullptr || head->next == nullptr || k < 2) {
+            return head;
+        }
 
 		auto len = 0;
 		for (ListNode *p = head; p != nullptr; p = p->next, ++len);
 		//if (k > len) k %= len;
-		if (k > len) return head;
+		if (k > len) {
+            return head;
+        }
 		
 		int nReverse = len / k;
 
 		ListNode newHead(-1);
 
-		ListNode *currSubHeadBeforeReverse;
+		ListNode *currSubHeadBeforeReverse = nullptr;
 		ListNode *preSubTailAfterReverse = nullptr;
 		ListNode *curr = head;
-		for (auto i = 0; i < nReverse && curr != nullptr; ++i)
-		{
+		for (auto i = 0; i < nReverse && curr != nullptr; ++i) {
 			currSubHeadBeforeReverse = curr;
 
 			// reverse sub list
 			ListNode *pre = nullptr;
 			ListNode *next = curr->next;
 			curr->next = nullptr; // prevent endlessly
-			for (auto j = 0; j < k-1 && next != nullptr; ++j)
-			{
+			for (auto j = 0; j < k-1 && next != nullptr; ++j) {
 				pre = curr;
 				curr = next;
 				next = next->next;
 
 				curr->next = pre; // reverse
 			}
-			if (currSubHeadBeforeReverse == head) newHead.next = curr;
-			else preSubTailAfterReverse->next = curr;
+			if (currSubHeadBeforeReverse == head) {
+                newHead.next = curr;
+            } else {
+                preSubTailAfterReverse->next = curr;
+            }
 
 			preSubTailAfterReverse = currSubHeadBeforeReverse;
 			curr = next;
 		}
-		if (curr != nullptr) preSubTailAfterReverse->next = curr;
+		if (curr != nullptr) {
+            preSubTailAfterReverse->next = curr;
+        }
 
 		return newHead.next;
 	}
 };
 
 
-int main()
-{
+int main() {
 	Solution obj;
 	vector<int> test1 = { 1, 2, 3, 4, 5 };
 	
-	ListNode *head = constructList(test1);
-	printList(obj.reverseKGroup(head, 1));
+	ListNode *head = construct_list(test1);
+	print_list(obj.reverseKGroup(head, 1));
 	
-	head = constructList(test1);
-	printList(obj.reverseKGroup(head, 2));
+	head = construct_list(test1);
+	print_list(obj.reverseKGroup(head, 2));
 
-	head = constructList(test1);
-	printList(obj.reverseKGroup(head, 3));
+	head = construct_list(test1);
+	print_list(obj.reverseKGroup(head, 3));
 
-	head = constructList(test1);
-	printList(obj.reverseKGroup(head, 4));
+	head = construct_list(test1);
+	print_list(obj.reverseKGroup(head, 4));
 
-	head = constructList(test1);
-	printList(obj.reverseKGroup(head, 5));
+	head = construct_list(test1);
+	print_list(obj.reverseKGroup(head, 5));
 
-	head = constructList(test1);
-	printList(obj.reverseKGroup(head, 6));
+	head = construct_list(test1);
+	print_list(obj.reverseKGroup(head, 6));
 
-	head = constructList(test1);
-	printList(obj.reverseKGroup(head, 7));
+	head = construct_list(test1);
+	print_list(obj.reverseKGroup(head, 7));
 
 	vector<int> test2;
-	head = constructList(test2);
-	printList(obj.reverseKGroup(head, 1));
+	head = construct_list(test2);
+	print_list(obj.reverseKGroup(head, 1));
 
-	int x;
-	cin >> x;
 	return 0;
 }

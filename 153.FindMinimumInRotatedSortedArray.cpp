@@ -12,24 +12,27 @@ You may assume no duplicate exists in the array.
 
 class Solution {
 public:
-    int findMin(vector<int>& nums) 
-    {
+    int findMin(vector<int>& nums) {
         //no duplicate exists in the array.
-        if (nums.empty()) return -1;
+        if (nums.empty()) {
+            return -1;
+        }
         auto begin = 0;
         auto end = nums.size() - 1;
-        if (nums[begin] < nums[end]) 
+        if (nums[begin] < nums[end]) {
             return nums[begin];
-        while (begin < end)
-        {
-            if (begin + 1 == end)
+        }
+        while (begin < end) {
+            if (begin + 1 == end) {
                 return nums[end];
+            }
             
             auto mid = (begin + end)/2;
-            if (nums[begin] < nums[mid]) // [begin, mid] in order
+            if (nums[begin] < nums[mid]) {// [begin, mid] in order
                 begin = mid;
-            else if (nums[mid] < nums[end]) // [mid, end] in order
+            } else if (nums[mid] < nums[end]) {// [mid, end] in order
                 end = mid;
+            }
         }
         return nums[end];
     }

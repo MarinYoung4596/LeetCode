@@ -11,8 +11,7 @@ You may assume that the array is non-empty and the majority element always exist
 
 using namespace std;
 
-int majorityElement(vector<int> &num)
-{
+int majorityElement(vector<int> &num) {
     /* The 1st Solution */
 	//    sort(num.begin(), num.end());
 	//    return num[num.size() / 2];
@@ -20,26 +19,22 @@ int majorityElement(vector<int> &num)
     /* The best solution */
     int nTimes = 0;
     int candidate = 0;
-    for(int i = 0; i < num.size(); i ++)
-    {
-        if(nTimes == 0)
-        {
+    for(int i = 0; i < num.size(); i++) {
+        if(nTimes == 0) {
             candidate = num[i];
             nTimes = 1;
-        }
-        else
-        {
-            if(candidate == num[i])
+        } else {
+            if(candidate == num[i]) {
                 nTimes++;
-            else
+            } else {
                 nTimes--;
+            }
         }
     }
     return candidate;
 }
 
-void testCase_MajorityElement()
-{
+void testCase_MajorityElement() {
     int a[] = {1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,
                1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,
                1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,

@@ -19,18 +19,20 @@ return false.
 // First Solution: bruce force
 class Solution {
 public:
-    bool increasingTriplet(vector<int>& nums) 
-    {
+    bool increasingTriplet(vector<int>& nums) {
         const auto n = nums.size();
-        if (n < 3) return false;
-        for (auto i = 0; i < n-2; ++i)
-        {
-            for (auto j = i+1; j < n-1; ++j)
-            {
-                if (!(nums[i] < nums[j])) continue;
-                for (auto k = j+1; k < n; ++k)
-                {
-                    if (!(nums[j]<nums[k])) continue;
+        if (n < 3) {
+            return false;
+        }
+        for (auto i = 0; i < n - 2; ++i) {
+            for (auto j = i + 1; j < n - 1; ++j) {
+                if (nums[i] >= nums[j]) {
+                    continue;
+                }
+                for (auto k = j + 1; k < n; ++k) {
+                    if (nums[j] >= nums[k]) {
+                        continue;
+                    }
                     return true;
                 }
             }
@@ -45,21 +47,22 @@ public:
 // Third Solution: 
 class Solution {
 public:
-    bool increasingTriplet(vector<int>& nums) 
-    {
+    bool increasingTriplet(vector<int>& nums) {
         const auto n = nums.size();
-        if (n < 3) return false;
+        if (n < 3) {
+            return false;
+        }
         
         int first = INT_MAX;
         int second = INT_MAX;
-        for (auto i = 0; i < n; ++i)
-        {
-            if (nums[i] <= first) 
+        for (auto i = 0; i < n; ++i) {
+            if (nums[i] <= first) {
                 first = nums[i]; // 此时first是最小的元素
-            else if (nums[i] <= second) // 此时以确定 first < nums[i] 
+            } else if (nums[i] <= second) { // 此时以确定 first < nums[i] 
                 second = nums[i]; // 若nums[i] <= second，则second存储次小元素
-            else // 上几次循环已使得 first < second < nums[i]
+            } else { // 上几次循环已使得 first < second < nums[i]
                 return true;
+            }
         }
         return false;
     }

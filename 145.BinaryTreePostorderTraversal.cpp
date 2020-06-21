@@ -22,18 +22,17 @@ Note: Recursive solution is trivial, could you do it iteratively?
 using namespace std;
 
 // First Solution: Recursion
-void postOrder(TreeNode *root, vector<int> &v)
-{
+void postOrder(TreeNode *root, vector<int> &v) {
 	if (root->left != NULL) postOrder(root->left, v);
 	if (root->right != NULL) postOrder(root->right, v);
 	v.push_back(root->val);
 }
 
-vector<int> postorderTraversal(TreeNode *root)
-{
+vector<int> postorderTraversal(TreeNode *root) {
 	vector<int> res;
-	if (root == NULL)
+	if (root == NULL) {
 		return res;
+    }
 	postOrder(root, res);
 	return res;
 }
@@ -41,28 +40,28 @@ vector<int> postorderTraversal(TreeNode *root)
 
 // Second Solution: STACK
 // Time Complexity: O(N), Space Complexity: O(N)
-vector<int> postorderTraversal_2(TreeNode *root)
-{
+vector<int> postorderTraversal_2(TreeNode *root) {
 	vector<int> res;
-	if (root == nullptr) return res;
+	if (root == nullptr) {
+        return res;
+    }
 	stack<TreeNode *> s;
 	TreeNode *p = root;		// current visit
 
 	do {
-		while (p != nullptr)
-		{
+		while (p != nullptr) {
 			s.push(p);
 			if (p->left != nullptr) p = p->left;
 			else p = p->right;
 		}
-		while (!s.empty() && s.top()->right == p)
-		{
+		while (!s.empty() && s.top()->right == p) {
 			p = s.top();
 			s.pop();
 			res.push_back(p->val);
 		}
-		if (!s.empty())
+		if (!s.empty()) {
 			p = s.top()->right; // important
+        }
 	} while (!s.empty());
 	return res;
 }

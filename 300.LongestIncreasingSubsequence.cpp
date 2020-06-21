@@ -21,14 +21,14 @@ public:
         if (nums.empty()) return 0;
         const auto len = nums.size();
         vector<int> dp(len, 1);
-        auto res = 1;
         
-        for (auto i = 0; i < len; ++i)
-        {
-            for (auto j = 0; j < i; ++j)
-            {
-                if (nums[j] >= nums[i]) continue;
-                dp[i] = max(dp[i], dp[j]+1); // if dp[j] <= dp[i]
+        auto res = 1;
+        for (auto i = 0; i < len; ++i) {
+            for (auto j = 0; j < i; ++j) {
+                if (nums[j] >= nums[i]) {
+                    continue;
+                }
+                dp[i] = max(dp[i], dp[j] + 1); // if dp[j] <= dp[i]
             }
             res = max(dp[i], res);
         }

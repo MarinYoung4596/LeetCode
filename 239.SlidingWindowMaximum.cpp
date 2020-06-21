@@ -214,6 +214,7 @@ public:
 	
 private:
 	queue<int> data;
+    // 双端队列，队列里元素单调递增
 	deque<int> max_queue; // make sure that max_queue is a non-monotonic increasing queue
 };
 

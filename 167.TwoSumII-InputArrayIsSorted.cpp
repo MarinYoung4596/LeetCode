@@ -18,15 +18,20 @@ public:
         vector<int> result;
 
         const auto n = numbers.size();
-        if (n < 2) return result;
+        if (n < 2) {
+            return result;
+        }
         
         int begin = 0, end = n - 1;
-        while (begin < end)
-        {
+        while (begin < end) {
             int tmp = numbers[begin] + numbers[end];
-            if (tmp > target) --end;
-            else if (tmp < target) ++begin;
-            else return {begin+1, end+1};
+            if (tmp > target) {
+                --end;
+            } else if (tmp < target) {
+                ++begin;
+            } else {
+                return {begin + 1, end + 1};
+            }
         }
         return result;
     }

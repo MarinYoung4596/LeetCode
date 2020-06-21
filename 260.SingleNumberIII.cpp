@@ -16,31 +16,34 @@ Note:
 
 class Solution {
 public:
-    vector<int> singleNumber(vector<int>& nums) 
-    {
-        if (nums.empty()) return nums;
+    vector<int> singleNumber(vector<int>& nums) {
+        if (nums.empty()) {
+            return nums;
+        }
         
-        //计算这两个数的异或结果
+        // 计算这两个数的异或结果(其他数均出现两次，会被消除)
         int temp;
-        for (auto i = 0; i < nums.size(); ++i)
+        for (auto i = 0; i < nums.size(); ++i) {
             temp ^= nums[i];
+        }
         
         // 找到第一个为1的位
         size_t k = 0;
-        for (; k < sizeof(int)*8; ++k)
-        {
-            if (temp & 1) break;
+        for (; k < sizeof(int) * 8; ++k) {
+            if (temp & 1) {
+                break;
+            }
             temp >>= 1;
         }
         
         // 第j位为1,说明这两个数字在第j位上是不相同的  由此分组即可
         int res1(0), res2(0);
-        for (auto i = 0; i < nums.size(); ++i)
-        {
-            if ((nums[i]>>k) & 1)
+        for (auto i = 0; i < nums.size(); ++i) {
+            if ((nums[i] >> k) & 1) {
                 res1 ^= nums[i];
-            else
+            } else {
                 res2 ^= nums[i];
+            }
         }
         return {res1, res2};
     }

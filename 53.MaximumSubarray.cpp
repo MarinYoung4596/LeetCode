@@ -20,19 +20,15 @@ If you have figured out the O(n) solution, try coding another solution using the
 // Time Complexity: O(N)
 int maxSubArray(vector<int>& nums) {
 	const auto n = nums.size();
-	int *dp = new int[n];
-	memset(dp, 0, n * sizeof(int));
+    std::vector<int> dp(n, 0);
 	
 	dp[0] = nums[0];
 	auto res = dp[0];
-	for (auto i = 1; i < n; ++i)
-	{
+	for (auto i = 1; i < n; ++i) {
 		dp[i] = max(dp[i-1]+nums[i], nums[i]);
 		res = max(res, dp[i]);
 	}
 
-	delete []dp;
-	dp = nullptr;
 	return res;
 }
 

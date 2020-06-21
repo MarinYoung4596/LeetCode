@@ -8,15 +8,14 @@ Design an algorithm to find the maximum profit. You may complete as many transac
 
 class Solution {
 public:
-    int maxProfit(vector<int>& prices) 
-    {
+    int maxProfit(vector<int>& prices) {
         if (prices.size() < 2) return 0;
         
         int profit = 0;
-        for (auto i = 1; i < prices.size(); ++i)
-        {
-            if (prices[i] > prices[i-1]) // 如果是负数则忽略不计
-                profit += (prices[i]-prices[i-1]); // 只比较相邻两天 ，次数越多越好 
+        for (auto i = 1; i < prices.size(); ++i) {
+            if (prices[i] > prices[i - 1]) {// 如果是负数则忽略不计
+                profit += (prices[i] - prices[i - 1]); // 只比较相邻两天 ，次数越多越好 
+            }
         }
         return profit;
     }

@@ -12,18 +12,18 @@ Your algorithm should use only constant space. You may not modify the values in 
 
 using namespace std;
 
-ListNode* swapPairs(ListNode* head)
-{
-	if (!head) return head;
+ListNode* swapPairs(ListNode* head) {
+	if (nullptr == head) {
+        return head;
+    }
 	ListNode savehead(-1);
 	savehead.next = head;
 	
-	ListNode *pre = &savehead,
-		*p = head,
-		*q = p->next;
+	ListNode* pre = &savehead;
+	ListNode* p = head,
+	ListNode* q = p->next;
 
-	while (p && q)
-	{
+	while (p && q) {
 		// reverse
 		pre->next = q;
 		p->next = q->next;
@@ -31,8 +31,7 @@ ListNode* swapPairs(ListNode* head)
 
 		// scan
 		pre = p;
-		if (!pre->next) 
-		{
+		if (nullptr == pre->next) {
 			p = q = nullptr;
 			break;
 		}
@@ -54,8 +53,7 @@ int main()
 		p = p->next;
 	}
 	head = swapPairs(head);
-	printListNode(head);
+	print_list(head);
 
-	system("pause");
 	return 0;
 }

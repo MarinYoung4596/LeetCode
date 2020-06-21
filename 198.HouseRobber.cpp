@@ -9,52 +9,39 @@ Given a list of non-negative integers representing the amount of money of each h
 maximum amount of money you can rob tonight without alerting the police.
 */
 
-#include <vector>
-#include <cstring>
-#include <iostream>
-
-using namespace std;
-
+class Solution {
+public:
 // First Solution: Dynamic Programming.
 // dp[n] = max{dp[n-1], dp[n-2] + num[n]}
 // Time Complexity: O(N), Space Complexity: O(N)
-
-class Solution {
-public:
     int rob(vector<int>& nums) {
         // dp = max(dp[i-1], dp[i-2] + nums[i])
-    	if (nums.empty()) return 0;
-	    const int N = nums.size();
-	    dp = new int[N];
-	    memset(dp, 0, sizeof(dp));
-
-	    for (int i = 0; i < N; i++)
-	    {
-		    if (i == 0)
+    	if (nums.empty()) {
+            return 0;
+        }
+        std::vector<int> dp(nums.size(), 0);
+	    for (auto i = 0; i < nums.size(); i++) {
+		    if (i == 0) {
 		    	dp[i] = nums[i];
-		    else if (i == 1)
+            } else if (i == 1)
 		    	dp[i] = max(nums[i], nums[i - 1]);
-		    else
+            } else {
 		    	dp[i] = max(dp[i - 1], dp[i - 2] + nums[i]);
+            }
 	    }
-	    int x = dp[N-1];
-	    delete []dp;
-	    return x;
+	    return dp[nums.size() - 1];
     }
-
-private:
-    int *dp;
 };
 
 // Second Solution: iterative Method
 // Time Complexity: O(N), Space Complexity: O(1)
-int rob2(vector<int>& nums)
-{
-	if (nums.empty()) return 0;
+int rob2(vector<int>& nums) {
+	if (nums.empty()) {
+        return 0;
+    }
 	int prevprev = 0, // n-2
-		prev = nums[0]; // n-1
-	for (int i = 1; i < nums.size(); i++)
-	{
+    int prev = nums[0]; // n-1
+	for (int i = 1; i < nums.size(); i++) {
 		int tmp = prev;
 		prev = max(prev, prevprev + nums[i]);
 		prevprev = tmp;

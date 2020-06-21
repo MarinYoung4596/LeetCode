@@ -21,27 +21,27 @@ The flattened tree should look like:
 
 // pre-order traversal
 // First Solution: stack
-void flatten(TreeNode *root)
-{
-	if (root == nullptr)
+void flatten(TreeNode *root) {
+	if (root == nullptr) {
 		return;
+    }
 
 	stack<TreeNode *> s;
 	s.push(root);
-	while (!s.empty())
-	{
+	while (!s.empty()) {
 		TreeNode *p = s.top();
 		s.pop();
 		if (p->right != nullptr) s.push(p->right);
 		if (p->left != nullptr) s.push(p->left);
-		p->left = nullptr;
-		if (!s.empty())
+		
+        p->left = nullptr;
+		if (!s.empty()) {
 			p->right = s.top();	// Ensure the link list to be completed.
-	}
+	    }
+    }
 }
 
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv) {
 	/*
 		    1			push	stack	pop
 		   / \			(9)		| 6 |	(10)
@@ -63,11 +63,10 @@ int main(int argc, char **argv)
 
 	flatten(root);
 
-	for (auto i = root; i != nullptr; i = i->right)
+	for (auto i = root; i != nullptr; i = i->right) {
 		std::cout << i->val << '\t';
+    }
 	std::cout << std::endl;
 
-	// Windows
-	system("pause");
 	return 0;
 }

@@ -19,42 +19,37 @@ public:
         
         int begin = 0, end = nums.size() - 1;
         int index = partition(nums, begin, end);
-        while (index != k-1)
-        {
-            if (index > k-1)
+        while (index != k - 1) {
+            if (index > k - 1) {
                 end = index - 1;
-            else
+            } else {
                 begin = index + 1;
+            }
             index = partition(nums, begin, end);
         }
         return nums[index];
     }
     
 private:
-    int partition(vector<int> &nums, int begin, int end)
-    {
+    int partition(vector<int> &nums, int begin, int end) {
         int pivot = nums[end];
-        int i = begin - 1;
-        for (auto j = begin; j < end; ++j)
-        {
-            if (nums[j] >= pivot)
-            {
-                ++i;
+        int i = begin;
+        for (auto j = begin; j < end; ++j) {
+            if (nums[j] >= pivot) {
                 swap(nums[i], nums[j]);
+                ++i;
             }
         }
-        swap(nums[i+1], nums[end]);
-        return i + 1;
+        swap(nums[i], nums[end]);
+        return i;
     }
 };
 
 // second solution
-int findKthLargest(vector<int> &v, int k)
-{
+int findKthLargest(vector<int> &v, int k) {
     make_heap(v.begin(), v.end());
     int result;
-    for (int i = 0; i < k; ++i)
-    {
+    for (int i = 0; i < k; ++i) {
         result = v.front();
         pop_heap(v.begin(), v.end());
         v.pop_back();

@@ -15,20 +15,19 @@ For example,
 
 class Solution {
 public:
+    // dp[n] = \sum_{0}^{n-1} {dp[i] * dp[n - 1 - i]}
     int numTrees(int n) {
         assert(n > 0);
-        // dp(n) = SIGMA (i:0-->n-1) ( dp[i]*dp[n-1-i] )
-        int *dp = new int[n+1];
-        memset(dp, 0, (n+1)*sizeof(int));
+        std::vector<int> dp(n + 1, 0);
         dp[0] = dp[1] = 1;
-        for (auto i = 2; i <= n; ++i)
-        {
-            for (auto j = 0; j < i; ++j)
-                dp[i] += dp[j]*dp[i-1-j];
+        for (auto i = 0; i <= n; ++i) {
+            if (i < 2) {
+                dp[i] = 1;
+            }
+            for (auto j = 0; j < i; ++j) {
+                dp[i] += dp[j] * dp[i - 1 - j];
+            }
         }
-        int res = dp[n];
-        delete [] dp;
-        dp = nullptr;
-        return res;
+        return dp[n];
     }
 };

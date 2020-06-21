@@ -9,17 +9,17 @@ set(key, value) - Set or insert the value if the key is not already present. Whe
 */
 
 
-class LRUCache
-{
+class LRUCache {
 public:
     LRUCache(int capacity) : cap(capacity) {}
     
-    ~LRUCache() { }
+    ~LRUCache() {}
     
-    int get(int key) 
-    {
+    int get(int key) {
         auto it = address.find(key);
-        if (it == address.end()) return -1;
+        if (it == address.end()) {
+            return -1;
+        }
         
         // put the current element at the head of list
         pair<int, int> p(key, address[key]->second);
@@ -30,19 +30,14 @@ public:
         return address[key]->second; // address[key]: iterator, get it's value (*iter).second == iter->second
     }
     
-    void set(int key, int value) 
-    {
-        if (address.find(key) == address.end()) // doesn't exist
-        {
-            if (cache.size() == cap) // cache full
-            {
+    void set(int key, int value) {
+        if (address.find(key) == address.end()) { // doesn't exist
+            if (cache.size() == cap) { // cache full
                 auto key_back = cache.back().first;
                 address.erase(key_back); // erase from the address
                 cache.pop_back(); // remove tail
             }
-        }
-        else // found : erase this node from list
-        {
+        } else { // found : erase this node from list
             cache.erase(address[key]);
         }
         // insert at the front
@@ -60,8 +55,7 @@ private:
 };
 
 
-int main()
-{
+int main() {
 	LRUCache cache(4);
 	cache.set(4, 1);
 	cache.set(6, 8);

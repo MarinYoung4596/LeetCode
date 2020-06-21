@@ -18,20 +18,20 @@ public:
 		// no duplicate exists in the array
 		int begin = 0, end = nums.size() - 1;
 		while (begin <= end)
-		{	
+		{
 			auto mid = (begin + end) >> 1;
 			if (nums[mid] == target) return mid;
 			// first type : 3 4 5 6 7 8 | 1 2
-			if (nums[begin] <= nums[mid]) // nums[mid] > nums[end]
-			{// if the first half is in-order, <= since mid may be equal to left when there are only two elements or (mid == left)
-				if (nums[begin] <= target && target < nums[mid]) end = mid - 1;
-				else begin = mid + 1;
+			if (nums[begin] <= nums[mid]) // 说明前半部分有序, 即 nums[mid] > nums[end]
+            {
+                if (nums[begin] <= target && target < nums[mid]) end = mid - 1; // 在前半部分找
+				else begin = mid + 1; // 否则
 			}
 			// second type: 7 8 | 0 1 2 3 4 5
-			else if (nums[mid] < nums[end]) // nums[begin] > nums[mid]
+			else if (nums[mid] < nums[end]) // 说明后半部分有序, 即 nums[begin] > nums[mid]
 			{
-				if (nums[mid] < target && target <= nums[end]) begin = mid + 1;
-				else end = mid - 1;
+				if (nums[mid] < target && target <= nums[end]) begin = mid + 1; // 在后半部分找
+				else end = mid - 1; // 否则
 			}
 			// normal type : 0 1 2 3 4 5
 			else

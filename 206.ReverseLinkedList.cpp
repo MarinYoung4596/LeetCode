@@ -7,46 +7,44 @@ click to show more hints.
 Hint:
 A linked list can be reversed either iteratively or recursively. Could you implement both?
 */
-#include <iostream>
-#include "ListNode.h"
 
-using namespace std;
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
 
 // First Solution: iterative solution
-ListNode* reverseList(ListNode* head)
-{
-	if (head == nullptr) return head;
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        if (nullptr == head || nullptr == head->next) {
+			return head;
+		}
+		auto pre = head;
+		auto cur = pre->next;
+        pre->next = nullptr; /// important, without which list will be endlessly
+		while (cur != nullptr) {
+			auto next = cur->next;
 
-	ListNode *p = head,
-		*q = p->next;
-	p->next = nullptr;	// THAT'S VERY IMPORTANT! WITHOUT WHICH THE LIST WOULD BE ENDLESSLY.
-	while (q != nullptr)
-	{
-		ListNode *pre = p;
-		p = q;
-		q = q->next;
+			cur->next = pre;
+			pre = cur;
+			cur = next;
+		}
+        return pre;
+    }
+};
 
-		p->next = pre;
-	}
-	return p;
-}
-
-// Second Solution:
-// To be continued...
-
-int main()
-{
-	int a[] = { 1, 2 };
-	ListNode *head = new ListNode(a[0]);
-	ListNode *p = head;
-	for (int i = 1; i < sizeof(a) / sizeof(int); i++)
-	{
-		p->next = new ListNode(a[i]);
-		p = p->next;
-	}
-	head = reverseList(head);
-	printListNode(head);
-
-	system("pause");
-	return 0;
+// Second Solution: recursive
+ListNode* reverse_list_recursive(ListNode* head) {
+    if (head->next == nullptr) {
+        return head;
+    }
+    auto p = reverse_list_recursive(head->next);
+    head->next->next = head;
+    head->next = nullptr;
+    return p;
 }

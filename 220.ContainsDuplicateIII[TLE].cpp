@@ -11,14 +11,12 @@ public:
         // abs(nums[i]-nums[j]) <= t
         
         const int n = nums.size();
-        for (auto i = 0; i < n; ++i)
-        {
-            auto upper = min(n, i+k+1);
-            for (auto j = i+1; j < upper; ++j)
-            {
-                long long difference = abs(nums[i]-nums[j]);
-                difference = difference > 0 ? difference : -difference;
-                if (difference <= t) return true;
+        for (auto i = 0; i < n; ++i) {
+            for (auto j = i + 1; j < n && j < (i + k + 1); ++j) {
+                long long difference = abs(nums[i] - nums[j]);
+                if (difference <= t) {
+                    return true;
+                }
             }
         }
         return false;

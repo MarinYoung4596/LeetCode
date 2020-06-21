@@ -51,6 +51,7 @@ vector<vector<int>> zigzagLevelOrder(TreeNode* root)
 }
 
 // Third Solution: Iterative
+// 用两个栈存储当前行，下一行，自然就是zigzag的
 vector<vector<int>> zigzagLevelOrder_2(TreeNode* root)
 {
 	vector<vector<int>> res;

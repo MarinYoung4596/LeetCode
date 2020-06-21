@@ -22,25 +22,23 @@ using namespace std;
 
 // First Solution: violent solution
 // O(NlogN)	Time Limit Exceeded
-bool isPrime(int n, vector<int> prime)
-{
-	for (int i = 0; i < prime.size(); ++i)
-	{
-		if (n % prime[i] == 0)
+bool isPrime(int n, vector<int> prime) {
+	for (int i = 0; i < prime.size(); ++i) {
+		if (n % prime[i] == 0) {
 			return false;
+        }
 	}
 	return true;
 }
 
-int countPrimes(int n)
-{
+int countPrimes(int n) {
 	int count = 0;
 	vector<int> prime;
 
-	for (size_t i = 2; i <= n; i++)
-	{
-		if (!isPrime(i, prime))
+	for (size_t i = 2; i * i <= n; i++) {
+		if (!isPrime(i, prime)) {
 			continue;
+        }
 		prime.push_back(i);
 		count++;
 	}
@@ -52,25 +50,21 @@ int countPrimes(int n)
 // http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
 // passed in Visual Studio 2013
 // Wrong answer in G++ 4.6.3
-int countPrimes_2(int n)
-{
-	bool *seive = new bool[n + 1];
-	memset(seive, true, sizeof(seive));
-
-	for (int i = 2; i <= sqrt(n); ++i)
-	{
-		if (seive[i])
-		{
-			for (int j = i * i; j <= n; j += i)
+int countPrimes_2(int n) {
+    std::vector<bool> seive(n + 1, true);
+	for (int i = 2; i <= sqrt(n); ++i) {
+		if (seive[i]) { // 相当于i的倍数，不可能是素数；
+			for (int j = i * i; j <= n; j += i) { // j 从i*i 开始，因为i的整数倍都已经被标记
 				seive[j] = false;
+            }
 		}
 	}
 
 	int count = 0;
-	for (int i = 2; i < n; i++)	// less than n
-	{
-		if (seive[i])
+	for (int i = 2; i < n; i++)	{// less than n
+		if (seive[i]) {
 			count++;
+        }
 	}
 	return count;
 }
@@ -80,18 +74,15 @@ int countPrimes_2(int n)
 // http://www.zhihu.com/question/29580448/answer/45235320
 // Correct in G++ 4.6.3
 // Wrong answer in Visual Studio 2013
-int countPrimes_3(int n)
-{
-	bool *seive = new bool[n + 1];
-	memset(seive, false, sizeof(seive));
+int countPrimes_3(int n) {
+    vector<bool> seive(n + 1, false);
 	vector<int> prime;
 
-	for (int i = 2; i <= n; i++)
-	{
-		if (!seive[i])
+	for (int i = 2; i <= n; i++) {
+		if (!seive[i]) {
 			prime.push_back(i);
-		for (int j = 0; j < prime.size() && i * prime[j] < n; j++)
-		{
+        }
+        for (int j = 0; j < prime.size() && i * prime[j] < n; j++) {
 			seive[i * prime[j]] = true;	// delete all the multiple number of both i and prime
 			if (i % prime[j] == 0) break;
 		}
@@ -100,8 +91,7 @@ int countPrimes_3(int n)
 }
 
 
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv) {
 	// test Case
 	// OS:			Windows 8.1 Pro
 	// Processor:	Intel(R) Core(TM) i5-2410M CPU (C) 2.30 GHz

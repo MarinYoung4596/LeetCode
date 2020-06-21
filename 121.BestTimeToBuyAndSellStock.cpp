@@ -10,31 +10,34 @@ If you were only permitted to complete at most one transaction (ie, buy one and 
 class Solution {
 public:
     /*
-    1st Solution: Bruce-Force:
-    TLE in super long test cases
-    find the largest and smallest pairs in the array without changing their order
-     */
+     1st Solution: Bruce-Force:
+     TLE in super long test cases
+     find the largest and smallest pairs in the array without changing their order
+    */
     int maxProfit_1(vector<int>& prices) {
         const auto n = prices.size();
         int res = 0;
-        for (auto i = 1; i < n; ++i)
-            for (auto j =0; j < i; ++j)
+        for (auto i = 1; i < n; ++i) {
+            for (auto j =0; j < i; ++j) {
                 res = max(res, prices[i]-prices[j]);
+            }
+        }
         return res;
     }
     
     /*
-    2nd solution: Dynamic Programming
-     */
-    int maxProfit(vector<int>& prices)
-    {
+     2nd solution: Dynamic Programming
+        minimum: 缓存i之前的最小值
+     dp[i] = max(dp[i - 1], prices[i] - minimum);
+     Time Complexity: O(N), Space Complexity: O(N) ===> can be reduced to O(1)
+    */
+    int maxProfit(vector<int>& prices) {
         if (prices.empty()) return 0;
         const auto n = prices.size();
         vector<int> dp(n, 0); // maximum profit
         int minimum = prices[0];
-        for (auto i = 1; i < n; ++i)
-        {
-            dp[i] = max(dp[i-1], prices[i]-minimum);
+        for (auto i = 1; i < n; ++i) {
+            dp[i] = max(dp[i - 1], prices[i] - minimum);
             minimum = min(minimum, prices[i]);
         }
         return dp[n-1];

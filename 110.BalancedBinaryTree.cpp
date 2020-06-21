@@ -17,24 +17,22 @@ the two subtrees of every node never differ by more than 1.
 
 using namespace std;
 
-int getDepth(TreeNode *root)
-{
-	if (root == nullptr) 
+int getDepth(TreeNode *root) {
+	if (root == nullptr) {
 		return 0;
+    }
 
-	int ld = 1 + getDepth(root->left);
-	int rd = 1 + getDepth(root->right);
+	int ld = getDepth(root->left);
+	int rd = getDepth(root->right);
 
-	// for the case that ld == 0, which means they are not balanced in the last recursion
-	if (abs(ld - rd) > 1 || !ld || !rd)	
+	// for the case that ld < 0, which means they are not balanced in the last recursion
+	if (abs(ld - rd) > 1 || ld < 0 || rd < 0)	{
 		return -1;
-	return max(ld, rd);
+    }
+	return max(ld, rd) + 1;
 }
 
 
-bool isBalanced(TreeNode *root)
-{
-	if (!root) 
-		return true;
+bool isBalanced(TreeNode *root) {
 	return getDepth(root) >= 0;
 }

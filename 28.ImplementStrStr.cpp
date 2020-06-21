@@ -9,21 +9,16 @@ Returns the index of the first occurrence of needle in haystack, or -1 if needle
 typedef std::size_t size_type;
 
 // First Solution: bruce-force
-int strStr(const string haystack, const string needle)
-{
+int strStr(const string haystack, const string needle) {
 	const size_type hlen = haystack.size();
 	const size_type nlen = needle.size();
 
 	size_type i = 0, j = 0;
-	for (; i < hlen && j < nlen;)
-	{
-		if (haystack[i] == needle[j])
-		{
+	for (; i < hlen && j < nlen;) {
+		if (haystack[i] == needle[j]) {
 			++i;
 			++j;
-		}
-		else
-		{
+		} else {
 			i -= (j - 1); // i = i - j + 1;
 			j = 0;
 		}
@@ -31,13 +26,30 @@ int strStr(const string haystack, const string needle)
 	return (j == nlen) ? (i - j) : -1;
 }
 
+int strStr(const string haystack, const string needle) {
+	if (needle.empty()) {
+		return 0;
+	}
+	for (auto i = 0; i < haystack.size() - needle.size() + 1; ++i) {
+		auto j = 0;
+		for (; j < needle.size(); ++j) {
+			if (haystack[i + j] != needle[j]) { // 防止 i + j 溢出
+				break;
+			}
+		}
+		if (j == needle.size()) {
+			return i;
+		}
+	}
+	return -1;
+}
+
 
 // Second Solution : KMP
 // reference: [1] http://www.ituring.com.cn/article/59881
 // [2] http://www.cppblog.com/oosky/archive/2006/07/06/9486.html
 // [3] http://www.rudy-yuan.net/archives/182/
-int kmp(const string haystack, const string needle)
-{
+int kmp(const string haystack, const string needle) {
 	const size_type hlen = haystack.size();
 	const size_type nlen = needle.size();
 
@@ -45,31 +57,28 @@ int kmp(const string haystack, const string needle)
 	getNext(needle, next);
 
 	size_type i = 0, j = 0;
-	for (; i < hlen && j < nlen;)
-	{
-		if (haystack[i] == needle[j])
-		{
+	for (; i < hlen && j < nlen;) {
+		if (haystack[i] == needle[j]) {
 			++i;
 			++j;
-		}
-		else
+		} else {
 			j = next[j];
+        }
 	}
 	delete[] next;
 	return (j == nlen) ? (i - j) : -1;
 }
 
-void getNext(const string needle, int next[])
-{
+void getNext(const string needle, int next[]) {
 	const size_type nlen = needle.size();
 	next[0] = -1;		// previous overlapped string's length
 						// next[k] represents the k-length head sub-string's maximum overlapped prefix and postfix
 	size_type j = 0;	// index of needle
 	int k = -1;
-	while (j < nlen)
-	{
-		if (k != -1 && needle[k] != needle[j])
+	while (j < nlen) {
+		if (k != -1 && needle[k] != needle[j]) {
 			k = next[k];
+        }
 		++j;
 		++k;
 		next[j] = (needle[j] == needle[k]) ? next[k] : k;

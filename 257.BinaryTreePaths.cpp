@@ -19,33 +19,35 @@ All root-to-leaf paths are:
 #include <string>
 
 // DFS Solution
-vector<string> binaryTreePaths(TreeNode* root)
-{
-	vector<string> res;
-	if (root == nullptr)
-		return res;
+std::vector<std::string> binaryTreePaths(TreeNode* root) {
+	std::vector<std::string> res;
+	std::string str;
 
-	string str = "";
-	
-	getPath(root, str, res);
+	get_path(root, str, res);
 	return res;
 }
 
-void getPath(TreeNode *root, string str, vector<string> &res)
-{
-	if (!str.empty())
+void get_path(TreeNode *root, std::string str, std::vector<std::string> &res) {
+    if (root == nullptr) {
+        if (!str.empty()) {
+            res.push_back(str);
+        }
+        return;
+    }
+	if (!str.empty()) {
 		str += "->";
-	str += to_string(root->val);
+    }
+	str += std::to_string(root->val);
 
 	// leaf node
-	if (root->left == nullptr && root->right == nullptr)
-	{
+	if (root->left == nullptr && root->right == nullptr) {
 		res.push_back(str);
-		return;
+        return;
 	}
-	// else
-	if (root->left != nullptr)
-		getPath(root->left, str, res);
-	if (root->right != nullptr)
-		getPath(root->right, str, res);
+    if (root->left != nullptr) {
+		get_path(root->left, str, res);
+    }
+	if (root->right != nullptr) {
+		get_path(root->right, str, res);
+    }
 }

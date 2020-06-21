@@ -22,30 +22,36 @@ public:
 
         RandomListNode savedHead(-1);
         // copy value and insert
-        for (RandomListNode *p = head; p != nullptr;) 
-        {
+        for (RandomListNode *p = head; p != nullptr;) {
+            // copy
             RandomListNode *pCopy = new RandomListNode(p->label);
+            // insert
             pCopy->next = p->next;
             p->next = pCopy;
             
-            if (p == head) savedHead.next = pCopy;
+            // save head
+            if (p == head) {
+                savedHead.next = pCopy;
+            }
+            // scan
             p = p->next->next;
         }
          // copy random pointer
-        for (RandomListNode *p = head, *q = head->next; q != nullptr && p != nullptr; )
-        {
+        for (RandomListNode *p = head, *q = head->next; q != nullptr && p != nullptr; ) {
             // assert that q->random isn't nullptr
             q->random = (p->random == nullptr ? nullptr : p->random->next);
-            
+           
+            // scan
             p = p->next->next;
-            if (p != nullptr) q = q->next->next;
+            if (p != nullptr) {
+                q = q->next->next;
+            }
         }
         // split from original list
-        for (RandomListNode *p = head, *q = head->next; q != nullptr && p != nullptr; )
-        {
+        for (RandomListNode *p = head, *q = head->next; q != nullptr && p != nullptr; ) {
             p->next = q->next;
             p = p->next;
-            if (p != nullptr){
+            if (p != nullptr) {
                 q->next = p->next;
                 q = q->next;
             }

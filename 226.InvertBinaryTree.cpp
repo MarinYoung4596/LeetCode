@@ -22,18 +22,15 @@ but you can’t invert a binary tree on a whiteboard so fuck off.
 
 TreeNode* invertTree(TreeNode* root) 
 {
-	if (root == nullptr)
+	if (root == nullptr) {
 		return root;
-	if (root->left == nullptr && root->right == nullptr)
-		return root;
-        
+	}
+
 	TreeNode *tmp = root->left;
 	root->left = root->right;
 	root->right = tmp;
-        
-	if (root->left)
-		invertTree(root->left);
-	if (root->right)
-		invertTree(root->right);
+
+	invertTree(root->left);
+	invertTree(root->right);
 	return root;
 }

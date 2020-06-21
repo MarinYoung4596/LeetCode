@@ -21,46 +21,19 @@ and 4 is 2, since a node can be a descendant of itself according to the LCA defi
 #include "TreeNode.h"
 
 
-TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q)
-{
-	if (root == nullptr)
+TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+	if (root == nullptr) {
 		return nullptr;
-	if (p->val == q->val)
+    } else if (p->val == q->val) {
 		return p;
+    }
 
 	if ((p->val < root->val && root->val < q->val) ||
-		(q->val < root->val && root->val < p->val))
+		(q->val < root->val && root->val < p->val)) {
 		return root;
-	else if (root->val < p->val && root->val < q->val)
+    } else if (root->val < p->val && root->val < q->val) {
 		lowestCommonAncestor(root->right, p, q);
-	else if (root->val > p->val && root->val > q->val)
+    } else if (root->val > p->val && root->val > q->val) {
 		lowestCommonAncestor(root->left, p, q);
-}
-
-
-int main()
-{
-	TreeNode *root = new TreeNode(6);
-	TreeNode *pNode2 = new TreeNode(2);
-	TreeNode *pNode8 = new TreeNode(8);
-	TreeNode *pNode4 = new TreeNode(4);
-
-	root->left = pNode2;
-	root->right = pNode8;
-
-	pNode2->left = new TreeNode(0);
-	pNode2->right = new TreeNode(4);
-
-	pNode4->left = new TreeNode(3);
-	pNode4->right = new TreeNode(5);
-
-	pNode8->left = new TreeNode(7);
-	pNode8->right = new TreeNode(9);
-
-	TreeNode *x = lowestCommonAncestor(root, pNode4->left, pNode4->right);
-
-	std::cout << x->val << std::endl;
-
-	system("pause");
-	return 0;
+    }
 }

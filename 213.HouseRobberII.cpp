@@ -18,22 +18,21 @@ police if two adjacent nHouses were broken into on the same night.
 dp[n] = max(dp[n-1], dp[n-2]+nums[n])
 */
 // 两种情况，拆分成两个子问题，取其中的大者。
-    int rob(vector<int>& nums) 
-    {
+    int rob(vector<int>& nums) {
         const auto n = nums.size();
         if (0 == n) return 0;
         if (1 == n) return nums[0];
         if (2 == n) return max(nums[0], nums[1]);
         
-        return max(robFromTo(nums, 0, n-2), robFromTo(nums, 1, n-1));
+        // circle, 意味着：0, n-1 相邻 ===> 因此只能在0, n-2 里选择
+        //         即：nums[0], nums[n-1] 只能2选1
+        return max(robFromTo(nums, 0, n - 2), robFromTo(nums, 1, n - 1));
     }
 
 private:
-    int robFromTo(vector<int> &nums, int left, int right)
-    {
+    int robFromTo(vector<int> &nums, int left, int right) {
         int pre = 0, curr = 0;
-        for (int i = left; i <= right; ++i)
-        {
+        for (int i = left; i <= right; ++i) {
             int tmp = max(pre+nums[i], curr);
             pre = curr;
             curr = tmp;

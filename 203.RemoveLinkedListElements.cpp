@@ -10,40 +10,28 @@ Return: 1 --> 2 --> 3 --> 4 --> 5
 #include "ListNode.h"
 #include <iostream>
 
-void printListNode(ListNode *head)
-{
-	if (head == nullptr)
-		return;
-	for (; head != nullptr; head = head->next)
-		std::cout << head->val << '\t';
-	std::cout << std::endl;
-}
 
-ListNode* removeElements(ListNode* head, int val)
-{
-	if (head == nullptr) return nullptr;
+ListNode* removeElements(ListNode* head, int val) {
+	if (head == nullptr) {
+        return nullptr;
+    }
 
-	ListNode *pre = head,
-		*p = head;
-	for (; p != nullptr; )
-	{
-		if (val != p->val)
-		{
+	ListNode *pre = head;
+	ListNode *p = head;
+	for (; p != nullptr; ) {
+		if (val != p->val) {
 			pre = p;
 			p = p->next;
 			continue;
 		}
-		// else
-		if (p == head)			// Head
-		{
+		if (p == head) {		// Head
 			ListNode *tmp = head;
 			head = head->next;
 			p = pre = head;
 			delete tmp;
 			continue;
 		}
-		if (p->next == nullptr)	// Tail
-		{
+		if (p->next == nullptr) {	// Tail
 			pre->next = nullptr;
 			delete p;
 			break;
@@ -57,30 +45,28 @@ ListNode* removeElements(ListNode* head, int val)
 	return head;
 }
 
-int main(int argv, char **argc)
-{
+int main(int argc, char **argv) {
 	int A[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
-	ListNode *p = new ListNode(A[0]),
-		*head = p;
-	for (int i = 1; i < 10; i++)
-	{
+	ListNode *p = new ListNode(A[0]);
+	ListNode *head = p;
+	for (int i = 1; i < 10; i++) {
 		p->next = new ListNode(A[i]);
 		p = p->next;
 	}
-	printListNode(head);
+	print_list(head);
 
 	p = removeElements(head, 5);	// Middle
-	printListNode(p);
+	print_list(p);
 
 	p = removeElements(p, 1);		// Head
-	printListNode(p);
+	print_list(p);
 
 	p = removeElements(p, 0);		// Tail
-	printListNode(p);
+	print_list(p);
 
 	ListNode *singleNode = new ListNode(100);
 	p = removeElements(singleNode, 100);	// SingleNode
-	printListNode(p);
+	print_list(p);
 
 	return 0;
 }

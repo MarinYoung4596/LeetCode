@@ -16,6 +16,7 @@ If there are 5 stones in the heap, could you figure out a way to remove the ston
 
 class Solution {
 public:
+    // 先手, 最多拿3个，最少拿1个，如果=4, 必输
     bool canWinNim(int n) {
         return n % 4 != 0;
     }

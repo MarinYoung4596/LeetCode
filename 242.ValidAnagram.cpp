@@ -18,40 +18,39 @@ You may assume the string contains only lowercase alphabets.
 
 using namespace std;
 
-class Solution
-{
+class Solution {
 public:
-    bool isAnagram(string s, string t)
-    {
-        if (s.size() != t.size())
+    bool isAnagram(string s, string t) {
+        if (s.size() != t.size()) {
             return false;
-
-        map<char, size_t> map_s;
-        for (size_t i = 0; i != s.size(); ++i)
-        {
-            if (s[i] == t[i])
-                continue;
-            if (map_s.find(s[i]) != map_s.end())
-                ++map_s[s[i]];
-            else
-                map_s.insert(pair<char, size_t> (s[i], 1));
-
-            if (map_s.find(t[i]) != map_s.end())
-                --map_s[t[i]];
         }
 
-        map<char, size_t>::iterator it;
-        for (it = map_s.begin(); it != map_s.end(); ++it)
-        {
-            if (it->second != 0)
+        map<char, size_t> map_s;
+        for (size_t i = 0; i != s.size(); ++i) {
+            if (s[i] == t[i]) {
+                continue;
+            }
+            if (map_s.find(s[i]) != map_s.end()) {
+                ++map_s[s[i]];
+            } else {
+                map_s.insert(pair<char, size_t>(s[i], 1));
+            }
+
+            if (map_s.find(t[i]) != map_s.end()) {
+                --map_s[t[i]];
+            }
+        }
+
+        for (auto it = map_s.begin(); it != map_s.end(); ++it) {
+            if (it->second != 0) {
                 return false;
+            }
         }
         return true;
     }
 };
 
-int main()
-{
+int main() {
 	Solution obj;
 	string s = "anagram", t = "nagaram";
 	std::cout<< obj.isAnagram(s, t) << std::endl;
