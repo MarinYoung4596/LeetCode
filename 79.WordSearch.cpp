@@ -22,6 +22,9 @@ Constraints:
     1 <= word.length <= 10^3
 */
 
+
+// Runtime: 56 ms, faster than 76.85% of C++ online submissions for Word Search.
+// Memory Usage: 11.4 MB, less than 74.43% of C++ online submissions for Word Search.
 class Solution {
 public:
     bool exist(vector<vector<char>>& board, string word) {
@@ -48,7 +51,7 @@ private:
             int step,
             int row,
             int column,
-            std::vector<std::vector<bool>> &stat) {
+            std::vector<std::vector<bool>> &visited) {
         if (step == word.size()) { // 到底
             return true;
         }
@@ -56,18 +59,30 @@ private:
                 || column < 0 || column >= board[0].size()) { // 非法参数
             return false;
         }
-        if (stat[row][column]) { // 已经遍历过
+        if (visited[row][column]) { // 已经遍历过
             return false;
         }
         if (word[step] != board[row][column]) { // 不相等
             return false;
         }
-        stat[row][column] = true;
-        auto stat1 = backtrack(board, word, step + 1, row, column - 1, stat); // 向左
-        auto stat2 = backtrack(board, word, step + 1, row, column + 1, stat); // 向右
-        auto stat3 = backtrack(board, word, step + 1, row - 1, column, stat); // 向上
-        auto stat4 = backtrack(board, word, step + 1, row + 1, column, stat); // 向下
-        stat[row][column] = false;
+        visited[row][column] = true;
+        auto stat1 = backtrack(board, word, step + 1, row, column - 1, visited); // 向左
+        if (stat1) {
+            return true;
+        }
+        auto stat2 = backtrack(board, word, step + 1, row, column + 1, visited); // 向右
+        if (stat2) {
+            return true;
+        }
+        auto stat3 = backtrack(board, word, step + 1, row - 1, column, visited); // 向上
+        if (stat3) {
+            return true;
+        }
+        auto stat4 = backtrack(board, word, step + 1, row + 1, column, visited); // 向下
+        if (stat4) {
+            return true;
+        }
+        visited[row][column] = false;
 
         return (stat1 || stat2 || stat3 || stat4);
     }
