@@ -45,8 +45,13 @@ public:
 
 class Solution2 {
 public:
-    // ref: https://blog.csdn.net/zhizhengguan/article/details/124453544
-    // dp[i] = max(j * (i - j), j * dp[i - j])
+    /*
+    ref: https://blog.csdn.net/zhizhengguan/article/details/124453544
+        对于正整数 i，拆分之后的正整数是 j，则后续拆分存在两种情况
+        1) 剩下的数，i-j 不拆分，乘积是 j * (i - j)
+        2) 剩下的数，i-j 继续拆分成别的正整数。乘积是 j * dp[i - j]
+        dp[i] = max(j * (i - j), j * dp[i - j])
+    */
     int integreBreak(int n) {
         if (n < 2) {
             return n;

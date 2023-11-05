@@ -25,11 +25,12 @@ public:
         const auto N = s.size();
         std::vector<std::vector<bool>> dp(N, std::vector<bool>(N, false));
 
-        int result = N;
+        int result = 0;
         for (int i = N - 1; i >= 0; --i) {
             for (int j = i; j < N; ++j) {
                 if (j == i) {
                     dp[i][j] = true;
+                    ++result;
                     continue;
                 }
                 if (s[i] == s[j] && (i + 1 == j || dp[i + 1][j - 1])) {

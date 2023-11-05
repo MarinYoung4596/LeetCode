@@ -8,7 +8,6 @@ If the node is found, delete the node.
 Note: Time complexity should be O(height of tree).
 
 Example:
-
 root = [5,3,6,2,4,null,7]
 key = 3
 
