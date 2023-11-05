@@ -3,7 +3,6 @@ Given two non-empty binary trees s and t, check whether tree t has exactly the s
 
 Example 1:
 Given tree s:
-
      3
     / \
    4   5
@@ -18,7 +17,6 @@ Return true, because t has the same structure and node values with a subtree of 
 
 Example 2:
 Given tree s:
-
      3
     / \
    4   5

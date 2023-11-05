@@ -8,38 +8,34 @@ Given a valid parentheses string S, consider its primitive decomposition: S = P_
 
 Return S after removing the outermost parentheses of every primitive string in the primitive decomposition of S.
 
- 
+
 
 Example 1:
+    Input: "(()())(())"
+    Output: "()()()"
+    Explanation:
+        The input string is "(()())(())", with primitive decomposition "(()())" + "(())".
+        After removing outer parentheses of each part, this is "()()" + "()" = "()()()".
 
-Input: "(()())(())"
-Output: "()()()"
-Explanation: 
-The input string is "(()())(())", with primitive decomposition "(()())" + "(())".
-After removing outer parentheses of each part, this is "()()" + "()" = "()()()".
 Example 2:
+    Input: "(()())(())(()(()))"
+    Output: "()()()()(())"
+    Explanation:
+        The input string is "(()())(())(()(()))", with primitive decomposition "(()())" + "(())" + "(()(()))".
+        After removing outer parentheses of each part, this is "()()" + "()" + "()(())" = "()()()()(())".
 
-Input: "(()())(())(()(()))"
-Output: "()()()()(())"
-Explanation: 
-The input string is "(()())(())(()(()))", with primitive decomposition "(()())" + "(())" + "(()(()))".
-After removing outer parentheses of each part, this is "()()" + "()" + "()(())" = "()()()()(())".
 Example 3:
+    Input: "()()"
+    Output: ""
+    Explanation:
+        The input string is "()()", with primitive decomposition "()" + "()".
+        After removing outer parentheses of each part, this is "" + "" = "".
 
-Input: "()()"
-Output: ""
-Explanation: 
-The input string is "()()", with primitive decomposition "()" + "()".
-After removing outer parentheses of each part, this is "" + "" = "".
- 
 
 Note:
-
-S.length <= 10000
-S[i] is "(" or ")"
-S is a valid parentheses string
- 
-
+    S.length <= 10000
+    S[i] is "(" or ")"
+    S is a valid parentheses string
 */
 
 class Solution {
@@ -50,7 +46,7 @@ public:
         int left = 0;
         int right = 0;
         int begin = 0;
-        
+
         for (auto i = 0; i < S.size(); ++i) {
             if (S[i] == '(') {
                 ++left;

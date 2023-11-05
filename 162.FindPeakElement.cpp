@@ -9,33 +9,35 @@ The array may contain multiple peaks, in that case return the index to any one o
 
 You may imagine that num[-1] = num[n] = -∞.
 
-For example, in array [1, 2, 3, 1], 3 is a peak element and your function should return the index number 2.
+For example, in array [1, 2, 3, 1], 3 is a peak element and your function should return the index
+number 2.
 
 click to show spoilers.
 
-Note:
-Your solution should be in logarithmic complexity.
+Note: Your solution should be in logarithmic complexity.
 */
 
-
 class Solution {
-public:
-    int findPeakElement(vector<int>& nums) {
-        if (nums.size() < 2) return 0;
-        
-        int begin = 0, end = nums.size() - 1;
-        while (begin < end)
-        {
-            if (end - begin == 1)
+  public:
+    int findPeakElement(vector<int> &nums) {
+        if (nums.size() < 2) {
+            return 0;
+        }
+        int begin = 0;
+        int end = nums.size() - 1;
+        while (begin < end) {
+            if (end - begin == 1) {
                 return nums[begin] > nums[end] ? begin : end;
-            
+            }
             int mid = begin + (end - begin) / 2;
-            if (nums[mid-1] < nums[mid] && nums[mid] > nums[mid+1])
+            if (nums[mid - 1] < nums[mid] && nums[mid] > nums[mid + 1]) {
                 return mid;
-            if (nums[mid] > nums[mid+1]) // more likely to be [begin, mid]
+            }
+            if (nums[mid] > nums[mid + 1]) { // more likely to be [begin, mid]
                 end = mid;
-            else  // [mid, end]
+            } else { // [mid, end]
                 begin = mid;
+            }
         }
         return nums[begin] > nums[end] ? begin : end;
     }

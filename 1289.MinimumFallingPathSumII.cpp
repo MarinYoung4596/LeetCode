@@ -19,7 +19,6 @@ Example 1:
         [3,4,8], [3,4,9], [3,5,7], [3,5,9]
         The falling path with the smallest sum is [1,5,7], so the answer is 13.
 
-
 Example 2:
     Input: grid = [[7]]
     Output: 7

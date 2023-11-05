@@ -1,19 +1,18 @@
 /*
 
-367. Valid Perfect Square 
+367. Valid Perfect Square
 
 Given a positive integer num, write a function which returns True if num is a perfect square else False.
 
 Note: Do not use any built-in library function such as sqrt.
 
 Example 1:
+    Input: 16
+    Returns: True
 
-Input: 16
-Returns: True
 Example 2:
-
-Input: 14
-Returns: False
+    Input: 14
+    Returns: False
 */
 
 
@@ -27,7 +26,7 @@ public:
         {
             if (end-start == 1)
                 return start*start==num || end*end==num;
-            
+
             int mid = start + (end-start)/2;
             if (num / mid > mid)
                 start = mid;

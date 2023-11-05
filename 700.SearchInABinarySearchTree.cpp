@@ -12,6 +12,7 @@ Given the tree:
     1   3
 
 And the value to search: 2
+
 You should return this subtree:
 
       2

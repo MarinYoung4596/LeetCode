@@ -5,9 +5,9 @@ It's guaranteed that for the given test cases there is always possible to find a
 
 
 Example 1:
-Input: [8,5,1,7,10,12]
-Output: [8,5,10,1,7,null,12]
-(pic)
+    (pic)
+    Input: [8,5,1,7,10,12]
+    Output: [8,5,10,1,7,null,12]
 
 
 Constraints:

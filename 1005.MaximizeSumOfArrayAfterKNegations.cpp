@@ -5,21 +5,19 @@ Return the largest possible sum of the array after modifying it in this way.
 
 
 Example 1:
-Input: A = [4,2,3], K = 1
-Output: 5
-Explanation: Choose indices (1,) and A becomes [4,-2,3].
-
+    Input: A = [4,2,3], K = 1
+    Output: 5
+    Explanation: Choose indices (1,) and A becomes [4,-2,3].
 
 Example 2:
-Input: A = [3,-1,0,2], K = 3
-Output: 6
-Explanation: Choose indices (1, 2, 2) and A becomes [3,1,0,2].
-
+    Input: A = [3,-1,0,2], K = 3
+    Output: 6
+    Explanation: Choose indices (1, 2, 2) and A becomes [3,1,0,2].
 
 Example 3:
-Input: A = [2,-3,-1,5,-4], K = 2
-Output: 13
-Explanation: Choose indices (1, 4) and A becomes [2,3,-1,5,4].
+    Input: A = [2,-3,-1,5,-4], K = 2
+    Output: 13
+    Explanation: Choose indices (1, 4) and A becomes [2,3,-1,5,4].
 
 
 Note:

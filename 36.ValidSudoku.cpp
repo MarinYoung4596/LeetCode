@@ -22,7 +22,6 @@ Example 1:
     ]
     Output: true
 
-
 Example 2:
     Input:
     [

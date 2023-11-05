@@ -6,11 +6,8 @@ All DNA is composed of a series of nucleotides abbreviated as A, C, G, and T, fo
 Write a function to find all the 10-letter-long sequences (substrings) that occur more than once in a DNA molecule.
 
 For example,
-
-Given s = "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT",
-
-Return:
-["AAAAACCCCC", "CCCCCAAAAA"].
+    Given s = "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT",
+    Return: ["AAAAACCCCC", "CCCCCAAAAA"].
 
 */
 
@@ -19,7 +16,7 @@ public:
     vector<string> findRepeatedDnaSequences(string &s) {
         vector<string> result;
         if (s.size() < 10) return result;
-        
+
         unordered_map<string, int> uset;
         for (auto i = 0; i+9 < s.size(); ++i)
         {

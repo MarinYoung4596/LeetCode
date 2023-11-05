@@ -11,12 +11,10 @@ Example 1:
     Output: [4,1,2,3]
     Explanation: 40 is the largest element. 10 is the smallest. 20 is the second smallest. 30 is the third smallest.
 
-
 Example 2:
     Input: arr = [100,100,100]
     Output: [1,1,1]
     Explanation: Same elements share the same rank.
-
 
 Example 3:
     Input: arr = [37,12,28,9,100,56,80,5,12]

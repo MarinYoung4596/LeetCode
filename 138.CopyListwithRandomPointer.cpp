@@ -1,7 +1,7 @@
 /*
 138. Copy List with Random Pointer
 
-A linked list is given such that each node contains an additional random pointer which could point to any node in the list or null. 
+A linked list is given such that each node contains an additional random pointer which could point to any node in the list or null.
 
 Return a deep copy of the list.
 
@@ -28,7 +28,7 @@ public:
             // insert
             pCopy->next = p->next;
             p->next = pCopy;
-            
+
             // save head
             if (p == head) {
                 savedHead.next = pCopy;
@@ -40,7 +40,7 @@ public:
         for (RandomListNode *p = head, *q = head->next; q != nullptr && p != nullptr; ) {
             // assert that q->random isn't nullptr
             q->random = (p->random == nullptr ? nullptr : p->random->next);
-           
+
             // scan
             p = p->next->next;
             if (p != nullptr) {
@@ -56,7 +56,7 @@ public:
                 q = q->next;
             }
         }
-        
+
         return savedHead.next;
     }
 };

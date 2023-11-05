@@ -21,7 +21,6 @@ key = 3
 Given key to delete is 3. So we find the node with value 3 and delete it.
 
 One valid answer is [5,4,6,2,null,null,7], shown in the following BST.
-
     5
    / \
   4   6
@@ -29,7 +28,6 @@ One valid answer is [5,4,6,2,null,null,7], shown in the following BST.
 2       7
 
 Another valid answer is [5,2,6,null,4,null,7].
-
     5
    / \
   2   6

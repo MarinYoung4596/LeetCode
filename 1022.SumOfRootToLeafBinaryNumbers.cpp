@@ -5,19 +5,19 @@ Return the sum of these numbers.
 
 
 Example 1:
-     1
-   /   \
-  0     1
- / \   / \
-0   1 0   1
-Input: [1,0,1,0,1,0,1]
-Output: 22
-Explanation: (100) + (101) + (110) + (111) = 4 + 5 + 6 + 7 = 22
+         1
+       /   \
+      0     1
+     / \   / \
+    0   1 0   1
+    Input: [1,0,1,0,1,0,1]
+    Output: 22
+    Explanation: (100) + (101) + (110) + (111) = 4 + 5 + 6 + 7 = 22
 
 Note:
-The number of nodes in the tree is between 1 and 1000.
-node.val is 0 or 1.
-The answer will not exceed 2^31 - 1.
+    The number of nodes in the tree is between 1 and 1000.
+    node.val is 0 or 1.
+    The answer will not exceed 2^31 - 1.
 */
 
 class Solution {

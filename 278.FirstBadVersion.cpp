@@ -14,15 +14,18 @@ bool isBadVersion(int version);
 class Solution {
 public:
     int firstBadVersion(int n) {
-        int start = 1, end = n;
-        while (start < end)
-        {
-            if (end - start == 1)
+        int start = 1;
+        int end = n;
+        while (start < end) {
+            if (end - start == 1) {
                 return isBadVersion(start) ? start : end;
-            
-            int mid = start + (end-start)/2;
-            if (isBadVersion(mid)) end = mid;
-            else start = mid;
+            }
+            int mid = start + (end-start) / 2;
+            if (isBadVersion(mid)) {
+                end = mid;
+            } else {
+                start = mid;
+            }
         }
         return start;
     }
