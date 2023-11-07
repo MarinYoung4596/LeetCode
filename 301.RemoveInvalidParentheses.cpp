@@ -44,9 +44,9 @@ Hint
 class Solution {
 public:
     vector<string> removeInvalidParentheses(string s) {
-        std::vector<std::string> result;
-        std::queue<std::string> q;
-        std::unordered_set<std::string> visited;
+        vector<string> result;
+        queue<string> q;
+        unordered_set<string> visited;
         bool is_found = false;
         q.push(s);
         while (!q.empty()) {
@@ -64,7 +64,7 @@ public:
                 if (t[i] != '(' && t[i] != ')') {
                     continue;
                 }
-                // 删除当前字符
+                // 删除当前字符 t[i]
                 auto substr = t.substr(0, i) + t.substr(i + 1, t.size() - i - 1);
                 // 防止重复
                 if (visited.count(substr) > 0) {
@@ -78,8 +78,8 @@ public:
     }
 
 private:
-    bool is_valid(const std::string &str) {
-        std::stack<int> s;
+    bool is_valid(const string &str) {
+        stack<int> s;
         for (auto i = 0; i < str.size(); ++i) {
             if (str[i] == '(') {
                 s.push(i);

@@ -23,7 +23,7 @@ public:
     // dp[i][j] 表示i~j 是否为回文串
     int countSubstrings(string s) {
         const auto N = s.size();
-        std::vector<std::vector<bool>> dp(N, std::vector<bool>(N, false));
+        vector<vector<bool>> dp(N, vector<bool>(N, false));
 
         int result = 0;
         for (int i = N - 1; i >= 0; --i) {
