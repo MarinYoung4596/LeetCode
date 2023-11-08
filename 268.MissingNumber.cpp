@@ -32,7 +32,7 @@ public:
 };
 
 /*Second Solution  bit manipulation*/
-class Solution {
+class Solution2 {
 public:
     int missingNumber(vector<int>& nums) {
         const auto len = nums.size(); // N
@@ -41,5 +41,16 @@ public:
             res ^= i ^ nums[i];
         }
         return res;
+    }
+};
+
+/* Third Solution */
+class Solution3 {
+public:
+    int missingNumber(vector<int>& nums) {
+        const auto n = nums.size();
+        auto real_sum = std::accumulate(nums.begin(), nums.end(), 0);
+        auto expect_sum = (1 + n) * n / 2;
+        return expect_sum - real_sum;
     }
 };

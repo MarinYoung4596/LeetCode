@@ -17,11 +17,11 @@
  * 稳定排序
  */
 template<typename Type>
-void bubble_sort(std::vector<Type> &a, int left, int right) {
+void bubble_sort(std::vector<Type> &v, int left, int right) {
     for (int i = left; i < right; i++) {
         for (int j = i + 1; j < right; j++) {
-            if (a[i] > a[j]) {
-                std::swap(a[i], a[j]);
+            if (v[i] > v[j]) {
+                std::swap(v[i], v[j]);
             }
         }
     }
@@ -35,16 +35,16 @@ void bubble_sort(std::vector<Type> &a, int left, int right) {
  * 不稳定排序
  */
 template<typename Type>
-void select_sort(std::vector<Type> &a, int left, int right) {
+void select_sort(std::vector<Type> &v, int left, int right) {
     for (int i = left; i < right; i++) {
         int min_pos = i;
         for (int j = i + 1; j < right; j++) {
-            if (a[min_pos] > a[j]) {
+            if (v[min_pos] > v[j]) {
                 min_pos = j;
             }
         }
         if (i != min_pos) {
-            std::swap(a[i], a[min_pos]);
+            std::swap(v[i], v[min_pos]);
         }
     }
 }
@@ -57,13 +57,13 @@ void select_sort(std::vector<Type> &a, int left, int right) {
  * 不稳定排序
  */
 template<typename Type>
-void insert_sort(std::vector<Type> &a, int left, int right) {
+void insert_sort(std::vector<Type> &v, int left, int right) {
     for (int i = left + 1; i < right; i++) {
-        //如果a[j]前一个数据a[j-1] > a[j]，就交换a[j]和a[j-1]，再j--直到a[j-1] <= a[j]
+        //如果v[j]前一个数据v[j-1] > v[j]，就交换v[j]和v[j-1]，再j--直到v[j-1] <= v[j]
         for (int j = i - 1;
-                j >= 0 && a[j] > a[j + 1];
+                j >= 0 && v[j] > v[j + 1];
                 --j) {
-            std::swap(a[j], a[j + 1]);
+            std::swap(v[j], v[j + 1]);
         }
     }
 }
@@ -111,31 +111,31 @@ int partition_v2(std::vector<Type> &v, int begin, int end) {
 
 // 和上面v2方式类似，效率同样不高
 template <typename Type>
-int partition_v3(vector<Type>& nums, int begin, int end) {
-    Type pivot = nums[begin];
+int partition_v3(vector<Type>& v, int begin, int end) {
+    Type pivot = v[begin];
     while (begin < end) {
-        while (end > begin && nums[end] >= pivot) {
+        while (end > begin && v[end] >= pivot) {
             --end;
         }
-        nums[begin] = nums[end];
-        while (begin < end && nums[begin] <= pivot) {
+        v[begin] = v[end];
+        while (begin < end && v[begin] <= pivot) {
             ++begin;
         }
-        nums[end] = nums[begin];
+        v[end] = v[begin];
     }
-    nums[begin] = pivot;
+    v[begin] = pivot;
     return begin;
 }
 
 // 注意：左闭右闭 区间
 template<typename Type>
-void quick_sort(std::vector<Type> &a, int left, int right) {
+void quick_sort(std::vector<Type> &v, int left, int right) {
     if (left >= right) {        // do not sort 0 or 1 element
         return;
     }
-    int k = partition_v2(a, left, right);
-    quick_sort(a, left, k - 1);
-    quick_sort(a, k + 1, right);
+    int k = partition_v2(v, left, right);
+    quick_sort(v, left, k - 1);
+    quick_sort(v, k + 1, right);
 }
 
 /**
@@ -147,38 +147,38 @@ void quick_sort(std::vector<Type> &a, int left, int right) {
  * https://en.wikipedia.org/wiki/Merge_sort
  */
 template <typename Type>
-void merge(std::vector<Type> &a, int left, int mid, int right) {
+void merge(std::vector<Type> &v, int left, int mid, int right) {
     std::vector<Type> tmp(right - left + 1, Type());
     int i = left;
     int j = mid + 1;
     int k = 0; // 每次都是从0开始,因为 tmp 只是暂存
     while (i <= mid && j <= right) {
-        if (a[i] <= a[j]) {
-            tmp[k++] = a[i++];
+        if (v[i] <= v[j]) {
+            tmp[k++] = v[i++];
         } else {
-            tmp[k++] = a[j++];
+            tmp[k++] = v[j++];
         }
     }
     while (i <= mid) {
-        tmp[k++] = a[i++];
+        tmp[k++] = v[i++];
     }
     while (j <= right) {
-        tmp[k++] = a[j++];
+        tmp[k++] = v[j++];
     }
     for (i = 0; i < k; i++) { // 最后还要 copy 回原数组,注意这里下标是 left+i
-        a[left + i] = tmp[i];
+        v[left + i] = tmp[i];
     }
 }
 
 template <typename Type>
-void merge_sort(std::vector<Type> &a, int left, int right) {
+void merge_sort(std::vector<Type> &v, int left, int right) {
     if (right <= left) {  // 防止相邻的两个元素逆序
         return;
     }
     int mid = left + (right - left) / 2;
-    merge_sort(a, left, mid);
-    merge_sort(a, mid + 1, right);
-    merge(a, left, mid, right);
+    merge_sort(v, left, mid);
+    merge_sort(v, mid + 1, right);
+    merge(v, left, mid, right);
 }
 
 
@@ -193,26 +193,26 @@ void merge_sort(std::vector<Type> &a, int left, int right) {
  * https://en.wikipedia.org/wiki/Shellsort
  */
 template <typename Type>
-void ins_sort_2(std::vector<Type> &a, int start, int incr) {
-    int n = a.size();
+void ins_sort_2(std::vector<Type> &v, int start, int incr) {
+    int n = v.size();
     for (int i = start + incr; i < n; i += incr) {
         for (int j = i; j >= incr; j -= incr) {
-            if (a[j] < a[j - incr]) {
-                std::swap(a[j], a[j - incr]);
+            if (v[j] < v[j - incr]) {
+                std::swap(v[j], v[j - incr]);
             }
         }
     }
 }
 
 template <typename Type>
-void shell_sort(std::vector<Type> &a) {
-    int n = a.size();
+void shell_sort(std::vector<Type> &v) {
+    int n = v.size();
     for (int i = n / 2; i > 2; i /= 2) {
         for (int j = 0; j < i; j++) {
-            ins_sort_2(a, j, i);
+            ins_sort_2(v, j, i);
         }
     }
-    ins_sort_2(a, 0, 1);
+    ins_sort_2(v, 0, 1);
 }
 
 
@@ -243,7 +243,7 @@ void heap_adjust(std::vector<Type> &v, int start, int end) {
 
 template <typename Type>
 void build_heap(std::vector<Type> &v) {
-    // (start is assigned the index in 'a' of the last parent node)
+    // (start is assigned the index in 'v' of the last parent node)
     // (the last element in a 0-based array is at index count-1; find the parent of that element)
     for (int i = (v.size() - 1) / 2; i >= 0; --i) {  // 最后一个元素的父节点
         // (sift down the node at index 'start' to the proper place such that all nodes below the start index are in heap order)
@@ -253,7 +253,7 @@ void build_heap(std::vector<Type> &v) {
 
 template <typename Type>
 void heap_sort(std::vector<Type> &v) {
-    build_heap(v);                // Build the heap in array a so that largest value is at the root)
+    build_heap(v);                // Build the heap in array v so that largest value is at the root)
     for (int i = v.size() - 1; i > 0; --i) {   // 从最后一个元素开始调整序列
         // v[0] is the root and largest value. The swap moves it in front of the sorted elements.
         std::swap(v[i], v[0]);                 // 交换 堆顶元素 和 堆中最后一个元素，相当于pop堆顶
