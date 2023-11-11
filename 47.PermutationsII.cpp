@@ -101,6 +101,5 @@ private:
             subres.pop_back();
             visited[i] = false;
         }
-
     }
 };

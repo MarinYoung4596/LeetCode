@@ -43,7 +43,7 @@ public:
     bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
         // 建有向图
         vector<vector<int>> graph(numCourses);
-        for (auto p : prerequisites) {
+        for (const auto &p : prerequisites) {
             graph[p[1]].push_back(p[0]);
         }
         // traverse
@@ -62,8 +62,9 @@ private:
              vector<bool> &on_path) {
         if (on_path[index]) {  // 已经被访问过
             has_cycle = true;
+            return;
         }
-        if (visited[index] > 0 || has_cycle) {
+        if (visited[index] > 0) {
             return;
         }
         visited[index] = true;
