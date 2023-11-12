@@ -28,17 +28,15 @@ Hint:
     The queue size need not be the same as the window’s size.
     Remove redundant elements and the queue should store only elements that need to be considered.
 */
-#include <stack>
-#include <vector>
 
-#define Max(x, y) (x) > (y) ? (x) : (y)
-
-// First Solution, using queue to represent sliding window.
-// when sliding the window, pop front and push back
-// adding the maximum element in the queue to the result list
-
-// same as Min Stack
-// see LeetCode No. 155
+// ----------------------------------------------------------------
+/**
+ * @brief First Solution, using queue to represent sliding window.
+ *  when sliding the window, pop front and push back
+ *  adding the maximum element in the queue to the result list
+ *
+ * same as Min Stack, see LeetCode No. 155
+ */
 class MaxStack  {
 public:
     void push(const int &x) {
@@ -81,8 +79,10 @@ private:
 };
 
 
-// implement queue using stacks
-// see LeetCode No. 232
+/**
+ * @brief  implement queue using stacks
+ * see LeetCode No. 232
+ */
 class MaxQueue {
 public:
     // shift the two stacks
@@ -125,7 +125,7 @@ public:
         } else if (_old.empty()) {
             return _new.getMax();
         } else
-            return Max(_new.getMax(), _old.getMax());
+            return std::max(_new.getMax(), _old.getMax());
         }
     }
 
@@ -162,62 +162,56 @@ public:
     }
 };
 
-
-// Second Solution
-// Same as first solution, while implement an queue that can get maximum element
-// without using two stacks
-// see http://www.cnblogs.com/remlostime/archive/2012/11/04/2754130.html
-class MaxQueue_2 {
+// ----------------------------------------------------------------
+/**
+ * @brief Second Solution: 另一种方式实现单调栈
+ *
+ */
+class MaxQueue2 {
 public:
-    void push(const int &x) {
-        data.push(x);
-        while (!max_queue.empty()) {
-            if (x > max_queue.back()) {
-                max_queue.pop_back();
-            } else {
-                break;
-            }
+    void push(int x) {  // 在队尾添加元素 x
+        while (!q.empty() && q.back() < x) {
+            q.pop_back();
         }
-        max_queue.push_back(x);
+        q.push_back(x);
     }
 
-    void pop() {
-        int element = data.front();
-        data.pop();
-        if (element == max_queue.front()) {
-            max_queue.pop_front();
+    void pop(int x) {  // 队头元素如果是 x，删除它
+        if (q.front() == x) {
+            q.pop_front();
         }
     }
 
-    int getMax() const {
-        return max_queue.front();
+    int max() const {
+        return q.front();
+    }
+
+    int min() const {
+        return q.back();
+    }
+
+    size_t size() const {
+        return q.size();
     }
 
 private:
-    queue<int> data;
-    // 双端队列，队列里元素单调递增
-    deque<int> max_queue; // make sure that max_queue is a non-monotonic increasing queue
+    deque<int> q; // make sure that max_queue is a non-monotonic increasing queue
 };
 
-
-
-// Third Solution
-// to be continued...
-
-
-int main() {
-    /*
-     * test case
-     * 1. nums = [1,3,-1,-3,5,3,6,7]; k = 3; expected output: [3,3,5,5,6,7]
-     * 2. nums = [7,2,4]; k = 2; expected output: [7, 4]
-     */
-    Solution _solution;
-    vector<int> nums({ 7, 2, 4 });
-    vector<int> res = _solution.maxSlidingWindow(nums, 2);
-    for (auto i = res.begin(); i != res.end(); ++i) {
-        cout << *i << '\t';
+class Solution2 {
+public:
+    vector<int> maxSlidingWindow(vector<int>& nums, int k) {
+        vector<int> res;
+        MaxQueue2 window;
+        for (auto i = 0; i < nums.size(); ++i) {
+            if (i < k - 1) {  // 先把滑动窗口填满
+                window.push(nums[i]);
+            } else {
+                window.push(nums[i]);
+                res.push_back(window.max());
+                window.pop(nums[i - k + 1]);
+            }
+        }
+        return res;
     }
-    cout << endl;
-
-    return 0;
-}
+};

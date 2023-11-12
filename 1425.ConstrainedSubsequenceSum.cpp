@@ -65,20 +65,20 @@ public:
         int max_sum = nums[0];
         vector<int> dp(nums);  // 初始时，dp[i] 代表只使用当前一个元素的子序列和
 
-        deque<int> q; // 单调栈，目的是 保留 k-i ~ i 范围内，和最大子序列
-        q.push_back(0);
+        deque<int> window; // 单调栈，目的是 保留 k-i ~ i 范围内，和最大子序列
+        window.push_back(0);
         for (auto i = 1; i < nums.size(); ++i) {
-            while (!q.empty() && i - q.front() > k) {  // 距离大于 k，不满足要求
-                q.pop_front();
+            while (!window.empty() && window.front() < i - k) {  // 距离大于 k，不满足要求
+                window.pop_front();
             }
 
-            dp[i] = max(dp[i], dp[q.front()] + nums[i]);  // 不用之前的序列 ：用之前的序列，取 max
+            dp[i] = max(dp[i], dp[window.front()] + nums[i]);  // 不用之前的序列 ：用之前的序列，取 max
             max_sum = max(max_sum, dp[i]);
 
-            while (!q.empty() && dp[q.back()] < dp[i]) { // 所有小于当前子序列和的子序列都 pop，降低计算开销
-                q.pop_back();
+            while (!window.empty() && dp[window.back()] < dp[i]) { // 所有小于当前子序列和的子序列都 pop，降低计算开销
+                window.pop_back();
             }
-            q.push_back(i);
+            window.push_back(i);
         }
         return max_sum;
     }

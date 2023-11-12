@@ -20,20 +20,19 @@ For example,
 
 class Solution {
 public:
-//  if target < matrix[0][N-1]    delete last column
-//  if target > matrix[0][N-1]    delete first row
-    bool searchMatrix(vector<vector<int>>& matrix, int target)
-    {
+    //  if target < matrix[0][N-1]    delete last column
+    //  if target > matrix[0][N-1]    delete first row
+    bool searchMatrix(vector<vector<int>>& matrix, int target) {
         const int M = matrix.size();
         const int N = matrix[0].size();
-        for (int r = 0, c = N - 1;  r < M && c >= 0; )
-        {
-            if (target < matrix[r][c])
+        for (int r = 0, c = N - 1;  r < M && c >= 0; ) {
+            if (target < matrix[r][c]) {
                 --c;
-            else if (target > matrix[r][c])
+            } else if (target > matrix[r][c]) {
                 ++r;
-            else
+            } else {
                 return true;
+            }
         }
         return false;
     }

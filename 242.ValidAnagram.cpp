@@ -11,6 +11,8 @@ Note:
 
 #include <iostream>
 #include <string>
+#include <vector>
+#include <algorithm>
 #include <map>
 
 using namespace std;
@@ -44,6 +46,35 @@ public:
             }
         }
         return true;
+    }
+};
+
+class Solution2 {
+public:
+    bool isAnagram(const string &s1, const string &s2) {
+        if (s1.size() != s2.size()) {
+            return false;
+        }
+        vector<int> cmap(26, 0);
+        for (auto i = 0; i < s1.size(); ++i) {
+            cmap[s1[i] - 'a']++;
+            cmap[s2[i] - 'a']--;
+        }
+        for (auto x : cmap) {
+            if (x != 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+};
+
+class Solution3 {
+public:
+    bool isAnagram(const string &s1, const string &s2) {
+        auto s1_sorted = sort(s1.begin(), s1.end());
+        auto s2_sorted = sort(s1.begin(), s2.end());
+        return s1_sorted == s2_sorted;
     }
 };
 
