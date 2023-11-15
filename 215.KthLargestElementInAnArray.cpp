@@ -63,7 +63,7 @@ private:
 class Solution2 {
 public:
     int findKthLargest(vector<int> &nums, int k) {
-        make_heap(nums.begin(), nums.end());
+        make_heap(nums.begin(), nums.end());  // 对所有元素建堆，存在浪费
         int result;
         for (int i = 0; i < k; ++i) {
             result = nums.front();
