@@ -1,15 +1,34 @@
 /*
-114. Flatten Binary Tree to Linked List
-Given a binary tree, flatten it to a linked list in-place.
+Given the root of a binary tree, flatten the tree into a "linked list":
 
-For example,
-Given
-    1
-   / \
-  2   5
- / \   \
-3   4   6
-The flattened tree should look like: 1->2->3->4->5->6
+    The "linked list" should use the same TreeNode class where the right child pointer points to the next node in the list and the left child pointer is always null.
+    The "linked list" should be in the same order as a pre-order traversal of the binary tree.
+
+
+Example 1:
+        1
+       / \
+      2   5
+     / \   \
+    3   4   6
+    Input: root = [1,2,5,3,4,null,6]
+    Output: [1,null,2,null,3,null,4,null,5,null,6]
+
+Example 2:
+    Input: root = []
+    Output: []
+
+Example 3:
+    Input: root = [0]
+    Output: [0]
+
+
+Constraints:
+    The number of nodes in the tree is in the range [0, 2000].
+    -100 <= Node.val <= 100
+
+
+Follow up: Can you flatten the tree in-place (with O(1) extra space)?
 */
 
 #include <iostream>
@@ -48,12 +67,13 @@ class Solution {
 
 // Second Solution: recursive
 class Solution2 {
-    void flattern(TreeNode *root) {
+public:
+    void flatten(TreeNode *root) {
         if (nullptr == root) {
             return;
         }
-        flattern(root->left);
-        flattern(root->right);
+        flatten(root->left);
+        flatten(root->right);
 
         // 后序遍历。前面已经将左右子树节点拍平了
 

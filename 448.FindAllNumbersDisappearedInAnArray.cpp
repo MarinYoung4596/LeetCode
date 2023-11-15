@@ -1,11 +1,24 @@
 /*
-Given an array of integers where 1 ≤ a[i] ≤ n (n = size of array), some elements appear twice and others appear once.
-Find all the elements of [1, n] inclusive that do not appear in this array.
-Could you do it without extra space and in O(n) runtime? You may assume the returned list does not count as extra space.
+Given an array nums of n integers where nums[i] is in the range [1, n], return an array of all the integers in the range [1, n] that do not appear in nums.
 
-Example:
-    Input: [4,3,2,7,8,2,3,1]
+
+Example 1:
+    Input: nums = [4,3,2,7,8,2,3,1]
     Output: [5,6]
+
+Example 2:
+    Input: nums = [1,1]
+    Output: [2]
+
+
+Constraints:
+    n == nums.length
+    1 <= n <= 10^5
+    1 <= nums[i] <= n
+
+
+Follow up: Could you do it without extra space and in O(n) runtime? You may assume the returned list does not count as extra space.
+
 
 Hint:
     This is a really easy problem if you decide to use additional memory. For those trying to write an initial solution using additional memory, think counters!
@@ -14,6 +27,8 @@ Hint:
 
 */
 
+
+// 原地哈希，相似题目：442
 class Solution {
 public:
     vector<int> findDisappearedNumbers(vector<int>& nums) {
@@ -28,7 +43,7 @@ public:
             if (nums[i] < 0) {
                 continue;
             }
-            result.push_back(i + 1);
+            result.push_back(i + 1);  // 没有置为负数的，说明该下标的元素值肯定缺失
         }
         return result;
     }
