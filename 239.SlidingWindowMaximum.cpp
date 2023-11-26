@@ -165,7 +165,6 @@ public:
 // ----------------------------------------------------------------
 /**
  * @brief Second Solution: 另一种方式实现单调栈
- *
  */
 class MaxQueue2 {
 public:
@@ -213,5 +212,29 @@ public:
             }
         }
         return res;
+    }
+};
+
+// ----------------------------------------------------------------
+// Second Solution：维护长度为 k 的 单调滑动窗口
+class Solution3 {
+public:
+    vector<int> maxSlidingWindow(vector<int>& nums, int k) {
+        const auto n = nums.size();
+        vector<int> result(n - k + 1, 0);
+        deque<int> q;
+        for (auto i = 0; i < n; ++i) {
+            while (!q.empty() && nums[q.back()] < nums[i]) {
+                q.pop_back();
+            }
+            q.push_back(i);
+            while (q.front() < (i - k + 1)) {
+                q.pop_front();
+            }
+            if (i >= k - 1) {
+                result[i - k + 1] = nums[q.front()];
+            }
+        }
+        return result;
     }
 };
