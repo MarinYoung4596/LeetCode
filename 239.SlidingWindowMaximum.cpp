@@ -224,14 +224,14 @@ public:
         vector<int> result(n - k + 1, 0);
         deque<int> q;
         for (auto i = 0; i < n; ++i) {
-            while (!q.empty() && nums[q.back()] < nums[i]) {
+            while (!q.empty() && nums[q.back()] < nums[i]) { // 维护队列单调性
                 q.pop_back();
             }
-            q.push_back(i);
-            while (q.front() < (i - k + 1)) {
+            q.push_back(i);  // 窗口扩张
+            while (q.front() < (i - k + 1)) {  // 剔除太远的元素（窗口收缩）
                 q.pop_front();
             }
-            if (i >= k - 1) {
+            if (i >= k - 1) { // 刚开始 k 个元素内不更新
                 result[i - k + 1] = nums[q.front()];
             }
         }
