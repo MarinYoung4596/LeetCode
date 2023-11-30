@@ -34,8 +34,10 @@ Constraints:
 
 *****************************************************************/
 
-// First Solution: 暴力
-// 时间复杂度：O(NlogN)；空间复杂度：O(N)
+/**
+ * @brief  First Solution: 暴力
+ * 时间复杂度：O(NlogN)；空间复杂度：O(N)
+ */
 class Solution {
 public:
     int firstMissingPositive(vector<int>& nums) {
@@ -55,5 +57,59 @@ public:
             }
         }
         return pos_nums.size() + 1;
+    }
+};
+
+
+/**
+ * @brief Second Solution: 置换法（原地哈希）
+ * 如果数组中包含 x∈[1,N]，那么恢复后，数组的第 i−1 个元素为 i。
+ * 时间复杂度：O(N)；空间复杂度：O(1)
+ */
+class Solution2 {
+public:
+    int firstMissingPositive(vector<int>& nums) {
+        const auto n = nums.size();
+        for (auto i = 0; i < n; ++i) {
+            while (nums[i] > 0 &&
+                    nums[i] <= n &&
+                    nums[i] != nums[nums[i] - 1]) {
+                swap(nums[i], nums[nums[i] - 1]);
+            }
+        }
+        for (auto i = 0; i < n; ++i) {
+            if (nums[i] != i + 1) {
+                return i + 1;
+            }
+        }
+        return n + 1;
+    }
+};
+
+/**
+ * @brief Third Solution：原地哈希
+ * 时间复杂度：O(N)；空间复杂度：O(1)
+ */
+class Solution {
+public:
+    int firstMissingPositive(vector<int>& nums) {
+        const auto n = nums.size();
+        for (auto i = 0; i < n; ++i) {
+            if (nums[i] <= 0) {
+                nums[i] = n + 1;  // 先把 <=0 的剔除，保证后续所有下标都合法
+            }
+        }
+        for (auto i = 0; i < n; ++i) {
+            auto x = abs(nums[i]);    // 这里取绝对值，因为前面有可能被其他元素置为负数了
+            if (x <= n) {
+                nums[x - 1] = -1 * abs(nums[x - 1]);  // 符合条件的，再次置为负数
+            }
+        }
+        for (auto i = 0; i < n; ++i) {
+            if (nums[i] > 0) {  // > 0，说明当前位置没有被置为负数
+                return i + 1;
+            }
+        }
+        return n + 1;
     }
 };

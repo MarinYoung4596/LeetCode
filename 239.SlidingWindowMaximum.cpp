@@ -216,7 +216,7 @@ public:
 };
 
 // ----------------------------------------------------------------
-// Second Solution：维护长度为 k 的 单调滑动窗口
+// third Solution：维护长度为 k 的 单调滑动窗口
 class Solution3 {
 public:
     vector<int> maxSlidingWindow(vector<int>& nums, int k) {
