@@ -11,7 +11,6 @@ Given an unsorted integer array nums, return the smallest missing positive integ
 You must implement an algorithm that runs in O(n) time and uses O(1) auxiliary space.
 
 
-
 Example 1:
     Input: nums = [1,2,0]
     Output: 3
@@ -90,7 +89,7 @@ public:
  * @brief Third Solution：原地哈希
  * 时间复杂度：O(N)；空间复杂度：O(1)
  */
-class Solution {
+class Solution3 {
 public:
     int firstMissingPositive(vector<int>& nums) {
         const auto n = nums.size();
@@ -100,9 +99,9 @@ public:
             }
         }
         for (auto i = 0; i < n; ++i) {
-            auto x = abs(nums[i]);    // 这里取绝对值，因为前面有可能被其他元素置为负数了
-            if (x <= n) {
-                nums[x - 1] = -1 * abs(nums[x - 1]);  // 符合条件的，再次置为负数
+            auto idx = abs(nums[i]) - 1;    // 这里取绝对值，因为前面有可能被其他元素置为负数了
+            if (idx < n) {
+                nums[idx] = -1 * abs(nums[idx]);  // 符合条件的，再次置为负数
             }
         }
         for (auto i = 0; i < n; ++i) {

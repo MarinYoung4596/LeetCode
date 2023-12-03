@@ -33,9 +33,9 @@ class Solution {
 public:
     vector<int> findDisappearedNumbers(vector<int>& nums) {
         for (auto i = 0; i < nums.size(); ++i) {
-            auto index = abs(nums[i]) - 1;
-            if (nums[index] > 0) {
-                nums[index] *= -1;
+            auto idx = abs(nums[i]) - 1;
+            if (nums[idx] > 0) {
+                nums[idx] *= -1;
             }
         }
         std::vector<int> result;
