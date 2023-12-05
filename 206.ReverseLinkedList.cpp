@@ -10,12 +10,8 @@ Hint:
 class Solution {
 public:
     ListNode* reverseList(ListNode* head) {
-        if (nullptr == head || nullptr == head->next) {
-            return head;
-        }
-        auto pre = head;
-        auto cur = pre->next;
-        pre->next = nullptr; /// important, without which list will be endlessly
+        ListNode* pre = nullptr;
+        ListNode* cur = head;
         while (cur != nullptr) {
             auto next = cur->next;
 

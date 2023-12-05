@@ -1,12 +1,27 @@
 /*
-143. Reorder List.
-Given a singly linked list L: L0→L1→…→Ln-1→Ln,
-reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…
+You are given the head of a singly linked-list. The list can be represented as:
+    L_0 → L_1 → … → L_(n - 1) → L_n
 
-You must do this in-place without altering the nodes' values.
+Reorder the list to be on the following form:
+    L_0 → L_n → L1 → L_(n - 1) → L_2 → L_(n - 2) → …
 
-For example,
-Given {1,2,3,4}, reorder it to {1,4,2,3}.
+You may not modify the values in the list's nodes. Only nodes themselves may be changed.
+
+
+Example 1:
+    (pic)
+    Input: head = [1,2,3,4]
+    Output: [1,4,2,3]
+
+Example 2:
+    (pic)
+    Input: head = [1,2,3,4,5]
+    Output: [1,5,2,4,3]
+
+
+Constraints:
+    The number of nodes in the list is in the range [1, 5 * 10^4].
+    1 <= Node.val <= 1000
 */
 
 
@@ -15,7 +30,11 @@ Given {1,2,3,4}, reorder it to {1,4,2,3}.
 // Reordered List:1->(7)->2->(6)->3->(5)->4
 
 
-// First Solution: Time Complexity: O(N), Space Complexity: O(N)
+/**
+ * @brief First Solution: 借用空间临时存储，val copy
+ * Time Complexity: O(N)
+ * Space Complexity: O(N)
+ */
 class Solution {
 public:
     void reorderList(ListNode* head) {
@@ -37,7 +56,11 @@ public:
 };
 
 
-// Second Solution: Time complexity: O(N), space complexity O(1)
+/**
+ * @brief Second Solution:
+ * Time complexity: O(N^2),
+ * space complexity O(1)
+ */
 class Solution2 {
 public:
     void reorderList(ListNode* head) {
@@ -56,5 +79,66 @@ public:
             last->next = nullptr;
             start = start->next->next;
         }
+    }
+};
+
+/**
+ * @brief Third Solution: 1）分为左右两部分；2）反转右半部分；3）交替拼接左右两部分
+ */
+class Solution3 {
+public:
+    void reorderList(ListNode* head) {
+        // step1: 找到链表后半部分
+        ListNode* slow = head;
+        ListNode* fast = head;
+        ListNode* pre_slow = nullptr;
+        while (fast != nullptr && fast->next != nullptr) {
+            fast = fast->next->next;
+            pre_slow = slow;
+            slow = slow->next;
+        }
+
+        // step2：断开左右链表连接
+        if (pre_slow != nullptr) {
+            pre_slow->next = nullptr;
+        }
+
+        // step3: 反转后半部分
+        ListNode* pre = nullptr;
+        ListNode* cur = slow;
+        while (cur != nullptr) {
+            auto next = cur->next;
+
+            cur->next = pre;
+            pre = cur;
+            cur = next;
+        }
+
+        // step4: 交替 merge 两个链表
+        auto p_left = head; // 左侧链表
+        auto p_right = pre;  // 右侧链表
+        auto dummy_head = new ListNode(-1);
+        auto p = dummy_head;
+        while (p_left != nullptr && p_right != nullptr) {
+            auto tmp_left = p_left->next;
+            p_left->next = nullptr;
+            p->next = p_left;
+            p_left = tmp_left;
+
+            p = p->next;
+
+            auto tmp_right = p_right->next;
+            p_right->next = nullptr;
+            p->next = p_right;
+            p_right = tmp_right;
+
+            p = p->next;
+        }
+        if (p_right != nullptr) {
+            p->next = p_right;
+        } else {
+            p->next = p_left;
+        }
+        head = dummy_head->next;
     }
 };

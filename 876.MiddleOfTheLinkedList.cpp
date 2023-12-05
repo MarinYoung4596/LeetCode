@@ -23,9 +23,11 @@ Note:
     The number of nodes in the given list will be between 1 and 100.
 */
 
+/**
+ * @brief 1st solution
+ */
 class Solution {
 public:
-    // 1st solution
     ListNode* middleNode(ListNode* head) {
         auto len = 0;
         for (auto cur = head; cur != nullptr; cur = cur->next, ++len);
@@ -33,10 +35,14 @@ public:
         for (auto i = 0; i < len / 2; ++i, cur = cur->next);
         return cur;
     }
+};
 
-    // 2nd solution
-    // two pointers
-    ListNode* middleNode_2(ListNode* head) {
+/**
+ * @brief Second Solution：快慢指针
+ */
+class Solution2 {
+public:
+    ListNode* middleNode(ListNode* head) {
         auto slow = head;
         auto fast = head;
         while (fast != nullptr && fast->next != nullptr) {

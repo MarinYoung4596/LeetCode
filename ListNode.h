@@ -8,15 +8,15 @@ class ListNode {
 public:
     ListNode() {}
 
-    explicit ListNode(int x) : value(x), next(nullptr) {}
-    explicit ListNode(int x, ListNode *p) : value(x), next(p) {}
+    explicit ListNode(int x) : val(x), next(nullptr) {}
+    explicit ListNode(int x, ListNode *p) : val(x), next(p) {}
 
     friend ListNode* construct_list(std::vector<int> nums);
 
     friend void print_list(ListNode *head);
 
 public:
-    int value;
+    int val;
     ListNode* next;
 };
 
@@ -41,7 +41,7 @@ ListNode* construct_list(const std::initializer_list<int> &il) {
 
 void print_list(ListNode* head) {
     for (ListNode *p = head; p != nullptr; p = p->next) {
-        std::cout << p->value << '\t';
+        std::cout << p->val << '\t';
     }
     std::cout << std::endl;
 }
