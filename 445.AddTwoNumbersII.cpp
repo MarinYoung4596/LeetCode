@@ -15,12 +15,12 @@ Example:
 class Solution {
 public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        std::stack<int> s1;
+        stack<int> s1;
         get_value(l1, s1);
-        std::stack<int> s2;
+        stack<int> s2;
         get_value(l2, s2);
 
-        std::vector<int> vec;
+        vector<int> vec;
         int carry = 0;
         while (!s1.empty() || !s2.empty()) {
             int v1 = s1.empty() ? 0 : s1.top();
@@ -38,7 +38,7 @@ public:
         if (carry != 0) {
             vec.push_back(carry);
         }
-        std::reverse(vec.begin(), vec.end());
+        reverse(vec.begin(), vec.end());
         ListNode dummy(-1);
         auto p = &dummy;
         for (auto it = vec.begin(); it != vec.end(); ++it) {
@@ -49,7 +49,7 @@ public:
     }
 
 private:
-    void get_value(ListNode* head, std::stack<int> &s) {
+    void get_value(ListNode* head, stack<int> &s) {
         while (head != nullptr) {
             s.push(head->val);
             head = head->next;

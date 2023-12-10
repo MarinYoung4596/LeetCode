@@ -20,14 +20,14 @@ Note:
 class Solution {
 public:
     int jump(vector<int>& nums) {
-        std::vector<int> cache(nums.size(), INT_MAX);
+        vector<int> cache(nums.size(), INT_MAX);
         return dp(nums, cache, 0);
     }
 
 private:
     // 从位置p跳到末尾，最少需要的步数
-    int dp(const std::vector<int> &nums,
-           std::vector<int> cache,
+    int dp(const vector<int> &nums,
+           vector<int> cache,
            int p) {
         if (p >= nums.size() - 1) {
             return 0;

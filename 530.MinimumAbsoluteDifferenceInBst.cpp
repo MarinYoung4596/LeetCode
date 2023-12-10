@@ -32,17 +32,8 @@ private:
         auto curr_min_diff = std::min(
             nullptr != min_node ? std::abs(root->val - min_node->val) : result,
             nullptr != max_node ? std::abs(root->val - max_node->val) : result);
-        if (curr_min_diff < result) {
-            result = curr_min_diff;
-        }
         auto left_min_diff = find_min_diff(root->left, min_node, root, result);
         auto right_min_diff = find_min_diff(root->right, root, max_node, result);
-        if (left_min_diff < result) {
-            result = left_min_diff;
-        }
-        if (right_min_diff < result) {
-            result = right_min_diff;
-        }
-        return result;
+        return std::min({result, left_min_diff, right_min_diff, curr_min_diff});
     }
 };

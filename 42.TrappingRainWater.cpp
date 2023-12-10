@@ -1,20 +1,35 @@
 /*
-Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it is able to trap after raining.
+Given n non-negative integers representing an elevation map where the width of each bar is 1,
+compute how much water it is able to trap after raining.
 
-For example,
-    Given [0,1,0,2,1,0,1,3,2,1,2,1], return 6.
+Example 1:
+    ![pic](https://assets.leetcode.com/uploads/2018/10/22/rainwatertrap.png)
+    Input: height = [0,1,0,2,1,0,1,3,2,1,2,1]
+    Output: 6
+    Explanation: The above elevation map (black section) is represented by array [0,1,0,2,1,0,1,3,2,1,2,1].
+        In this case, 6 units of rain water (blue section) are being trapped.
 
-The above elevation map is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In this case, 6 units of rain water (blue section) are being trapped. Thanks Marcos for contributing this image!
+Example 2:
+    Input: height = [4,2,0,3,2,5]
+    Output: 9
+
+
+Constraints:
+    n == height.length
+    1 <= n <= 2 * 10^4
+    0 <= height[i] <= 10^5
 */
 
+/**
+ * @brief åŒæŒ‡é’ˆï¼Œ
+ * è¾¹ç•Œæƒ…å†µï¼šä¸¤è¾¹æœ€ä½
+ * water[i] = min(
+               max(height[0..i]),  # å·¦è¾¹æœ€é«˜çš„æŸ±å­
+               max(height[i..end]) # å³è¾¹æœ€é«˜çš„æŸ±å­
+            ) - height[i]
+ */
 class Solution {
 public:
-// ±ß½çÇé¿ö£º Á½±ß×îµÍ
-/* water[i] = min(
-               max(height[0..i]),  # ×ó±ß×î¸ßµÄÖù×Ó
-               max(height[i..end]) # ÓÒ±ß×î¸ßµÄÖù×Ó
-            ) - height[i]
-*/
     int trap(vector<int>& height) {
         int water = 0;
         int left = 0;
@@ -22,11 +37,11 @@ public:
         int max_left = 0;
         int max_right = 0;
         while (left <= right) {
-            if (height[left] <= height[right]) {  //left Íùºó×ß
+            if (height[left] <= height[right]) {  // left å¾€åèµ°
                 if (height[left] >= max_left) {
-                    max_left = height[left];  //¸üĞÂ×ó±ß×î´óÖµ
+                    max_left = height[left];  // æ›´æ–°å·¦è¾¹æœ€å¤§å€¼
                 } else {
-                    water += (max_left - height[left]);  //·ñÔò¼ôµôµ±Ç°Öµ £¨´¦ÓÚÁ½¸ö×î´óÖµÖĞ¼ä£©
+                    water += (max_left - height[left]);  // å¦åˆ™å‰ªæ‰å½“å‰å€¼ ï¼ˆå¤„äºä¸¤ä¸ªæœ€å¤§å€¼ä¸­é—´ï¼‰
                 }
                 ++left;
             } else {

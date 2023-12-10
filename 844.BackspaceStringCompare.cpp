@@ -44,8 +44,8 @@ public:
     }
 
 private:
-    std::string get_str(const std::string &str) {
-        std::stack<char> s;
+    string get_str(const string &str) {
+        stack<char> s;
         for (auto i = 0; i < str.size(); ++i) {
             if (str[i] == '#') {
                 if (!s.empty()) {
@@ -55,7 +55,7 @@ private:
                 s.push(str[i]);
             }
         }
-        std::string result;
+        string result;
         while (!s.empty()) {
             result += s.top();
             s.pop();

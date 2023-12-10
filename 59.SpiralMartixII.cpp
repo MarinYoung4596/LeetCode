@@ -17,7 +17,7 @@ For example,
 class Solution {
 public:
     vector<vector<int>> generateMatrix(int n) {
-        vector<vector<int>> res(n, std::vector<int>(n, 0));
+        vector<vector<int>> res(n, vector<int>(n, 0));
 
         const auto end = (n % 2 == 1) ? (n / 2 + 1) : (n / 2);
         int start = 0, num = 0;

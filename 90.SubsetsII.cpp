@@ -20,15 +20,15 @@ Example:
 class Solution {
 public:
     vector<vector<int>> subsetsWithDup(vector<int>& nums) {
-        std::vector<vector<int>> result;
-        std::vector<int> subres;
+        vector<vector<int>> result;
+        vector<int> subres;
         backtrack(nums, result, subres, 0);
         return result;
     }
 
 private:
-    void backtrack(const std::vector<int>& nums,
-                   std::vector<std::vector<int>> &result,
+    void backtrack(const vector<int>& nums,
+                   vector<vector<int>> &result,
                    vector<int> &subres,
                    int start) {
         bool dup = false;
@@ -48,11 +48,11 @@ private:
         }
     }
 
-    bool duplicate(const std::vector<int> &vec1, const std::vector<int> &vec2) {
+    bool duplicate(const vector<int> &vec1, const vector<int> &vec2) {
         if (vec1.size() != vec2.size()) {
             return false;
         }
-        std::unordered_map<int, int> counter;
+        unordered_map<int, int> counter;
         for (const auto &x : vec1) {
             if (counter.count(x) > 0) {
                 ++counter[x];
@@ -81,7 +81,7 @@ private:
 class Solution2 {
 public:
     vector<vector<int>> subsetsWithDup(vector<int> &nums) {
-        std::sort(nums.begin(), nums.end());  // 这里是关键
+        sort(nums.begin(), nums.end());  // 这里是关键
         vector<vector<int>> result;
         vector<int> subres;
         backtrack(nums, 0, results, subres);

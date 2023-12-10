@@ -49,13 +49,13 @@ public:
 class Solution {
 public:
     vector<int> postorder(Node* root) {
-        std::vector<int> result;
+        vector<int> result;
         postorder_helper(root, result);
         return result;
     }
 
 private:
-    void postorder_helper(Node* root, std::vector<int> &vec) {
+    void postorder_helper(Node* root, vector<int> &vec) {
         if (nullptr == root) {
             return;
         }

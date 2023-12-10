@@ -32,9 +32,9 @@ public:
     string longestCommonPrefix(vector<string>& strs) {
         const auto N = strs.size();
         if (!N) {
-            return std::string();
+            return string();
         }
-        std::sort(strs.begin(), strs.end());
+        sort(strs.begin(), strs.end());
         auto i = 0;
         while (i < strs[0].size()
                && i < strs[N - 1].size()
@@ -52,7 +52,7 @@ public:
         // 先取最小长度
         auto min_len = strs[0].size();
         for (const auto &str: strs) {
-            min_len = std::min(min_len, str.size());
+            min_len = min(min_len, str.size());
         }
         // 然后遍历
         auto idx = 0;

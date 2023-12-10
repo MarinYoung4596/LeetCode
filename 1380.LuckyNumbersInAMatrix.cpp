@@ -40,15 +40,15 @@ public:
                 if (j == 0) { // 每行第一个元素
                     row_min[i] = matrix[i][j];
                 }
-                row_min[i] = std::min(row_min[i], matrix[i][j]);
+                row_min[i] = min(row_min[i], matrix[i][j]);
                 if (i == 0) { // 每列第一个元素初始化
                     column_max[j] = matrix[i][j];
                 }
-                column_max[j] = std::max(column_max[j], matrix[i][j]);
+                column_max[j] = max(column_max[j], matrix[i][j]);
             }
         }
 
-        std::vector<int> result;
+        vector<int> result;
         for (auto i = 0; i < m; ++i) {
             for (auto j = 0; j < n; ++j) {
                 if (matrix[i][j] == row_min[i] && matrix[i][j] == column_max[j]) {

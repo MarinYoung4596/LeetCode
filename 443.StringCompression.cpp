@@ -43,14 +43,14 @@ class Solution {
 public:
     int compress(vector<char>& chars) {
         int cnt = 1;
-        std::string result;
+        string result;
         for (auto i = 0; i < chars.size(); ++i) {
             if ((i + 1) < chars.size() && chars[i] == chars[i + 1]) {
                 ++cnt;
             } else {
                 result += chars[i];
                 if (cnt != 1) {
-                    result.append(std::to_string(cnt));
+                    result.append(to_string(cnt));
                 }
                 cnt = 1;
             }

@@ -62,7 +62,7 @@ Constraints:
 class NestedIterator {
 public:
     NestedIterator(vector<NestedInteger> &nestedList) {
-        items = std::deque<NestedInteger>(nestedList.begin(), nestedList.end());
+        items = deque<NestedInteger>(nestedList.begin(), nestedList.end());
     }
 
     int next() {
@@ -83,7 +83,7 @@ public:
     }
 
 private:
-    std::deque<NestedInteger> items;
+    deque<NestedInteger> items;
 };
 
 /**

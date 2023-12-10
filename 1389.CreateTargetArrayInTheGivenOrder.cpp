@@ -48,7 +48,7 @@ class Solution {
 public:
     vector<int> createTargetArray(vector<int>& nums, vector<int>& index) {
         assert(nums.size() == index.size());
-        std::list<int> li;
+        list<int> li;
 
         for (auto i = 0; i < nums.size(); ++i) {
             auto it = li.begin();
@@ -58,7 +58,7 @@ public:
             li.insert(it, nums[i]);
         }
 
-        std::vector<int> vec;
+        vector<int> vec;
         for (auto it = li.begin(); it != li.end(); ++it) {
             vec.push_back(*it);
         }

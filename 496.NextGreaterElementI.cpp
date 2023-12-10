@@ -28,13 +28,13 @@ public:
     vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
         // nums1 是 nums2 的子集
         // 保存索引位置
-        std::unordered_map<int, int> nums1_index_map;
+        unordered_map<int, int> nums1_index_map;
         for (auto i = 0; i < nums1.size(); ++i) {
             nums1_index_map[nums1[i]] = i;
         }
 
-        std::stack<int> s;
-        std::vector<int> result(nums1.size(), 0);
+        stack<int> s;
+        vector<int> result(nums1.size(), 0);
         // 从后往前, 避免覆盖
         for (int i = nums2.size() - 1; i >= 0; --i) {
             // 栈顶不是最大值

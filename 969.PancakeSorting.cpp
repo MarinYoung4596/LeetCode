@@ -31,7 +31,7 @@ Note:
 class Solution {
 public:
     vector<int> pancakeSort(vector<int>& A) {
-        std::vector<int> result;
+        vector<int> result;
         pancake_sort_helper(result, A, A.size());
         return result;
     }
@@ -40,7 +40,7 @@ private:
     // 1、找到堆中（大小为n）的最大饼。
     // 2、把最大饼移到堆底。
     // 3、递归， pancakeSort(A, n - 1)。
-    void pancake_sort_helper(std::vector<int> &result, std::vector<int> &A, int n) {
+    void pancake_sort_helper(vector<int> &result, vector<int> &A, int n) {
         if (n == 1) {
             return;
         }
@@ -65,7 +65,7 @@ private:
         pancake_sort_helper(result, A, n - 1);
     }
 
-    void reverse(std::vector<int> &A, int begin, int end) {
+    void reverse(vector<int> &A, int begin, int end) {
         while (begin < end) {
             swap(A[begin++], A[end--]);
         }

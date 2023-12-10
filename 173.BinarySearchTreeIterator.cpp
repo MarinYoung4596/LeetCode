@@ -51,8 +51,8 @@ private:
     }
 
 private:
-    std::vector<int> vec;
-    std::vector<int>::iterator iter;
+    vector<int> vec;
+    vector<int>::iterator iter;
 };
 
 /**

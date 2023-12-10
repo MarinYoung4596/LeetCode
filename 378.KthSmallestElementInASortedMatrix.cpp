@@ -33,7 +33,7 @@ public:
     // 保留k个最小的数（不去重）
     int kthSmallest(vector<vector<int>>& matrix, int k) {
         // top 永远是最大的数
-        std::priority_queue<int> pq;
+        priority_queue<int> pq;
         for (auto i = 0; i < matrix.size(); ++i) {
             for (auto j = 0; j < matrix[0].size(); ++j) {
                 if (pq.size() < k) {
@@ -58,7 +58,7 @@ public:
 //  Third Solution: 二分查找
 class Solution3 {
 public:
-    int kthSmallest(const std::vector<std::vector<int>>& matrix, int k) {
+    int kthSmallest(const vector<vector<int>>& matrix, int k) {
         const int n = matrix.size();
         auto low = matrix[0][0]; // 最小
         auto high = matrix[n - 1][n - 1]; // 最大
@@ -76,7 +76,7 @@ public:
     }
 
 private:
-    int search_less_equal(const std::vector<std::vector<int>> &matrix, int target) {
+    int search_less_equal(const vector<vector<int>> &matrix, int target) {
         const int n = matrix.size();
         auto i = n - 1;
         auto j = 0; // 从左下角开始查找，每列有序

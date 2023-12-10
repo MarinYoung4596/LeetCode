@@ -17,9 +17,9 @@ Constraints:
 class Solution {
 public:
     bool leafSimilar(TreeNode* root1, TreeNode* root2) {
-        std::vector<int> seq1;
+        vector<int> seq1;
         get_leaf_sequence(root1, seq1);
-        std::vector<int> seq2;
+        vector<int> seq2;
         get_leaf_sequence(root2, seq2);
         if (seq1.size() != seq2.size()) {
             return false;
@@ -31,9 +31,9 @@ public:
         }
         return true;
     }
-    
+
 private:
-    void get_leaf_sequence(TreeNode* root, std::vector<int> &seq) {
+    void get_leaf_sequence(TreeNode* root, vector<int> &seq) {
         if (root == nullptr) {
             return;
         }

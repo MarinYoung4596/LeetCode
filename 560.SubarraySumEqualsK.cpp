@@ -34,7 +34,7 @@ public:
             return 0;
         }
         auto result = 0;
-        std::vector<int> sumi(nums);
+        vector<int> sumi(nums);
         for (auto i = 1; i < nums.size(); ++i) {
             sumi[i] += sumi[i - 1];
         }

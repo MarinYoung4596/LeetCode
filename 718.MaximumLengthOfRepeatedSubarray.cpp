@@ -26,7 +26,7 @@ public:
         if (A.empty() || B.empty()) {
             return 0;
         }
-        std::vector<std::vector<int>> dp(A.size(), std::vector<int>(B.size(), 0));
+        vector<vector<int>> dp(A.size(), vector<int>(B.size(), 0));
         // 初始化
         for (auto i = 0; i < A.size(); ++i) {
             dp[i][0] = A[i] == B[0] ? 1 : 0;

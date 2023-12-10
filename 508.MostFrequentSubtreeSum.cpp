@@ -30,7 +30,7 @@ Constraints:
 class Solution {
 public:
     vector<int> findFrequentTreeSum(TreeNode* root) {
-        std::unordered_map<int, int> node_freq_map;
+        unordered_map<int, int> node_freq_map;
         int max_freq = 0;
         dfs(root, node_freq_map, max_freq);
 
@@ -45,7 +45,7 @@ public:
 
 private:
     int dfs(TreeNode* root,
-            std::unordered_map<int, int> &node_freq_map,
+            unordered_map<int, int> &node_freq_map,
             int &max_freq) {
         if (nullptr == root) {
             return 0;

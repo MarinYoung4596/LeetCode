@@ -56,12 +56,12 @@ public:
         if (n < 2) {
             return n;
         }
-        std::vector<int> dp(n + 1, 0);
+        vector<int> dp(n + 1, 0);
         dp[2] = 1;
         for (auto i = 3; i <= n; ++i) {
             for (auto j = 1; j < i; ++j) {
-                dp[i] = std::max(dp[i],
-                                  std::max(j * (i - j),    /* 不使用cache的最大值，直接用两数相乘 */
+                dp[i] = max(dp[i],
+                                  max(j * (i - j),    /* 不使用cache的最大值，直接用两数相乘 */
                                            j * dp[i - j])  /* 使用cache的最大值 */
                         );
             }

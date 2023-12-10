@@ -57,7 +57,7 @@ public:
 // Second Solution: hasp map
 class Solution2 {
 public:
-    vector<int> twoSum2(vector<int> &numbers, int target) {
+    vector<int> twoSum(vector<int> &numbers, int target) {
         unordered_map<int, size_t> mapping;
         for (size_t i = 0; i < numbers.size(); i++) {
             mapping.insert(std::pair<int, size_t>(numbers[i], i));

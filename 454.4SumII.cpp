@@ -45,7 +45,7 @@ class Solution2 {
 public:
     int fourSumCount(vector<int>& A, vector<int>& B, vector<int>& C, vector<int>& D) {
         auto result = 0;
-        std::unordered_map<int, int> two_sum_map;
+        unordered_map<int, int> two_sum_map;
         for (const auto a : A) {
             for (const auto b : B) {
                 two_sum_map[a + b]++;

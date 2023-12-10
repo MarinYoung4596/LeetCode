@@ -16,15 +16,15 @@ For example, given n = 3, a solution set is:
 class Solution {
 public:
     vector<string> generateParenthesis(int n) {
-        std::vector<std::string> result;
-        std::string subres;
+        vector<string> result;
+        string subres;
         backtrack(result, subres, n, 0, 0);
         return result;
     }
 
 private:
-    void backtrack(std::vector<std::string> &result,
-                   std::string &subres,
+    void backtrack(vector<string> &result,
+                   string &subres,
                   int n, int left, int right) {
         if (right > left || left > n || right > n) {
             return;

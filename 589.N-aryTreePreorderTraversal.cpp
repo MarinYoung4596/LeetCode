@@ -48,13 +48,13 @@ public:
 class Solution {
 public:
     vector<int> preorder(Node* root) {
-        std::vector<int> result;
+        vector<int> result;
         preorder_helper(root, result);
         return result;
     }
 
 private:
-    void preorder_helper(Node* root, std::vector<int> &vec) {
+    void preorder_helper(Node* root, vector<int> &vec) {
         if (nullptr == root) {
             return;
         }

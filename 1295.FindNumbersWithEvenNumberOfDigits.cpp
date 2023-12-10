@@ -39,7 +39,7 @@ public:
     }
 
     int get_number_of_digits(int num) {
-        std::string num_str = std::to_string(num);
+        string num_str = to_string(num);
         return num_str.size();
     }
 };

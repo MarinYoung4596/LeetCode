@@ -1,11 +1,9 @@
 /*
-Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:
-
-Integers in each row are sorted in ascending from left to right.
-Integers in each column are sorted in ascending from top to bottom.
+Write an efficient algorithm that searches for a value in an `m x n` matrix. This matrix has the following properties:
+    Integers in each row are sorted in ascending from left to right.
+    Integers in each column are sorted in ascending from top to bottom.
 
 For example,
-
     Consider the following matrix:
     [
         [1,   4,  7, 11, 15],
@@ -14,9 +12,18 @@ For example,
         [10, 13, 14, 17, 24],
         [18, 21, 23, 26, 30]
     ]
-
     Given target = 5, return true.
     Given target = 20, return false.
+
+
+Constraints:
+    m == matrix.length
+    n == matrix[i].length
+    1 <= n, m <= 300
+    -10^9 <= matrix[i][j] <= 10^9
+    All the integers in each row are sorted in ascending order.
+    All the integers in each column are sorted in ascending order.
+    -10^9 <= target <= 10^9
 */
 
 class Solution {
@@ -26,8 +33,8 @@ public:
     }
 
 private:
-    bool searchInRow(const vector<vector<int>> &matrix, const int &target,
-                     const int &row, int minc, int maxc) {
+    bool searchInRow(const vector<vector<int>> &matrix, int target,
+                     int row, int minc, int maxc) {
         if (minc > maxc) {
             return false;
         }
@@ -44,8 +51,8 @@ private:
         return searchInRow(matrix, target, row, minc, maxc);
     }
 
-    bool searchInColumn(const vector<vector<int>> &matrix, const int &target,
-                        const int &column, int minr, int maxr) {
+    bool searchInColumn(const vector<vector<int>> &matrix, int target,
+                        int column, int minr, int maxr) {
         if (minr > maxr) {
             return false;
         }
@@ -62,7 +69,7 @@ private:
         return searchInColumn(matrix, target, column, minr, maxr);
     }
 
-    bool searchMatrix(const vector<vector<int>> &matrix, const int &target,
+    bool searchMatrix(const vector<vector<int>> &matrix, int target,
                       int minr, int maxr, int minc, int maxc) {
         if (minc > maxc || minr > maxr) {
             return false;

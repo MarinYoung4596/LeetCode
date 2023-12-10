@@ -33,8 +33,8 @@ Constraints:
 class Solution {
 public:
     int longestCommonSubsequence(string text1, string text2) {
-        std::vector<std::vector<int>> dp(text1.size() + 1,
-                                        std::vector<int>(text2.size() + 1, 0));
+        vector<vector<int>> dp(text1.size() + 1,
+                               vector<int>(text2.size() + 1, 0));
         // 非连续序列，因此必须继承前后的最大值，不能像718. 最长公共子串那样初始化，最大值容易丢失
         for (auto i = 1; i <= text1.size(); ++i) {
             for (auto j = 1; j <= text2.size(); ++j) {
@@ -45,7 +45,6 @@ public:
                 }
             }
         }
-        //print_matrix(dp);
         return dp[text1.size()][text2.size()];
     }
 };

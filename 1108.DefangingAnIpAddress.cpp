@@ -21,7 +21,7 @@ Constraints:
 class Solution {
 public:
     string defangIPaddr(string address) {
-        std::string result;
+        string result;
         for (auto i = 0; i < address.size(); ++i) {
             if (address[i] == '.') {
                 result.append("[.]");

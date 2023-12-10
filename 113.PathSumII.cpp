@@ -24,14 +24,14 @@ public:
     vector<vector<int>> pathSum(TreeNode* root, int targetSum) {
         vector<vector<int>> result;
         vector<int> candidates;
-        dfs(root, targetSum, candidates, result);
+        backtrack(root, targetSum, candidates, result);
         return result;
     }
 
 private:
-    void dfs(TreeNode* root, int target_sum,
-             vector<int> &candidates,
-             vector<vector<int>> &result) {
+    void backtrack(TreeNode* root, int target_sum,
+                   vector<int> &candidates,
+                   vector<vector<int>> &result) {
         if (nullptr == root) {
             return;
         }

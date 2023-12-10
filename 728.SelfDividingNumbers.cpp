@@ -18,7 +18,7 @@ Note:
 class Solution {
 public:
     vector<int> selfDividingNumbers(int left, int right) {
-        std::vector<int> result;
+        vector<int> result;
         for (auto n = left; n <= right; ++n) {
             if (ifSelfDivisable(n)) {
                 result.push_back(n);

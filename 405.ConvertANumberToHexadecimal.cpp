@@ -24,7 +24,7 @@ public:
         if (num == 0) {
             return "0";
         }
-        std::string result;
+        string result;
         unsigned int value = num;
         while (value > 0) {
             int x = value % 16;
@@ -34,7 +34,7 @@ public:
             result.push_back(ch);
             value /= 16;
         }
-        std::reverse(result.begin(), result.end());
+        reverse(result.begin(), result.end());
         return result;
     }
 };

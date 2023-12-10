@@ -62,9 +62,9 @@ public:
 // second solution
 class Solution2 {
 public:
-    std::string getPalindrom(const std::string &str, int left, int right) {
+    string getPalindrom(const string &str, int left, int right) {
         if (left < 0 || right >= str.size() || left > right) {
-            return std::string();
+            return string();
         }
         while (left >= 0 && right < str.size() && str[left] == str[right]) {
             --left;
@@ -73,8 +73,8 @@ public:
         return str.substr(left + 1, right - left - 1);
     }
 
-    std::string LongestPalindrom(const std::string &str) {
-        std::string result;
+    string LongestPalindrom(const string &str) {
+        string result;
         for (auto i = 0; i < str.size(); ++i) {
             auto odds_result = getPalindrom(str, i, i);
             auto even_result = getPalindrom(str, i, i + 1);
@@ -120,7 +120,7 @@ public:
 int main(int argc, char **argv) {
     string s = "cbbd";
     Solution3 obj;
-    std::cout << obj.longestPalindrome(s) << std::endl; //jjddjj
+    cout << obj.longestPalindrome(s) << endl; //jjddjj
 
     return 0;
 }

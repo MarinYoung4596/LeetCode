@@ -16,7 +16,7 @@ public:
             return s;
         }
 
-        std::unordered_set<char> _set = {'a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'u', 'U'};
+        unordered_set<char> _set = {'a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'u', 'U'};
         size_t begin = 0, end = s.size() - 1;
         while (begin < end) {
             while ((begin < end && _set.find(s[begin]) == _set.end())) {

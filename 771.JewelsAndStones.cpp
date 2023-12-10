@@ -23,7 +23,7 @@ Note:
 class Solution {
 public:
     int numJewelsInStones(string J, string S) {
-        std::unordered_set<char> char_set;
+        unordered_set<char> char_set;
         for (auto it = J.begin(); it != J.end(); ++it) {
             char_set.insert(*it);
         }

@@ -81,14 +81,14 @@ expected:
 class Solution2 {
     vector<int> spiralOrder(vector<vector<int>> &matrix) {
         if (matrix.empty()) {
-            return std::vector<int>();
+            return vector<int>();
         }
         int left = 0;
         int right = matrix[0].size() - 1;
         int up = 0;
         int down = matrix.size() - 1;
 
-        std::vector<int> result;
+        vector<int> result;
         while ((left >= 0 && left <= right)
                 && (up >= 0 && up <= down)) {
             for (auto i = left; i <= right; ++i) {

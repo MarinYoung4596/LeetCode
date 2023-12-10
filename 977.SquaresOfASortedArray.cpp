@@ -25,7 +25,7 @@ public:
                  [](int x, int y) {
                      return abs(x) < abs(y);
                  });
-        std::vector<int> result;
+        vector<int> result;
         for (auto x : A) {
             result.push_back(x * x);
         }

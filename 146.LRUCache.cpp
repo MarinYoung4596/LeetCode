@@ -39,12 +39,12 @@ private:
         auto addr = address[key];
         auto value = addr->second;
         cache.erase(addr);
-        auto node = std::make_pair(key, value);
+        auto node = make_pair(key, value);
         cache.push_front(node);
     }
 
     void add_recently(int key, int value) { // 直接插入到头部
-        auto node = std::make_pair(key, value);
+        auto node = make_pair(key, value);
         cache.push_front(node);
         address[key] = cache.begin();
     }
@@ -68,9 +68,9 @@ private:
     // maximum capacity
     int cap;
     // the closer distance to the head, the more frequent the element uses (头部元素用的更频繁)
-    std::list<pair<int, int>> cache;  // key : value
+    list<pair<int, int>> cache;  // key : value
     // save the key's position in the list (存储每个 key 在链表中的位置)
-    std::unordered_map<int, std::list<std::pair<int,int>>::iterator> address;
+    unordered_map<int, list<pair<int,int>>::iterator> address;
 };
 
 
@@ -83,35 +83,35 @@ int main() {
     cache.put(2, 4);
     cache.put(9, 6);
 
-    std::cout << cache.get(2) << std::endl;  // 4
+    cout << cache.get(2) << endl;  // 4
     cache.put(5, 2);
-    std::cout << cache.get(5) << std::endl;  // 2
+    cout << cache.get(5) << endl;  // 2
 
     cache.put(6, 7);
-    std::cout << cache.get(6) << std::endl;  // 7
+    cout << cache.get(6) << endl;  // 7
 
     cache.put(2, 1);
     cache.put(1, 1);
     cache.put(2, 3);
     cache.put(4, 1);
 
-    std::cout << cache.get(1) << std::endl;  // 1
-    std::cout << cache.get(2) << std::endl;  // 3
+    cout << cache.get(1) << endl;  // 1
+    cout << cache.get(2) << endl;  // 3
 
     // test case 2
 
     LRUCache cache2(2);
     cache2.put(1, 1);
     cache2.put(2, 2);
-    std::cout << cache2.get(1) << std::endl; // 1
+    cout << cache2.get(1) << endl; // 1
 
     cache2.put(3, 3);
-    std::cout << cache2.get(2) << std::endl; // -1
+    cout << cache2.get(2) << endl; // -1
 
     cache2.put(4, 4);
-    std::cout << cache2.get(1) << std::endl; // -1
-    std::cout << cache2.get(3) << std::endl; // 3
-    std::cout << cache2.get(4) << std::endl; // 4
+    cout << cache2.get(1) << endl; // -1
+    cout << cache2.get(3) << endl; // 3
+    cout << cache2.get(4) << endl; // 4
 
     return 0;
 }

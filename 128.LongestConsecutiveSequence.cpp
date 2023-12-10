@@ -14,7 +14,7 @@ Example:
 class Solution {
 public:
     int longestConsecutive(vector<int>& nums) {
-        std::unordered_map<int, bool> cache;
+        unordered_map<int, bool> cache;
         for (const auto &x : nums) {
             cache[x] = false;
         }
@@ -31,7 +31,7 @@ public:
             for (auto j = nums[i] - 1; cache.count(j) > 0; --j, ++subres) {
                 cache[j] = true;
             }
-            result = std::max(result, subres);
+            result = max(result, subres);
         }
         return result;
     }

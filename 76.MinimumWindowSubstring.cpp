@@ -16,7 +16,7 @@ class Solution {
 public:
     string minWindow(string s, string t) {
         const auto CHAR_SIZE = 256;
-        std::vector<int> tmap(CHAR_SIZE, 0);
+        vector<int> tmap(CHAR_SIZE, 0);
         for (auto ch : t) {
             ++tmap[ch];
         }
@@ -24,8 +24,8 @@ public:
         int left = 0;
         int right = 0;
 
-        std::string result;
-        std::vector<int> wmap(CHAR_SIZE, 0);
+        string result;
+        vector<int> wmap(CHAR_SIZE, 0);
         while (right < s.size()) {
             auto cur = s[right];
             ++wmap[cur];  // 右侧开始移动
@@ -51,8 +51,8 @@ public:
     }
 
 private:
-    bool is_valid(const std::vector<int> &tmap,
-                  const std::vector<int> &wmap) {
+    bool is_valid(const vector<int> &tmap,
+                  const vector<int> &wmap) {
         assert(tmap.size() == wmap.size());
         // tmap 是 wmap的子集
         for (auto i = 0; i < tmap.size(); ++i) {

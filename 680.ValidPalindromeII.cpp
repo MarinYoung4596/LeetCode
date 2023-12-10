@@ -21,7 +21,7 @@ public:
     }
 
 private:
-    bool dfs(const std::string &s, int begin, int end, bool del_flag) {
+    bool dfs(const string &s, int begin, int end, bool del_flag) {
         if (begin >= end) {
             return true;
         }

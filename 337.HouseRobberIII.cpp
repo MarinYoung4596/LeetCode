@@ -39,12 +39,12 @@ class Solution {
 public:
 public:
     int rob(TreeNode* root) {
-        std::unordered_map<TreeNode*, int> dp;
+        unordered_map<TreeNode*, int> dp;
         return rob_helper(root, dp);
     }
 
 private:
-    int rob_helper(TreeNode* root, std::unordered_map<TreeNode*, int> &dp) {
+    int rob_helper(TreeNode* root, unordered_map<TreeNode*, int> &dp) {
         if (root == nullptr) {
             return 0;
         }
@@ -66,7 +66,7 @@ private:
         int not_rob_res = rob_helper(root->left, dp) + rob_helper(root->right, dp);
 
         // 取最大 并缓存
-        dp[root] = std::max(rob_res, not_rob_res);
+        dp[root] = max(rob_res, not_rob_res);
         return dp[root];
     }
 };

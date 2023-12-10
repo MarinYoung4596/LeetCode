@@ -40,7 +40,7 @@ Note:
 #include <vector>
 #include <iostream>
 
-using std::vector;
+using namespace std;
 
 // First Solution: Time Limit Exceeded
 class NumMatrix {
@@ -149,10 +149,10 @@ int main() {
     matrix.push_back(vector<int>(arr5, arr5 + sizeof(arr5) / sizeof(int)));
 
     NumMatrix numMatrix(matrix);
-    std::cout << numMatrix.sumRegion(0, 1, 2, 3) << std::endl;
-    std::cout << numMatrix.sumRegion(1, 2, 3, 4) << std::endl;
-    std::cout << numMatrix.sumRegion(2, 1, 4, 3) << std::endl; // 8
-    std::cout << numMatrix.sumRegion(1, 1, 2, 2) << std::endl; // 11
-    std::cout << numMatrix.sumRegion(1, 2, 2, 4) << std::endl; // 12
+    cout << numMatrix.sumRegion(0, 1, 2, 3) << endl;
+    cout << numMatrix.sumRegion(1, 2, 3, 4) << endl;
+    cout << numMatrix.sumRegion(2, 1, 4, 3) << endl; // 8
+    cout << numMatrix.sumRegion(1, 1, 2, 2) << endl; // 11
+    cout << numMatrix.sumRegion(1, 2, 2, 4) << endl; // 12
     return 0;
 }

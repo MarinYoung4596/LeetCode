@@ -22,7 +22,7 @@ Note:
 class Solution {
 public:
     int rangeSumBST(TreeNode* root, int L, int R) {
-        std::vector<int> traverse;
+        vector<int> traverse;
         inorder_traverse(root, traverse);
 
         int result = 0;
@@ -36,7 +36,7 @@ public:
     }
 
 private:
-    void inorder_traverse(TreeNode* root, std::vector<int> &vec) {
+    void inorder_traverse(TreeNode* root, vector<int> &vec) {
         if (nullptr == root) {
             return;
         }

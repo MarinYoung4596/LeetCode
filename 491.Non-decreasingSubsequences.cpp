@@ -28,8 +28,7 @@ Constraints:
 #include <vector>
 #include <unordered_set>
 
-using std::vector;
-using std::unordered_set;
+using namespace std;
 
 class Solution {
 public:

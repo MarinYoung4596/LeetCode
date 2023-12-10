@@ -43,10 +43,10 @@ public:
             }
             char_pos_map[ch].push_back(i);
         }
-        vector<std::pair<char, vector<int>>> char_pos_list;
+        vector<pair<char, vector<int>>> char_pos_list;
         for (auto [ch, pos_list] : char_pos_map) {
-            char_pos_list.push_back(std::make_pair(ch, pos_list));
-            // std::cout << "ch: " << ch << "\tpos: " << join(pos_list, ',') << "\n";
+            char_pos_list.push_back(make_pair(ch, pos_list));
+            // cout << "ch: " << ch << "\tpos: " << join(pos_list, ',') << "\n";
         }
         // 2）从每个ch 中选一个
         vector<string> candidates;
@@ -55,16 +55,16 @@ public:
         backtrack(char_pos_list, char_map, candidates, tmp_res, 0);
 
         // 4) 按照字典序排序
-        std::sort(candidates.begin(), candidates.end());
-        candidates.erase(std::unique(candidates.begin(), candidates.end()), candidates.end());
+        sort(candidates.begin(), candidates.end());
+        candidates.erase(unique(candidates.begin(), candidates.end()), candidates.end());
         print_vector(candidates);
         // 5) 返回第一个
         return candidates[0];
     }
 
 private:
-    string vec_to_str(vector<std::pair<char, int>> vec) {
-        std::sort(vec.begin(), vec.end(),
+    string vec_to_str(vector<pair<char, int>> vec) {
+        sort(vec.begin(), vec.end(),
                 [&](const pair<char, int> &lhs, const pair<char, int> &rhs) {
                     return lhs.second < rhs.second;  // 按照位置排序
                 });
@@ -75,7 +75,7 @@ private:
         return res;
     }
 
-    string tmp_vec_to_str(const vector<std::pair<char, int>> &vec) {
+    string tmp_vec_to_str(const vector<pair<char, int>> &vec) {
         stringstream ss;
         for (auto item : vec) {
             ss << item.first << "|" << item.second << ", ";
@@ -83,21 +83,21 @@ private:
         return ss.str();
     }
 
-    void backtrack(const vector<std::pair<char, vector<int>>>& char_pos_list, /* 原始 */
+    void backtrack(const vector<pair<char, vector<int>>>& char_pos_list, /* 原始 */
                    unordered_map<char, int>& char_map,
                    vector<string>& final_res, /*最终结果*/
-                   vector<std::pair<char, int>> tmp_res, /*临时结果*/
+                   vector<pair<char, int>> tmp_res, /*临时结果*/
                    int index /*当前迭代位置*/) {
 
         auto tmp_res_str = vec_to_str(tmp_res);
         /*
-        std::cout << "BEGIN: index=" << index
+        cout << "BEGIN: index=" << index
                   << " tmp_res_str=" << tmp_vec_to_str(tmp_res)
-                  << " final_res_str=" << tmp_res_str << std::endl;
+                  << " final_res_str=" << tmp_res_str << endl;
         */
         if (tmp_res.size() == char_pos_list.size()) {
             final_res.push_back(tmp_res_str);
-            auto it = std::find(final_res.begin(), final_res.end(), tmp_res_str);
+            auto it = find(final_res.begin(), final_res.end(), tmp_res_str);
             if (it == final_res.end()) {
                 final_res.push_back(tmp_res_str);
             }
@@ -112,15 +112,15 @@ private:
 
             auto tmp_str = vec_to_str(tmp_res);
             /*
-            std::cout << "MID: index=" << index
+            cout << "MID: index=" << index
                       << " tmp_res=" << tmp_str
                       << " cur_ch=" << ch
                       << " after=" << tmp_str + ch;
             */
-            tmp_res.push_back(std::make_pair(ch, -1));
+            tmp_res.push_back(make_pair(ch, -1));
             auto& pos_list = char_pos_list[i].second;
             for (auto pos : pos_list) {
-                // std::cout << " pos=" << pos << std::endl;
+                // cout << " pos=" << pos << endl;
                 tmp_res[char_map[ch]].second = pos;
                 backtrack(char_pos_list, char_map, final_res, tmp_res, index + 1);
             }
@@ -133,12 +133,12 @@ private:
 class Solution2 {
 public:
     string removeDuplicateLetters(string s) {
-        std::stack<char> stk;
-        std::vector<int> counter(256, 0);
+        stack<char> stk;
+        vector<int> counter(256, 0);
         for (auto ch : s) {  // 统计s 中各字符频次
             counter[ch] += 1;
         }
-        std::vector<bool> is_in_stack(256, false);
+        vector<bool> is_in_stack(256, false);
         for (auto ch : s) {
             counter[ch] -= 1;
 
@@ -161,7 +161,7 @@ public:
             result += stk.top();
             stk.pop();
         }
-        std::reverse(result.begin(), result.end());
+        reverse(result.begin(), result.end());
         return result;
     }
 
@@ -169,13 +169,13 @@ public:
 
 int main() {
     Solution2 obj;
-    std::string line = "cbacdcbc";
+    string line = "cbacdcbc";
     auto res = obj.removeDuplicateLetters(line);
 
-    std::cout << "input=" << line << "\toutput=" << res << std::endl;
-    //while (std::getline(std::cin, line)) {
+    cout << "input=" << line << "\toutput=" << res << endl;
+    //while (getline(cin, line)) {
     //    auto res = obj.removeDuplicateLetters(line);
-    //    std::cout << "input=" << line << "\toutput=" <<res << "\n";
+    //    cout << "input=" << line << "\toutput=" <<res << "\n";
     //}
     return 0;
 }

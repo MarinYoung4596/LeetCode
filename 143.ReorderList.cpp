@@ -38,12 +38,12 @@ Constraints:
 class Solution {
 public:
     void reorderList(ListNode* head) {
-        std::vector<int> vec;
+        vector<int> vec;
         for (auto node = head; node != nullptr; node = node->next) {
             vec.push_back(node->val);
         }
         auto idx = 0;
-        for (auto node = head; node != nullptr node = node->next) {
+        for (auto node = head; node != nullptr; node = node->next) {
             if (idx % 2 == 1) {
                 node->val = vec[vec.size() - 1 - idx / 2];
             } else {
@@ -120,17 +120,17 @@ public:
         auto dummy_head = new ListNode(-1);
         auto p = dummy_head;
         while (p_left != nullptr && p_right != nullptr) {
-            auto tmp_left = p_left->next;
+            auto next_left = p_left->next;
             p_left->next = nullptr;
             p->next = p_left;
-            p_left = tmp_left;
+            p_left = next_left;
 
             p = p->next;
 
-            auto tmp_right = p_right->next;
+            auto next_right = p_right->next;
             p_right->next = nullptr;
             p->next = p_right;
-            p_right = tmp_right;
+            p_right = next_right;
 
             p = p->next;
         }

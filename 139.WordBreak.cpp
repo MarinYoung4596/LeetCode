@@ -54,21 +54,21 @@ public:
 class Solution {
 public:
     bool wordBreak(string s, vector<string>& wordDict) {
-        std::unordered_set<std::string> word_dict;
-        std::unordered_set<std::size_t> word_len_dict;
+        unordered_set<string> word_dict;
+        unordered_set<size_t> word_len_dict;
         for (const auto &item : wordDict) {
             word_dict.insert(item);
             word_len_dict.insert(item.size());
         }
-        std::unordered_map<std::string, bool> cache;
+        unordered_map<string, bool> cache;
         return dfs(s, word_dict, word_len_dict, cache);
     }
 
 private:
-    bool dfs(const std::string &str,
-            const std::unordered_set<std::string> &word_dict,
-            const std::unordered_set<std::size_t> &word_len_dict,
-            std::unordered_map<std::string, bool> &cache) {
+    bool dfs(const string &str,
+            const unordered_set<string> &word_dict,
+            const unordered_set<size_t> &word_len_dict,
+            unordered_map<string, bool> &cache) {
         if (str.empty()) {
             return true;
         }

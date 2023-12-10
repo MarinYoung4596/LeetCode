@@ -29,15 +29,15 @@ Note:
 class Solution {
 public:
     int uniqueMorseRepresentations(vector<string>& words) {
-        std::string arr[26] = {
+        string arr[26] = {
             ".-","-...","-.-.","-..",".","..-.","--.",
             "....","..",".---","-.-",".-..","--","-.",
             "---",".--.","--.-", ".-.","...","-",
             "..-","...-",".--","-..-","-.--","--.."};
 
-        std::unordered_set<std::string> str_set;
+        unordered_set<string> str_set;
         for (auto it = words.begin(); it != words.end(); ++it) {
-            std::string trans;
+            string trans;
             for (auto jt = it->begin(); jt != it->end(); ++jt) {
                 trans += arr[*jt - 'a'];
             }

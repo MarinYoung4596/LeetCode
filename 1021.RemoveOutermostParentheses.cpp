@@ -41,7 +41,7 @@ Note:
 class Solution {
 public:
     string removeOuterParentheses(string S) {
-        std::string result;
+        string result;
 
         int left = 0;
         int right = 0;

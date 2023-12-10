@@ -56,7 +56,7 @@ public:
     }
 
 private:
-    std::queue<int> requests;
+    queue<int> requests;
     const int MAX_RANGE = 3000;
 };
 

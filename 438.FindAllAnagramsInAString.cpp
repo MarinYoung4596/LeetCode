@@ -25,16 +25,16 @@ public:
     vector<int> findAnagrams(string s, string p) {
         const auto CHAR_SIZE = 256;
 
-        std::vector<int> pmap(CHAR_SIZE, 0);
+        vector<int> pmap(CHAR_SIZE, 0);
         for (auto x : p) {
             ++pmap[x];
         }
 
-        std::vector<int> result;
+        vector<int> result;
 
         int left = 0;
         int right = 0;
-        std::vector<int> wmap(CHAR_SIZE, 0);
+        vector<int> wmap(CHAR_SIZE, 0);
         while (right < s.size()) {
             ++wmap[s[right]];
             ++right; // 右指针扩张
@@ -52,7 +52,7 @@ public:
 
 
 private:
-    bool is_valid(const std::vector<int> &tmap, const std::vector<int> &wmap) {
+    bool is_valid(const vector<int> &tmap, const vector<int> &wmap) {
         if (tmap.size() != wmap.size()) {
             return false;
         }

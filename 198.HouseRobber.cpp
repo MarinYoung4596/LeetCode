@@ -18,7 +18,7 @@ public:
         if (nums.empty()) {
             return 0;
         }
-        std::vector<int> dp(nums.size(), 0);
+        vector<int> dp(nums.size(), 0);
         for (auto i = 0; i < nums.size(); i++) {
             if (i == 0) {
                 dp[i] = nums[i];

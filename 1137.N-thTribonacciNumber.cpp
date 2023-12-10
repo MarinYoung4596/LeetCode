@@ -28,7 +28,7 @@ Constraints:
 class Solution {
 public:
     int tribonacci(int n) {
-        std::vector<int> vec(n + 1, 0);
+        vector<int> vec(n + 1, 0);
         if (n < 1) {
             return 0;
         } else if (n < 3) {

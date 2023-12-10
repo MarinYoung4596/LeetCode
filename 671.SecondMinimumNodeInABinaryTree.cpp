@@ -32,7 +32,7 @@ public:
         if  (nullptr == root) {
             return -1;
         }
-        std::vector<int> vec;
+        vector<int> vec;
         inorder(root, vec);
 
         int minimum = root->val;
@@ -48,7 +48,7 @@ public:
     }
 
 private:
-    void inorder(TreeNode* root, std::vector<int> &vec) {
+    void inorder(TreeNode* root, vector<int> &vec) {
         if (nullptr == root) {
             return;
         }

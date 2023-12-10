@@ -89,7 +89,7 @@ public:
                     } else if (tmp_sum > target) {
                         --h;
                     } else {
-                        result.push_back(std::vector<int>({nums[i], nums[j], nums[k], nums[h]}));
+                        result.push_back(vector<int>({nums[i], nums[j], nums[k], nums[h]}));
                         while (k < h && nums[k] == nums[k + 1]) {
                             ++k;
                         }

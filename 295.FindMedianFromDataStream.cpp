@@ -90,8 +90,8 @@ private:
     }
 
 private:
-    std::vector<int> MaxHeap; // smaller numbers
-    std::vector<int> MinHeap; // larger numbers
+    vector<int> MaxHeap; // smaller numbers
+    vector<int> MinHeap; // larger numbers
 };
 
 // Your MedianFinder object will be instantiated and called as such:
@@ -157,7 +157,7 @@ private:
 
 private:
     // ??? ???? ????? ?????
-    std::priority_queue<int, std::vector<int>, std::less<int>> max_arr;
+    std::priority_queue<int, vector<int>, std::less<int>> max_arr;
     // ??? ????????? ?????
-    std::priority_queue<int, std::vector<int>, std::greater<int>> min_arr;
+    std::priority_queue<int, vector<int>, std::greater<int>> min_arr;
 };

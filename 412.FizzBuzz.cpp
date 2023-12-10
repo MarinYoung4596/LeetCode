@@ -1,6 +1,7 @@
 /*
 Write a program that outputs the string representation of numbers from 1 to n.
-But for multiples of three it should output “Fizz” instead of the number and for the multiples of five output “Buzz”. For numbers which are multiples of both three and five output “FizzBuzz”.
+But for multiples of three it should output “Fizz” instead of the number and for the multiples of five output “Buzz”.
+For numbers which are multiples of both three and five output “FizzBuzz”.
 
 Example:
     n = 15,
@@ -28,7 +29,7 @@ Example:
 class Solution {
 public:
     vector<string> fizzBuzz(int n) {
-        std::vector<std::string> result;
+        vector<string> result;
         for (auto i = 1; i <= n; ++i) {
             bool is_3_mul = i % 3 == 0;
             bool is_5_mul = i % 5 == 0;

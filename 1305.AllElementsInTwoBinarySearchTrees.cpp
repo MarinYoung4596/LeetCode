@@ -35,15 +35,15 @@ Constraints:
 class Solution {
 public:
     vector<int> getAllElements(TreeNode* root1, TreeNode* root2) {
-        std::vector<int> vec1;
+        vector<int> vec1;
         traverse(root1, vec1);
-        std::vector<int> vec2;
+        vector<int> vec2;
         traverse(root2, vec2);
         return merge(vec1, vec2);
     }
 
 private:
-    void traverse(TreeNode* root, std::vector<int> &vec) {
+    void traverse(TreeNode* root, vector<int> &vec) {
         if (nullptr == root) {
             return;
         }
@@ -52,14 +52,14 @@ private:
         traverse(root->right, vec);
     }
 
-    std::vector<int> merge(const std::vector<int> &vec1, const std::vector<int> &vec2) {
+    vector<int> merge(const vector<int> &vec1, const vector<int> &vec2) {
         if (vec1.empty()) {
             return vec2;
         }
         if (vec2.empty()) {
             return vec1;
         }
-        std::vector<int> vec(vec1.size() + vec2.size(), 0);
+        vector<int> vec(vec1.size() + vec2.size(), 0);
         auto i = 0;
         auto j = 0;
         auto k = 0;

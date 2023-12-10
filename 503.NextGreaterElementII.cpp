@@ -20,8 +20,8 @@ Note: The length of given array won't exceed 10000.
 class Solution {
 public:
     vector<int> nextGreaterElements(vector<int>& nums) {
-        std::vector<int> result(nums.size(), 0);
-        std::stack<int> s; // 存储当前最大的值
+        vector<int> result(nums.size(), 0);
+        stack<int> s; // 存储当前最大的值
         // 循环：将数组首位拼接起来，相当于循环两遍
         // 因为是next，所以从后往前遍历
         for (int i = 2 * nums.size() - 1; i >= 0; --i) {

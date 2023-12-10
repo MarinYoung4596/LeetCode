@@ -68,7 +68,7 @@ s="mississippi";    p="mis*is*ip*."     true
 
 class Solution {
 public:
-    bool isMatch(std::string s, std::string p) {
+    bool isMatch(string s, string p) {
         return dfs(s.c_str(), p.c_str());
     }
 
@@ -98,12 +98,12 @@ private:
 
 class Solution2 {
 public:
-    bool isMatch(std::string s, std::string p) {
+    bool isMatch(string s, string p) {
         return dfs(s, p);
     }
 
 private:
-    bool dfs(const std::string &s, const std::string &p) {
+    bool dfs(const string &s, const string &p) {
         //printf("s[%s] p[%s]\n", s.c_str(), p.c_str());
         if (p.empty()) {
             return s.empty();
@@ -119,7 +119,7 @@ private:
 };
 
 int main() {
-    std::vector<std::pair<std::string, std::string>> vec = {
+    vector<pair<string, string>> vec = {
         {"aa", "a"},
         {"aa", "a*"},
         {"ab", ".*"},
@@ -135,13 +135,13 @@ int main() {
         {"ab", ".*c"},
         {"aaa", "a*a"}
     };
-    std::vector<bool> result = {
+    vector<bool> result = {
         false, true, true, true, false, false, false,
         true, false, true, true, true, false, true
     };
     Solution2 obj;
     for (auto i = 0; i < vec.size(); ++i) {
-        std::cout << obj.isMatch(vec[i].first, vec[i].second) << '\t' << result[i] << '\n';
+        cout << obj.isMatch(vec[i].first, vec[i].second) << '\t' << result[i] << '\n';
     }
 
     return 0;

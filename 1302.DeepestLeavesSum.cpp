@@ -18,18 +18,18 @@ public:
         if (nullptr == root) {
             return 0;
         }
-        std::vector<std::vector<int>> levels;
+        vector<vector<int>> levels;
         dfs(root, 1, levels);
         return std::accumulate(levels.back().begin(), levels.back().end(), 0);
     }
 
 private:
-    void dfs(TreeNode* root, int depth, std::vector<std::vector<int>> &levels) {
+    void dfs(TreeNode* root, int depth, vector<vector<int>> &levels) {
         if (nullptr == root) {
             return;
         }
         if (depth > levels.size()) {
-            levels.push_back(std::vector<int>());
+            levels.push_back(vector<int>());
         }
         if (nullptr == root->left && nullptr == root->right) {
             levels[depth - 1].push_back(root->val);

@@ -22,7 +22,7 @@ NOTE: input types have been changed on April 15, 2019. Please reset to default c
 class Solution {
 public:
     vector<vector<int>> intervalIntersection(vector<vector<int>>& A, vector<vector<int>>& B) {
-        std::vector<std::vector<int>> result;
+        vector<vector<int>> result;
 
         auto i = 0;
         auto j = 0;
@@ -45,13 +45,13 @@ public:
 
 private:
     inline bool exist_intersection(const std::pair<int, int> &lhs,
-                           const std::pair<int, int> &rhs) {
+                                   const std::pair<int, int> &rhs) {
         return !(lhs.first > rhs.second || lhs.second < rhs.first);
     }
 
-    inline std::vector<int> get_intersection(const std::pair<int, int> &lhs,
-                           const std::pair<int, int> &rhs) {
-        return std::vector<int>({std::max(lhs.first, rhs.first),
-                                 std::min(lhs.second, rhs.second)});
+    inline vector<int> get_intersection(const std::pair<int, int> &lhs,
+                                        const std::pair<int, int> &rhs) {
+        return vector<int>({std::max(lhs.first, rhs.first),
+                            std::min(lhs.second, rhs.second)});
     }
 };

@@ -42,7 +42,7 @@ public:
         auto mode = sub_len == 0 ? 0 : len % k; // 模
         sub_len = std::max(1, sub_len); // 最短为1
 
-        std::vector<ListNode*> result;
+        vector<ListNode*> result;
         for (auto i = 0; i < k; ++i) {
             ListNode saved_head(-1, root);
             ListNode* pre = nullptr;

@@ -20,7 +20,7 @@ public:
     int numTrees(int n) {
         assert(n > 0);
 
-        std::vector<int> dp(n + 1, 0);
+        vector<int> dp(n + 1, 0);
         for (auto i = 0; i <= n; ++i) {
             if (i < 2) {
                 dp[i] = 1;

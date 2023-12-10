@@ -43,14 +43,14 @@ public:
 class Solution {
 public:
     vector<vector<int>> levelOrder(Node* root) {
-        std::vector<std::vector<int>> result;
+        vector<vector<int>> result;
         if (root == nullptr) {
             return result;
         }
 
-        std::queue<Node*> q1;
-        std::queue<Node*> q2;
-        std::vector<int> level;
+        queue<Node*> q1;
+        queue<Node*> q2;
+        vector<int> level;
         q1.push(root);
         while (!q1.empty()) {
             while (!q1.empty()) {

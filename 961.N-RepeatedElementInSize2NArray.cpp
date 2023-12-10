@@ -27,7 +27,7 @@ class Solution {
 public:
     // 方法一：
     int repeatedNTimes(vector<int>& A) {
-        std::sort(A.begin(), A.end());
+        sort(A.begin(), A.end());
 
         int left = A.size() / 2 - 1;
         int right = left + 1;

@@ -46,12 +46,12 @@ public:
 
     // Decodes your encoded data to tree.
     TreeNode* deserialize(string data) {
-        std::stringstream ss(data);
+        stringstream ss(data);
         string item;
 
         TreeNode* root = nullptr;
-        while (std::getline(ss, item, ',')) {
-            root = insert(root, std::stoi(item));
+        while (getline(ss, item, ',')) {
+            root = insert(root, stoi(item));
         }
         return root;
     }
@@ -61,7 +61,7 @@ private:
         if (nullptr == root) {
             return;
         }
-        result += std::to_string(root->val);
+        result += to_string(root->val);
         result += ",";
         encode(root->left, result);
         encode(root->right, result);

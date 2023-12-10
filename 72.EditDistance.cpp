@@ -22,7 +22,7 @@ public:
 
         const auto row = word1.size() + 1;
         const auto col = word2.size() + 1;
-        std::vector<std::vector<int>> dp(row, std::vector<int>(col, 0));
+        vector<vector<int>> dp(row, vector<int>(col, 0));
 
         for (auto i = 1; i < row; ++i) {
             dp[i][0] = i;

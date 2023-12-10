@@ -25,8 +25,8 @@ public:
         if (grid.empty() || grid[0].empty()) {
             return 0;
         }
-        std::vector<std::vector<bool>> visited(grid.size(),
-                                              std::vector<bool>(grid[0].size(), false));
+        vector<vector<bool>> visited(grid.size(),
+                                    vector<bool>(grid[0].size(), false));
         auto result = 0;
         for (auto i = 0; i < grid.size(); ++i) {
             for (auto j = 0; j < grid[0].size(); ++j) {
@@ -34,7 +34,6 @@ public:
                     continue;
                 }
                 result = dfs(grid, visited, i, j);
-                //printf("i=%d j=%d result=%d\n", i, j, result);
                 break;
             }
         }
@@ -42,8 +41,8 @@ public:
     }
 
 private:
-    int dfs(const std::vector<std::vector<int>> &grid,
-            std::vector<std::vector<bool>> &visited,
+    int dfs(const vector<vector<int>> &grid,
+            vector<vector<bool>> &visited,
             int i, int j) {
         if (i < 0
                 || i >= grid.size()
@@ -60,7 +59,6 @@ private:
         auto down = dfs(grid, visited, i + 1, j);
         auto left = dfs(grid, visited, i, j - 1);
         auto right = dfs(grid, visited, i, j + 1);
-        //printf("i=%d j=%d up=%d down=%d left=%d down=%d\n", i, j, up, down, left, right);
         return up + down + left + right;
     }
 };

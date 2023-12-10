@@ -1,5 +1,4 @@
 /*
-
 Given an integer number n, return the difference between the product of its digits and the sum of its digits.
 
 
@@ -22,12 +21,13 @@ Example 2:
 
 Constraints:
     1 <= n <= 10^5
-
 */
+
+
 class Solution {
 public:
     int subtractProductAndSum(int n) {
-        std::vector<int> digits;
+        vector<int> digits;
         get_all_digits(n, digits);
 
         int sum = std::accumulate(digits.begin(), digits.end(), 0,
@@ -41,7 +41,7 @@ public:
         return product - sum;
     }
 
-    void get_all_digits(int n, std::vector<int> &vec) {
+    void get_all_digits(int n, vector<int> &vec) {
         while (n > 0) {
             int d = n % 10;
             vec.push_back(d);

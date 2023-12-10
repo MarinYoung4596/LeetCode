@@ -13,7 +13,7 @@ class Solution {
 public:
     int singleNumber(vector<int>& nums) {
         const auto len = sizeof(int) * 8; // sizeof means Bytes
-        std::vector<int> bits(len, 0);
+        vector<int> bits(len, 0);
 
         for (auto i = 0; i < nums.size(); ++i) {
             for (auto j = 0; j < len; ++j) {

@@ -12,9 +12,9 @@ Note:
 class Solution {
 public:
     string reverseWords(string s) {
-        std::vector<std::string> vec;
+        vector<string> vec;
         split(s, ' ', vec);
-        std::string result;
+        string result;
         for (auto &item : vec) {
             reverse(item);
             result += item + ' ';
@@ -24,10 +24,10 @@ public:
     }
 
 private:
-    void split(const std::string &str, char sep, std::vector<std::string> &result) {
+    void split(const string &str, char sep, vector<string> &result) {
         int begin = 0;
         int end = str.find_first_of(sep, begin);
-        while (end != std::string::npos) {
+        while (end != string::npos) {
             result.push_back(str.substr(begin, end - begin));
 
             begin = str.find_first_not_of(sep, end);
@@ -38,7 +38,7 @@ private:
         }
     }
 
-    void reverse(std::string &str) {
+    void reverse(string &str) {
         int begin = 0;
         int end = str.size() - 1;
         while (begin < end) {

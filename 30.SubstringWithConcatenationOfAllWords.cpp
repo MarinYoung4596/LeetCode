@@ -69,12 +69,12 @@ public:
         get_all_permuation(words, permuations);
 
         // 去重
-        std::sort(permuations.begin(), permuations.end());
-        permuations.erase(std::unique(permuations.begin(), permuations.end()), permuations.end());
+        sort(permuations.begin(), permuations.end());
+        permuations.erase(unique(permuations.begin(), permuations.end()), permuations.end());
         //
         for (const auto &item : permuations) {
             auto pos = s.find(item);
-            while (pos != std::string::npos) {  // 存在多个 pos
+            while (pos != string::npos) {  // 存在多个 pos
                 res.push_back(pos);
                 pos = s.find(item, pos + 1);
             }

@@ -19,7 +19,6 @@ Example 3:
     Output: "/home/foo"
     Explanation: In the canonical path, multiple consecutive slashes are replaced by a single one.
 
-
 Example 4:
     Input: "/a/./b/../../c/"
     Output: "/c"
@@ -37,9 +36,9 @@ Example 6:
 class Solution {
 public:
     string simplifyPath(string path) {
-        std::vector<std::string> dirs;
+        vector<string> dirs;
         split(path, '/', dirs);
-        std::stack<std::string> s;
+        stack<string> s;
         for (const auto &dir : dirs) {
             if (dir == "." || dir.empty()) {
                 continue;
@@ -52,7 +51,7 @@ public:
                 s.push(dir);
             }
         }
-        std::string result;
+        string result;
         while (!s.empty()) {
             result = s.top() + "/" + result;
             s.pop();
@@ -61,7 +60,7 @@ public:
     }
 
 private:
-    void split(const std::string &str, char sep, std::vector<std::string> &vec) {
+    void split(const string &str, char sep, vector<string> &vec) {
         if (str.empty()) {
             return;
         }
@@ -70,7 +69,7 @@ private:
         }
         auto begin = 0;
         auto end = str.find_first_of(sep);
-        while (end != std::string::npos) {
+        while (end != string::npos) {
             vec.push_back(str.substr(begin, end - begin));
             begin = str.find_first_not_of(sep, end);
             end = str.find_first_of(sep, begin);

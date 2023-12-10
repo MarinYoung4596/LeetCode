@@ -38,7 +38,7 @@ public:
             max_candy = max(x, max_candy);
         }
 
-        std::vector<bool> result(candies.size(), false);
+        vector<bool> result(candies.size(), false);
         for (auto i = 0; i < candies.size(); ++i) {
             if (candies[i] + extraCandies >= max_candy) {
                 result[i] = true;

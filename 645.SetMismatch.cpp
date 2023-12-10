@@ -17,8 +17,8 @@ Note:
 class Solution {
 public:
     vector<int> findErrorNums(vector<int>& nums) {
-        std::vector<int> result;
-        std::vector<int> vec(nums.size() + 1, 0);
+        vector<int> result;
+        vector<int> vec(nums.size() + 1, 0);
         for (auto i = 0; i < nums.size(); ++i) {
             ++vec[nums[i]];
         }
@@ -35,7 +35,7 @@ public:
                 break;
             }
         }
-        return std::vector<int>({duplicate, missing});
+        return vector<int>({duplicate, missing});
     }
 };
 
@@ -60,6 +60,6 @@ public:
                 break;
             }
         }
-        return std::vector<int>({duplicate, missing});
+        return vector<int>({duplicate, missing});
     }
 };

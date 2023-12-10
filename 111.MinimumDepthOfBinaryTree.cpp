@@ -23,7 +23,7 @@ class Solution {
         if (root->right) {
             right = minDepth(root->right) + 1;
         }
-        return std::min(left, right);
+        return min(left, right);
     }
 };
 
@@ -33,7 +33,7 @@ class Solution2 {
         if (nullptr == root) {
             return 0;
         }
-        std::queue<TreeNode*> q;
+        queue<TreeNode*> q;
         q.push(root);
         auto depth = 1;
         while (!q.empty()) {

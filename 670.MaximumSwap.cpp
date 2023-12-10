@@ -20,12 +20,12 @@ Note:
 class Solution {
 public:
     int maximumSwap(int num) {
-        auto str = std::to_string(num);
-        std::stack<std::pair<int, int>> max_stack; // 保留 str[i] 位置之后的最大值及下标
+        auto str = to_string(num);
+        stack<pair<int, int>> max_stack; // 保留 str[i] 位置之后的最大值及下标
         for (int i = str.size() - 1; i >= 0; --i) {
             auto cur = str[i] - '0';
             if (max_stack.empty() || cur > max_stack.top().first) {
-                max_stack.push(std::make_pair(cur, i));
+                max_stack.push(make_pair(cur, i));
             } else {
                 max_stack.push(max_stack.top());
             }
@@ -36,10 +36,10 @@ public:
                 max_stack.pop();
                 continue;
             } else { // cur < max_stack.top
-                std::swap(str[i], str[max_stack.top().second]);
+                swap(str[i], str[max_stack.top().second]);
                 break;
             }
         }
-        return std::stoi(str);
+        return stoi(str);
     }
 };

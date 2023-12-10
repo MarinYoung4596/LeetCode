@@ -17,7 +17,7 @@ So you should return 1, because there is only one bulb is on.
 class Solution {
 public:
     int bulbSwitch(int n) {
-        std::vector<bool> vec(n + 1, false);
+        vector<bool> vec(n + 1, false);
 
         for (auto i = 1; i <= n; ++i) {
             for (auto j = 1 + i - 1; j <= n; j += i) {

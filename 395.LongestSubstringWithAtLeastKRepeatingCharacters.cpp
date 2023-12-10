@@ -22,11 +22,11 @@ public:
     }
 
 private:
-    void dfs(const std::string &str, int k, int left, int right, int &result) {
+    void dfs(const string &str, int k, int left, int right, int &result) {
         if (right - left < k) {
             return;
         }
-        std::vector<int> ch_map(256, 0);
+        vector<int> ch_map(256, 0);
         for (auto i = left; i < right; ++i) {
             ++ch_map[str[i]];
         }
@@ -41,7 +41,7 @@ private:
         if (begin != left) { // 不满足条件
             dfs(str, k, begin, right, result);
         } else { // 说明满足条件
-            result = std::max(result, right - left);
+            result = max(result, right - left);
         }
     }
 };

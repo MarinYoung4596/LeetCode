@@ -48,7 +48,7 @@ public:
         TreeNode* second = nullptr;
 
         // 中序遍历
-        std::stack<TreeNode*> s;
+        stack<TreeNode*> s;
         TreeNode* p = root;
         while (nullptr != p || !s.empty()) {
             if (nullptr != p) {
@@ -69,7 +69,7 @@ public:
                 p = p->right;
             }
         }
-        std::swap(first->val, second->val);
+        swap(first->val, second->val);
     }
 };
 
@@ -78,10 +78,10 @@ public:
 class Solution2 {
 public:
     void recoverTree(TreeNode* root) {
-        std::vector<TreeNode*> list;
-        std::vector<int> values;
+        vector<TreeNode*> list;
+        vector<int> values;
         inorder(root, list, values);
-        std::sort(values.begin(), values.end());
+        sort(values.begin(), values.end());
         for (int i = 0; i < list.size(); ++i) {
             list[i]->val = values[i];
         }

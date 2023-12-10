@@ -44,8 +44,8 @@ class Solution {
 public:
     int widthOfBinaryTree(TreeNode* root) {
         int result = INT_MIN;
-        std::queue<std::pair<TreeNode*, uint64_t>> q;
-        q.push(std::make_pair(root, 1));
+        queue<pair<TreeNode*, uint64_t>> q;
+        q.push(make_pair(root, 1));
         while (!q.empty()) {
             uint64_t queue_len = q.size();
             uint64_t begin_index = 0;
@@ -65,14 +65,14 @@ public:
                 }
 
                 if (nullptr != node->left) {
-                    q.push(std::make_pair(node->left, index * 2));
+                    q.push(make_pair(node->left, index * 2));
                 }
                 if (nullptr != node->right) {
-                    q.push(std::make_pair(node->right, index * 2 + 1));
+                    q.push(make_pair(node->right, index * 2 + 1));
                 }
             }
             int cur_width = end_index - begin_index + 1;
-            result = std::max(result, cur_width);
+            result = max(result, cur_width);
         }
         return result;
     }

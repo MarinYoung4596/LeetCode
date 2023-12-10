@@ -19,7 +19,7 @@ Note:
 class Solution {
 public:
     string removeDuplicates(string S) {
-        std::stack<char> ss;
+        stack<char> ss;
         for (auto i = 0; i < S.size(); ++i) {
             if (!ss.empty() && ss.top() == S[i]) {
                 ss.pop();
@@ -27,12 +27,12 @@ public:
                 ss.push(S[i]);
             }
         }
-        std::string result;
+        string result;
         while (!ss.empty()) {
             result += ss.top();
             ss.pop();
         }
-        std::reverse(result.begin(), result.end());
+        reverse(result.begin(), result.end());
         return result;
     }
 };

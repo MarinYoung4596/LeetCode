@@ -29,8 +29,8 @@ class Solution {
 public:
     vector<int> nextLargerNodes(ListNode* head) {
         auto reversed_head = reverse(head);
-        std::vector<int> result;
-        std::stack<int> ss;
+        vector<int> result;
+        stack<int> ss;
         for (auto node = reversed_head; node != nullptr; node = node->next) {
             if (ss.empty()) {
                 result.push_back(0);
@@ -48,7 +48,7 @@ public:
             }
             ss.push(node->val);
         }
-        std::reverse(result.begin(), result.end());
+        reverse(result.begin(), result.end());
         return result;
     }
 
@@ -78,7 +78,7 @@ private:
 class Solution2 {
 public:
     vector<int> nextLargerNodes(ListNode* head) {
-        std::vector<int> result;
+        vector<int> result;
         auto next_greater = head;
         for (auto node = head; node != nullptr; node = node->next) {
             for (next_greater = node->next; next_greater != nullptr; next_greater = next_greater->next) {

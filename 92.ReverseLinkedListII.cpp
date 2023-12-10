@@ -43,9 +43,9 @@ public:
         }
 
         ListNode *pre_m_node = p;    // pre_m_node    ->    NODE(m_node-1)
-        p = pre_m_node->next;        // p        ->    NODE(m_node)
-        ListNode *m_node = p;        // m_node    ->    NODE(m_node) save the position of m_node
-        ListNode *r = p->next;      // r        ->    NODE(m_node+1)
+        p = pre_m_node->next;        // p             ->    NODE(m_node)
+        ListNode *m_node = p;        // m_node        ->    NODE(m_node) save the position of m_node
+        ListNode *r = p->next;       // r             ->    NODE(m_node+1)
         for (int i = m; i < n && r != NULL; ++i) {
             ListNode *pre = p;
             p = r;

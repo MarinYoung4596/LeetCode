@@ -22,7 +22,7 @@ public:
         if (n < 2) {
             return n;
         }
-        std::vector<std::vector<int>> dp(n, std::vector<int>(n, 0));
+        vector<vector<int>> dp(n, vector<int>(n, 0));
         for (auto j = 0; j < n; ++j) { // 对角线，元素本身
             dp[j][j] = 1;
         }

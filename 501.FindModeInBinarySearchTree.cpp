@@ -25,12 +25,12 @@ class Solution {
 public:
     vector<int> findMode(TreeNode* root) {
         if (nullptr == root) {
-            return std::vector<int>();
+            return vector<int>();
         }
-        std::vector<int> vec;
+        vector<int> vec;
         dfs(root, vec);
 
-        std::unordered_map<int, int> vmap;
+        unordered_map<int, int> vmap;
         for (const auto x : vec) {
             if (vmap.find(x) != vmap.end()) {
                 ++vmap[x];
@@ -38,15 +38,15 @@ public:
                 vmap[x] = 1;
             }
         }
-        std::vector<std::pair<int, int>> modes;
+        vector<pair<int, int>> modes;
         for (const auto &item : vmap) {
             modes.push_back({item.first, item.second});
         }
-        std::sort(modes.begin(), modes.end(),
-                  [&](const std::pair<int, int> &lhs, const std::pair<int, int> &rhs) {
+        sort(modes.begin(), modes.end(),
+                  [&](const pair<int, int> &lhs, const pair<int, int> &rhs) {
                       return lhs.second > rhs.second;
                   });
-        std::vector<int> result;
+        vector<int> result;
         result.push_back(modes[0].first);
         for (auto i = 1; i < modes.size() && modes[i].second == modes[0].second; ++i) {
             result.push_back(modes[i].first);
@@ -56,7 +56,7 @@ public:
     }
 
 private:
-    void dfs(TreeNode* root, std::vector<int> &vec) {
+    void dfs(TreeNode* root, vector<int> &vec) {
         if (nullptr == root) {
             return;
         }

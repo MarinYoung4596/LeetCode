@@ -51,12 +51,12 @@ class Solution {
 public:
     string sortString(string s) {
         const auto CHAR_SIZE = 26;
-        std::vector<int> character(CHAR_SIZE, 0);
+        vector<int> character(CHAR_SIZE, 0);
         for (const auto &c : s) {
             ++character[static_cast<int>(c - 'a')];
         }
 
-        std::string result;
+        string result;
         while (result.size() < s.size()) {
             for (auto i = 0; i < CHAR_SIZE; ++i) {
                 if (character[i] < 1) {

@@ -7,7 +7,7 @@
 *   @brief:
 
 Given an array of integers arr, find the sum of min(b), where b ranges over every (contiguous) subarray of arr.
-Since the answer may be large, return the answer modulo 109 + 7.
+Since the answer may be large, return the answer modulo `10^9 + 7`.
 
 
 Example 1:
@@ -116,6 +116,6 @@ public:
 int main() {
     vector<int> vec = {11,81,94,43,3};
     Solution obj;
-    std::cout << obj.sumSubarrayMins(vec) << endl;
+    cout << obj.sumSubarrayMins(vec) << endl;
     return 0;
 }

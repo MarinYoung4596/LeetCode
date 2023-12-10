@@ -18,15 +18,15 @@ Example:
 class Solution {
 public:
     vector<vector<int>> combine(int n, int k) {
-        std::vector<std::vector<int>> result;
-        std::vector<int> subres;
+        vector<vector<int>> result;
+        vector<int> subres;
         backtrack(result, subres, n, k, 1);
         return result;
     }
 
 private:
-    void backtrack(std::vector<std::vector<int>> &result,
-                   std::vector<int> &subres, int n, int k, int start) {
+    void backtrack(vector<vector<int>> &result,
+                   vector<int> &subres, int n, int k, int start) {
         if (subres.size() == k) {
             result.push_back(subres);
             return;

@@ -35,7 +35,7 @@ public:
         if (arr.empty()) {
             return arr;
         }
-        std::vector<std::pair<int, int>> vec; // original idx, value
+        vector<std::pair<int, int>> vec; // original idx, value
         for (auto i = 0; i < arr.size(); ++i) {
             vec.push_back(std::make_pair(i, arr[i]));
         }
@@ -46,7 +46,7 @@ public:
 
         auto pre_value = vec[0].second;
         auto pre_rank = 1;
-        std::vector<std::pair<int, int>> idx_vec; // original order,  rank
+        vector<std::pair<int, int>> idx_vec; // original order,  rank
         idx_vec.push_back(std::make_pair(vec[0].first, pre_rank));
         for (auto i = 1; i < vec.size(); ++i) {
             auto cur_value = vec[i].second;
@@ -63,7 +63,7 @@ public:
                      return lhs.first < rhs.first;
                  });
 
-        std::vector<int> result;
+        vector<int> result;
         for (const auto &item : idx_vec) {
             result.push_back(item.second);
         }

@@ -36,7 +36,7 @@ public:
         if (A.empty()) {
             return 0;
         }
-        std::sort(A.begin(), A.end());
+        sort(A.begin(), A.end());
         auto i = 0;
         auto k = 0;
         for (; k < K && i < A.size() && A[i] < 0; ++i, ++k) {
@@ -54,11 +54,11 @@ public:
                 update_value(A, A.size() - 1, K - k);
             }
         }
-        return std::accumulate(A.begin(), A.end(), 0);
+        return accumulate(A.begin(), A.end(), 0);
     }
 
 private:
-    void update_value(std::vector<int> &A, int idx, int cnt) {
+    void update_value(vector<int> &A, int idx, int cnt) {
         auto flag = cnt & 0b01 ? -1 : 1;
         A[idx] *= flag;
     }

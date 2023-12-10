@@ -21,7 +21,7 @@ class Solution {
 public:
     // dp[i] = min(dp[i-1] + cost[i], dp[i-2] + cost[i])
     int minCostClimbingStairs(vector<int>& cost) {
-        std::vector<int> dp(cost.size(), 0);
+        vector<int> dp(cost.size(), 0);
 
         for (auto i = 0; i < cost.size(); ++i) {
             if (i < 2) {

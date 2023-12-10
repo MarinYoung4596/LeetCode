@@ -23,7 +23,7 @@ Constraints:
 class Solution {
 public:
     vector<int> sumZero(int n) {
-        std::vector<int> result;
+        vector<int> result;
         int sum = 0;
         int i = 1;
         while (result.size() < n) {

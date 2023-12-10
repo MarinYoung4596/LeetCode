@@ -29,7 +29,7 @@ public:
     }
 
 private:
-    bool backtrack(std::vector<std::vector<char>> &board,
+    bool backtrack(vector<vector<char>> &board,
                   int i, int j) {
         if (j == 9) { // 到列尾，跳到下一行
             return backtrack(board, i + 1, 0);
@@ -55,7 +55,7 @@ private:
     }
 
     // 判断board[row][column] 填入value 是否合法
-    bool is_valid(std::vector<std::vector<char>> &board,
+    bool is_valid(vector<vector<char>> &board,
                  int row, int column, char value) {
         for (auto k = 0; k < 9; ++k) {
             if (board[row][k] == value) { // 行

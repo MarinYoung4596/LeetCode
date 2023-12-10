@@ -51,7 +51,7 @@ public:
             return root;
         }
 
-        std::unordered_map<TreeNode*, TreeNode*> parents;
+        unordered_map<TreeNode*, TreeNode*> parents;
         get_parents(root, parents);
 
         auto plen = get_node_to_root_len(p, parents);
@@ -75,7 +75,7 @@ public:
 
 private:
     int get_node_to_root_len(TreeNode* node,
-                            const std::unordered_map<TreeNode*, TreeNode*> &parents) {
+                            const unordered_map<TreeNode*, TreeNode*> &parents) {
         auto len = 0;
         for (auto parent = node; parent != nullptr;) {
             auto iter = parents.find(parent);
@@ -85,7 +85,7 @@ private:
         return len;
     }
 
-    void get_parents(TreeNode* root, std::unordered_map<TreeNode*, TreeNode*> &tmap) {
+    void get_parents(TreeNode* root, unordered_map<TreeNode*, TreeNode*> &tmap) {
         if (nullptr == root) {
             return;
         }

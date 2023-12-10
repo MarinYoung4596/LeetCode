@@ -14,7 +14,7 @@ Example:
 class Solution {
 public:
     int longestPalindrome(string s) {
-        std::unordered_map<char, int> smap;
+        unordered_map<char, int> smap;
         for (auto x : s) {
             if (smap.count(x) > 0) {
                 ++smap[x];

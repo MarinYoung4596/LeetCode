@@ -21,7 +21,7 @@ public:
         if (A.size() != B.size()) {
             return false;
         }
-        std::string str = A + A;
-        return str.find(B) != std::string::npos;
+        string str = A + A;
+        return str.find(B) != string::npos;
     }
 };

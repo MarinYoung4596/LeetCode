@@ -30,7 +30,7 @@ Example 2:
 class Solution {
 public:
     vector<int> grayCode(int n) {
-        std::vector<int> result;
+        vector<int> result;
         int size = 1 << n;
         for (auto i = 0; i < size; ++i) {
             result.push_back(binary_to_gray(i));

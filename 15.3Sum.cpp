@@ -20,12 +20,12 @@ For example,
 // First Solution: two pointers
 class Solution {
 public:
-    vector<vector<int>> threeSum(std::vector<int> &num) {
-        std::vector<std::vector<int> > res;
+    vector<vector<int>> threeSum(vector<int> &num) {
+        vector<vector<int> > res;
         if (num.size() < 3) {
             return res;
         }
-        std::sort(num.begin(), num.end());
+        sort(num.begin(), num.end());
         for (auto i = num.begin(); i != prev(num.end(), 2); ++i) {
             if (i > num.begin() && *i == *(i - 1)) {
                 continue;
@@ -45,7 +45,7 @@ public:
                     }
                 } else {
                     res.push_back({ *i, *j, *k });
-                    
+
                     ++j;
                     while (j < k && *(j - 1) == *j) {
                         ++j;
@@ -60,4 +60,3 @@ public:
         return res;
     }
 };
-

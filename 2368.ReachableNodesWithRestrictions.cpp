@@ -90,7 +90,7 @@ private:
     // second solution: bfs
     int bfs(const vector<vector<int>> &graph,
             const unordered_set<int> &restricted) {
-        std::queue<int> q;
+        queue<int> q;
         q.push(0);
 
         unordered_set<int> visited;

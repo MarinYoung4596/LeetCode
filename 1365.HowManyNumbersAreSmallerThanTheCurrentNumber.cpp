@@ -32,10 +32,10 @@ Constraints:
 class Solution {
 public:
     vector<int> smallerNumbersThanCurrent(vector<int>& nums) {
-        std::vector<int> vec(nums.size());
-        std::copy(nums.begin(), nums.end(), vec.begin());
-        std::sort(vec.begin(), vec.end());
-        std::unordered_map<int, int> vec_index_map;
+        vector<int> vec(nums.size());
+        copy(nums.begin(), nums.end(), vec.begin());
+        sort(vec.begin(), vec.end());
+        unordered_map<int, int> vec_index_map;
         for (auto i = 0; i < vec.size(); ++i) {
             auto &item = vec[i];
             if (vec_index_map.count(item) > 0) {
@@ -43,7 +43,7 @@ public:
             }
             vec_index_map[item] = i;
         }
-        std::vector<int> result;
+        vector<int> result;
         for (auto it = nums.begin(); it != nums.end(); ++it) {
             result.push_back(vec_index_map[*it]);
         }

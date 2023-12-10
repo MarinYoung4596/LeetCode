@@ -38,7 +38,7 @@ public:
                 nums[idx] *= -1;
             }
         }
-        std::vector<int> result;
+        vector<int> result;
         for (auto i = 0; i < nums.size(); ++i) {
             if (nums[i] < 0) {
                 continue;

@@ -48,7 +48,7 @@ Constraints:
 class Solution {
 public:
     string validIPAddress(string queryIP) {
-        auto sep = queryIP.find(':') != std::string::npos ? ':' : '.';
+        auto sep = queryIP.find(':') != string::npos ? ':' : '.';
         vector<string> vec;
         split_str(queryIP, vec, sep);
         if (sep == ':') {
@@ -68,7 +68,7 @@ private:
         }
         auto beg = 0;
         auto end = str.find_first_of(sep);
-        while (end != std::string::npos) {
+        while (end != string::npos) {
             vec.push_back(str.substr(beg, end - beg));
 
             beg = end + 1;

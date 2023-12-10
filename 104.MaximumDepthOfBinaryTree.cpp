@@ -15,7 +15,7 @@ public:
         }
         auto left = maxDepth(root->left) + 1;
         auto right = maxDepth(root->right) + 1;
-        return std::max(left, right);
+        return max(left, right);
     }
 };
 
@@ -27,8 +27,8 @@ public:
             return 0;
         }
         int result = 0;
-        std::queue<TreeNode*> q1;
-        std::queue<TreeNode*> q2;
+        queue<TreeNode*> q1;
+        queue<TreeNode*> q2;
         q1.push(root);
 
         auto curr_q = &q1; // !q1.empty() ? &q1 : &q2;
@@ -46,7 +46,7 @@ public:
                 }
             }
             ++result;
-            std::swap(curr_q, next_q);
+            swap(curr_q, next_q);
         }
         return result;
     }

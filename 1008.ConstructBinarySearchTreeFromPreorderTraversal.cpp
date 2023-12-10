@@ -26,7 +26,7 @@ public:
     }
 
 private:
-    TreeNode* construct(const std::vector<int> &preorder, int begin, int end) {
+    TreeNode* construct(const vector<int> &preorder, int begin, int end) {
         if (begin >= end) {
             return nullptr;
         }

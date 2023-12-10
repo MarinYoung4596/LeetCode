@@ -51,8 +51,8 @@ class Solution {
 public:
     bool isValidSudoku(vector<vector<char>>& board) {
         for (auto i = 0; i < 9; ++i) {
-            std::vector<bool> row_num(10, false);
-            std::vector<bool> column_num(10, false);
+            vector<bool> row_num(10, false);
+            vector<bool> column_num(10, false);
             for (auto j = 0; j < 9; ++j) {
                 // 行
                 if (board[i][j] != '.') {
@@ -86,9 +86,9 @@ public:
     }
 
 private:
-    bool check_valid(const std::vector<std::vector<char>> &board,
+    bool check_valid(const vector<vector<char>> &board,
                     int row, int column) {
-        std::vector<bool> grid_num(10, false);
+        vector<bool> grid_num(10, false);
         for (auto i = row; i < row + 3; ++i) {
             for (auto j = column; j < column + 3; ++j) {
                 if (board[i][j] == '.') {

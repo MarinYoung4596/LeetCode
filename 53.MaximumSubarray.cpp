@@ -20,7 +20,7 @@ class Solution {
 public:
     int maxSubArray(vector<int>& nums) {
         const auto n = nums.size();
-        std::vector<int> dp(n, 0);
+        vector<int> dp(n, 0);
 
         dp[0] = nums[0];
         auto res = dp[0];

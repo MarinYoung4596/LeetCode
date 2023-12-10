@@ -24,10 +24,10 @@ Note:
 class Solution {
 public:
     vector<string> readBinaryWatch(int num) {
-        std::vector<int> bit_num_map[6];
+        vector<int> bit_num_map[6];
         get_bit_number_map(60, bit_num_map);
 
-        std::vector<std::string> result;
+        vector<string> result;
         for (auto i = 0; i <= num && i < 4; ++i) {
             auto &hour_map = bit_num_map[i];
             for (const auto &hour : hour_map) {
@@ -50,17 +50,17 @@ public:
         return result;
     }
 
-    std::string get_time_str(int n, int is_minute) {
+    string get_time_str(int n, int is_minute) {
         if (n < 10 && is_minute) {
-            std::string str = "0";
+            string str = "0";
             str.push_back(static_cast<char>('0' + n));
             return str;
         } else {
-            return std::to_string(n);
+            return to_string(n);
         }
     }
 
-    void get_bit_number_map(int n, std::vector<int>* bit_number_map) {
+    void get_bit_number_map(int n, vector<int>* bit_number_map) {
         for (auto i = 0; i < n; ++i) {
             auto nbits = count_bits(i);
             bit_number_map[nbits].push_back(i);

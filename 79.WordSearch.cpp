@@ -31,8 +31,8 @@ public:
         if (board.empty() || board[0].empty() || word.empty()) {
             return false;
         }
-        std::vector<std::vector<bool>> stats(board.size(),
-                                             std::vector<bool>(board[0].size(), false));
+        vector<vector<bool>> stats(board.size(),
+                                    vector<bool>(board[0].size(), false));
         for (auto i = 0; i < board.size(); ++i) {
             for (auto j = 0; j < board[0].size(); ++j) {
                 auto stat = backtrack(board, word, 0, i, j, stats); // 从i,j 开始搜索
@@ -47,12 +47,12 @@ public:
 private:
     // backtrack + dfs
     bool backtrack(
-            const std::vector<std::vector<char>> &board,
-            const std::string &word,
+            const vector<vector<char>> &board,
+            const string &word,
             int step,
             int row,
             int column,
-            std::vector<std::vector<bool>> &visited) {
+            vector<vector<bool>> &visited) {
         if (step == word.size()) { // 到底
             return true;
         }

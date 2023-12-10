@@ -19,7 +19,7 @@ Constraints:
 class Solution {
 public:
     vector<int> replaceElements(vector<int>& arr) {
-        std::vector<std::pair<int, int>> vec;
+        vector<std::pair<int, int>> vec;
         for (auto i = 0; i < arr.size(); ++i) {
             vec.push_back(std::make_pair(i, arr[i]));
         }
@@ -28,7 +28,7 @@ public:
                       return lhs.second > rhs.second;
                   });
 
-        std::vector<int> result;
+        vector<int> result;
         auto j = 0;
         for (auto i = 0; i < arr.size() - 1; ++i) {
             while (j < vec.size() && vec[j].first <= i) {

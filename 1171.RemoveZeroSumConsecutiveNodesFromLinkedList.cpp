@@ -30,7 +30,7 @@ public:
         if (head == nullptr) {
             return head;
         }
-        std::vector<int> vec;
+        vector<int> vec;
         for (auto node = head; node != nullptr; node = node->next) {
             vec.push_back(node->val);
             auto sum = 0;

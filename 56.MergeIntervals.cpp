@@ -22,10 +22,10 @@ public:
             return intervals;
         }
         std::sort(intervals.begin(), intervals.end(),
-                  [&](const std::vector<int> &lhs, const std::vector<int> &rhs) {
+                  [&](const vector<int> &lhs, const vector<int> &rhs) {
                       return lhs[0] < rhs[0];
                   });
-        std::vector<std::vector<int>> result;
+        vector<vector<int>> result;
 
         int min_lower = INT_MAX;
         int max_upper = INT_MIN;
@@ -34,7 +34,7 @@ public:
                 min_lower = pair[0];
             }
             if (max_upper != INT_MIN && max_upper < pair[0]) {
-                result.push_back(std::vector<int>({min_lower, max_upper}));
+                result.push_back(vector<int>({min_lower, max_upper}));
                 min_lower = pair[0];
                 max_upper = pair[1];
             }
@@ -42,7 +42,7 @@ public:
                 max_upper = pair[1];
             }
         }
-        result.push_back(std::vector<int>({min_lower, max_upper}));
+        result.push_back(vector<int>({min_lower, max_upper}));
         return result;
     }
 };

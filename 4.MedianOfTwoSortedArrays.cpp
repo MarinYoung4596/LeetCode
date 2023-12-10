@@ -78,7 +78,7 @@ public:
     }
 
 private:
-    typedef std::vector<int>::const_iterator Iterator;
+    typedef vector<int>::const_iterator Iterator;
 
     int find_kth(Iterator A, int m,
                  Iterator B, int n,

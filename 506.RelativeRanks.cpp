@@ -16,27 +16,27 @@ Note:
 class Solution {
 public:
     vector<string> findRelativeRanks(vector<int>& nums) {
-        std::vector<std::string> result;
+        vector<string> result;
         if (nums.empty()) {
             return result;
         }
 
-        std::vector<std::pair<int, int>> vec;
+        vector<pair<int, int>> vec;
         for (auto i = 0; i < nums.size(); ++i) {
-            vec.push_back(std::pair<int, int>(i, nums[i]));
+            vec.push_back(pair<int, int>(i, nums[i]));
         }
-        std::sort(vec.begin(), vec.end(),
-            [&](const std::pair<int, int> &lhs, const std::pair<int, int> &rhs) -> bool {
+        sort(vec.begin(), vec.end(),
+            [&](const pair<int, int> &lhs, const pair<int, int> &rhs) -> bool {
                 return lhs.second > rhs.second;
             });
 
-        std::string medal[3] = {"Gold Medal", "Silver Medal", "Bronze Medal"};
+        string medal[3] = {"Gold Medal", "Silver Medal", "Bronze Medal"};
         result.resize(nums.size());
         for (auto i = 0; i < vec.size(); ++i) {
             if (i < 3) {
                 result[vec[i].first] = medal[i];
             } else {
-                result[vec[i].first] = std::to_string(i + 1);
+                result[vec[i].first] = to_string(i + 1);
             }
         }
 

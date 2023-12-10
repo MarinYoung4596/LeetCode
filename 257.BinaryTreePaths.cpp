@@ -17,16 +17,16 @@ All root-to-leaf paths are:  ["1->2->5", "1->3"]
 // DFS Solution
 class Solution {
 public:
-    std::vector<std::string> binaryTreePaths(TreeNode* root) {
-        std::vector<std::string> res;
-        std::string str;
+    vector<string> binaryTreePaths(TreeNode* root) {
+        vector<string> res;
+        string str;
 
         dfs(root, str, res);
         return res;
     }
 
 private:
-    void dfs(TreeNode *root, std::string str, std::vector<std::string> &res) {
+    void dfs(TreeNode *root, string str, vector<string> &res) {
         if (root == nullptr) {
             if (!str.empty()) {
                 res.push_back(str);
@@ -36,7 +36,7 @@ private:
         if (!str.empty()) {
             str += "->";
         }
-        str += std::to_string(root->val);
+        str += to_string(root->val);
 
         // leaf node
         if (root->left == nullptr && root->right == nullptr) {

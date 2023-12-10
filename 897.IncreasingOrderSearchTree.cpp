@@ -11,7 +11,7 @@ Input: [5,3,6,2,4,null,8,1,null,null,null,7,9]
     3    6
    / \    \
   2   4    8
- /        / \ 
+ /        / \
 1        7   9
 
 Output: [1,null,2,null,3,null,4,null,5,null,6,null,7,null,8,null,9]
@@ -33,7 +33,7 @@ Output: [1,null,2,null,3,null,4,null,5,null,6,null,7,null,8,null,9]
                8
                 \
                  9
- 
+
 
 Constraints:
     The number of nodes in the given tree will be between 1 and 100.
@@ -47,7 +47,7 @@ public:
         if (nullptr == root) {
             return root;
         }
-        std::stack<TreeNode*> s;
+        stack<TreeNode*> s;
         TreeNode new_root(-1);
         TreeNode* p = root;
         TreeNode* pre = &new_root;
@@ -59,7 +59,7 @@ public:
                 p = s.top();
                 s.pop();
 
-                pre->right = p; // 
+                pre->right = p; //
                 pre = pre->right; //
 
                 p->left = nullptr;

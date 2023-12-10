@@ -52,7 +52,7 @@ private:
 class Solution2 {
 public:
     int countPrimes(int n) {
-        std::vector<bool> seive(n + 1, true);
+        vector<bool> seive(n + 1, true);
         for (int i = 2; i <= sqrt(n); ++i) {
             if (seive[i]) { // 相当于i的倍数，不可能是素数；
                 for (int j = i * i; j <= n; j += i) { // j 从i*i 开始，因为i的整数倍都已经被标记

@@ -1,17 +1,27 @@
 /*
-Given a set of distinct positive integers, find the largest subset such that every pair (Si, Sj) of
-elements in this subset satisfies: Si % Sj = 0 or Sj % Si = 0.
+Given a set of distinct positive integers nums,
+return the largest subset answer such that every pair (answer[i], answer[j]) of elements in this subset satisfies:
+    answer[i] % answer[j] == 0, or
+    answer[j] % answer[i] == 0
 
-If there are multiple solutions, return any subset is fine.
+If there are multiple solutions, return any of them.
+
+
 
 Example 1:
-    nums: [1,2,3]
-    Result: [1,2] (of course, [1,3] will also be ok)
+    Input: nums = [1,2,3]
+    Output: [1,2]
+    Explanation: [1,3] is also accepted.
 
 Example 2:
-    nums: [1,2,4,8]
-    Result: [1,2,4,8]
+    Input: nums = [1,2,4,8]
+    Output: [1,2,4,8]
 
+
+Constraints:
+    1 <= nums.length <= 1000
+    1 <= nums[i] <= 2 * 10^9
+    All the integers in nums are unique.
 */
 
 /*
@@ -19,22 +29,22 @@ Example 2:
     Time Limit Exceeded,
 */
 class Solution {
-  public:
+public:
     vector<int> largestDivisibleSubset(vector<int> &nums) {
         if (nums.empty() || nums.size() == 1) {
             return nums;
         }
 
-        std::sort(nums.begin(), nums.end());
-        std::vector<int> candidate;
+        sort(nums.begin(), nums.end());
+        vector<int> candidate;
         vector<vector<int>> result;
         dfs(nums, 0, candidate, result);
-        std::sort(result.begin(), result.end(), CmpBySize());
+        sort(result.begin(), result.end(), CmpBySize());
         return result[0];
     }
 
-  private:
-    void dfs(const vector<int> &nums, int index, vector<int> candidate,
+private:
+    void dfs(const vector<int> &nums, int index, vector<int> &candidate,
              vector<vector<int>> &result) {
         if (index == nums.size()) {
             result.push_back(candidate);
@@ -43,16 +53,16 @@ class Solution {
         // nums[index] has not been pushed back into candidate yet
         if (candidate.empty() || nums[index] % candidate.back() == 0) {
             candidate.push_back(nums[index]);
-            dfs(nums, ++index, candidate, result);
+            dfs(nums, 1 + index, candidate, result);
         } else {
-            std::vector<int> v(1, nums[index]);
+            vector<int> v(1, nums[index]);
             dfs(nums, 1 + index, v, result);         // new
             dfs(nums, 1 + index, candidate, result); // old
         }
     }
 
     struct CmpBySize {
-        bool operator()(const std::vector<int> &lhs, const std::vector<int> &rhs) {
+        bool operator()(const vector<int> &lhs, const vector<int> &rhs) {
             return lhs.size() > rhs.size();
         }
     };
@@ -60,18 +70,19 @@ class Solution {
 
 // Second Solution: DP
 class Solution {
-  public:
+public:
     // T[n] = the length of the largest divisible subset whose largest number is a[n]
     // T[n] = max{ 1 + T[i] | a[n] % a[i] == 0,  0 <= i < n}
     // else T[n] = 1
     vector<int> largestDivisibleSubset(vector<int> &nums) {
-        if (nums.size() < 2)
+        if (nums.size() < 2) {
             return nums;
+        }
         sort(nums.begin(), nums.end());
         const auto len = nums.size();
         int max_len = 1, last_index = 0;
         vector<int> dp(len, 1);
-        vector<int> parent(len, 0); // ±íÊ¾ÅÅĞòºóµÚi¸öÔªËØµÄÇ°ĞòÔªËØµÄ±àºÅ
+        vector<int> parent(len, 0); // è¡¨ç¤ºæ’åºåç¬¬iä¸ªå…ƒç´ çš„å‰åºå…ƒç´ çš„ç¼–å·
 
         for (auto i = 1; i < len; ++i) {
             for (auto j = 0; j < i; ++j) {

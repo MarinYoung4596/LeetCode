@@ -29,9 +29,9 @@ class Solution {
 public:
     string generateTheString(int n) {
         if (n % 2 == 1) {
-            return std::string(n, 'a');
+            return string(n, 'a');
         } else {
-            std::string result(n - 1, 'a');
+            string result(n - 1, 'a');
             result.append(1, 'b');
             return result;
         }

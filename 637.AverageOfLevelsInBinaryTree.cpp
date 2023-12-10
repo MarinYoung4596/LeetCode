@@ -22,12 +22,12 @@ Note:
 class Solution {
 public:
     vector<double> averageOfLevels(TreeNode* root) {
-        std::vector<std::vector<int>> levels;
+        vector<vector<int>> levels;
         dfs(root, 1, levels);
 
-        std::vector<double> result;
+        vector<double> result;
         for (const auto &level : levels) {
-            double sum = std::accumulate(level.begin(), level.end(), 0.0);
+            double sum = accumulate(level.begin(), level.end(), 0.0);
             result.push_back(static_cast<double>(sum) / level.size());
         }
         return result;
@@ -36,12 +36,12 @@ public:
 private:
     void dfs(TreeNode* root,
              int level,
-             std::vector<std::vector<int>> &levels) {
+             vector<vector<int>> &levels) {
         if (nullptr == root) {
             return;
         }
         if (level > levels.size()) {
-            levels.push_back(std::vector<int>());
+            levels.push_back(vector<int>());
         }
         levels[level - 1].push_back(root->val);
         dfs(root->left, level + 1, levels);

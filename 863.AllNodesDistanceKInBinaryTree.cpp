@@ -24,20 +24,20 @@ Note:
 class Solution {
 public:
     vector<int> distanceK(TreeNode* root, TreeNode* target, int K) {
-        std::unordered_map<TreeNode*, TreeNode*> parents;
+        unordered_map<TreeNode*, TreeNode*> parents;
         get_parents(root, parents);
 
-        std::unordered_set<TreeNode*> visited;
-        std::vector<int> result;
+        unordered_set<TreeNode*> visited;
+        vector<int> result;
         dfs(target, K, parents, visited, result);
         return result;
     }
 
 private:
     void dfs(TreeNode* root, int k,
-             std::unordered_map<TreeNode*, TreeNode*> &parents,
-             std::unordered_set<TreeNode*> &visited,
-             std::vector<int> &result) {
+             unordered_map<TreeNode*, TreeNode*> &parents,
+             unordered_set<TreeNode*> &visited,
+             vector<int> &result) {
         if (root == nullptr) {
             return;
         }
@@ -57,7 +57,7 @@ private:
         dfs(parent, k - 1, parents, visited, result);
     }
 
-    void get_parents(TreeNode* root, std::unordered_map<TreeNode*, TreeNode*> &parents) {
+    void get_parents(TreeNode* root, unordered_map<TreeNode*, TreeNode*> &parents) {
         if (root == nullptr) {
             return;
         }

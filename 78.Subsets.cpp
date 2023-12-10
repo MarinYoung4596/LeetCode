@@ -59,15 +59,15 @@ private:
 class Solution2 {
 public:
     vector<vector<int>> subsets(vector<int>& nums) {
-        std::vector<std::vector<int>> result;
-        std::vector<int> subres;
+        vector<vector<int>> result;
+        vector<int> subres;
         backtrack(nums, result, subres, 0);
         return result;
     }
 
 private:
-    void backtrack(const std::vector<int>& nums,
-                   std::vector<std::vector<int>> &result,
+    void backtrack(const vector<int>& nums,
+                   vector<vector<int>> &result,
                    vector<int> &subres,
                    int start) {
         result.push_back(subres);

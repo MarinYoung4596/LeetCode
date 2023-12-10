@@ -49,7 +49,7 @@ class Solution2 {
 public:
     int pathSum(TreeNode* root, int sum) {
         int result = 0;
-        std::vector<TreeNode* > preorder;
+        vector<TreeNode* > preorder;
         backtrack(root, sum, 0, preorder, result);
         return result;
     }
@@ -58,7 +58,7 @@ private:
     void backtrack(TreeNode* root,
                     int sum,
                     int curr_sum,
-                    std::vector<TreeNode*> &preorder,
+                    vector<TreeNode*> &preorder,
                     int &result) {
         if (nullptr == root) {
             return;

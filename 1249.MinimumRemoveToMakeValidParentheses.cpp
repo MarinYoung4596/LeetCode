@@ -36,8 +36,8 @@ Constraints:
 class Solution {
 public:
     string minRemoveToMakeValid(string s) {
-        std::stack<int> ss;
-        std::unordered_set<int> us;
+        stack<int> ss;
+        unordered_set<int> us;
         for (auto i = 0; i < s.size(); ++i) {
             if (s[i] != '(' && s[i] != ')') {
                 continue;
@@ -59,8 +59,7 @@ public:
             us.insert(ss.top());
             ss.pop();
         }
-        //std::cout << "us.size=" << us.size() << "\tss.size=" << ss.size() << '\n';
-        std::string result;
+        string result;
         for (auto i = 0; i < s.size(); ++i) {
             if (us.find(i) != us.end()) {
                 continue;

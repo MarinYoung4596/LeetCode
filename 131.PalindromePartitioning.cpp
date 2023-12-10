@@ -25,8 +25,7 @@ Constraints:
 #include <vector>
 #include <string>
 
-using std::vector;
-using std::string;
+using namespace std;
 
 class Solution {
 public:

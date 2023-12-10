@@ -36,10 +36,9 @@ Constraints:
 #include "util.h"
 #include <vector>
 #include <iostream>
-using std::vector;
 
-class Solution {
-public:
+using namespace std;
+
 class Solution {
 public:
     int longestSubarray(vector<int>& nums) {
@@ -76,6 +75,6 @@ public:
 int main() {
     Solution obj;
     vector<int> vec= {0,1,1,1,0,0,1,1,0};
-    std::cout << obj.longestSubarray(vec) << std::endl;
+    cout << obj.longestSubarray(vec) << endl;
     return 0;
 }

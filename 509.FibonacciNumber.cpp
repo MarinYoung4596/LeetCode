@@ -37,7 +37,7 @@ public:
         } else if (N < 2) {
             return 1;
         }
-        std::vector<int> dp(N + 1, 0);
+        vector<int> dp(N + 1, 0);
         dp[1] = 1;
         for (auto i = 2; i <= N; ++i) {
             dp[i] = dp[i - 1] + dp[i - 2];

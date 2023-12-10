@@ -36,16 +36,16 @@ Constraints:
 class Solution {
 public:
     string freqAlphabets(string s) {
-        std::string result;
+        string result;
 
         auto pos = s.find_first_of('#');
         for (auto i = 0; i < s.size(); ) {
-            if (pos == std::string::npos
-                    || (pos != std::string::npos && i < pos - 2)) {
+            if (pos == string::npos
+                    || (pos != string::npos && i < pos - 2)) {
                 result += static_cast<char>('a' + static_cast<int>(s[i] - '1'));
                 ++i;
             } else {
-                result += static_cast<char>('a' + std::stoi(s.substr(i, 2)) - 1);
+                result += static_cast<char>('a' + stoi(s.substr(i, 2)) - 1);
 
                 i += 3;
                 pos = s.find_first_of('#', i);

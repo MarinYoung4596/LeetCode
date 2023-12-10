@@ -59,6 +59,9 @@ Constraints:
 
 #include "util.h"
 #include <list>
+#include <iostream>
+
+using namespace std;
 
 class Node {
 public:
@@ -67,7 +70,7 @@ public:
 public:
     int value;
     int freq;
-    std::list<int>::iterator addr;
+    list<int>::iterator addr;
 };
 
 class LFUCache {
@@ -126,7 +129,7 @@ private:
     void add_to_freq_map(int freq, int key) {
         auto iter = freq_keys_map.find(freq);
         if (iter == freq_keys_map.end()) {
-            auto keys_list = std::list<int>({key});
+            auto keys_list = list<int>({key});
             freq_keys_map[freq] = keys_list;
         } else {
             auto& keys_list = iter->second;
@@ -144,8 +147,8 @@ private:
     }
 
 private:
-    std::unordered_map<int, Node> key_node_map;
-    std::unordered_map<int, std::list<int>> freq_keys_map; // 同一freq 对应的 key 列表
+    unordered_map<int, Node> key_node_map;
+    unordered_map<int, list<int>> freq_keys_map; // 同一freq 对应的 key 列表
 
     int cap = 0;
     int min_freq = INT_MAX;
@@ -163,16 +166,16 @@ int main() {
     LFUCache lfu(2);
     lfu.put(1, 1);
     lfu.put(2, 2);
-    std::cout << lfu.get(1) << '\n';
+    cout << lfu.get(1) << '\n';
 
     lfu.put(3, 3);
-    std::cout << lfu.get(2) << '\n';
-    std::cout << lfu.get(3) << '\n';
+    cout << lfu.get(2) << '\n';
+    cout << lfu.get(3) << '\n';
 
     lfu.put(4, 4);
-    std::cout << lfu.get(1) << '\n';
-    std::cout << lfu.get(3) << '\n';
-    std::cout << lfu.get(4) << '\n';
+    cout << lfu.get(1) << '\n';
+    cout << lfu.get(3) << '\n';
+    cout << lfu.get(4) << '\n';
 
     return 0;
 }
