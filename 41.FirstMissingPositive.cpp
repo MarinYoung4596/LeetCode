@@ -1,8 +1,8 @@
 /*****************************************************************
-*   Copyright (C) 2023 Baidu.com, Inc. All rights reserved.
+*   Copyright (C) 2023 . All rights reserved.
 *
 *   @file:    41.FirstMissingPositive.cpp
-*   @author:  yangnan09@baidu.com
+*   @author:  marinyoung@163.com
 *   @date:    2023/11/07 11:26:47
 *   @brief:
 

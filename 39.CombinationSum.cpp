@@ -2,7 +2,7 @@
 *   Copyright (C) 2022  All rights reserved.
 *
 *   @file:    39.CombinationSum.cpp
-*   @author:  marinyoung@tencent.com
+*   @author:  marinyoung@163.com
 *   @date:    2022/11/19 21:06:32
 *   @brief:
 
